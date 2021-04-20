@@ -19,7 +19,7 @@ module.exports = {
   },
   output: {
     filename: 'client.js',
-    path: path.resolve(__dirname, './compiled'),
+    path: path.resolve(__dirname, './public'),
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
