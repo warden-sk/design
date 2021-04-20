@@ -1,7 +1,7 @@
 import * as babel from '@babel/core';
 import commonParameters from './commonParameters.json';
 
-const PATH = '@warden-sk/design/helpers';
+const PATH = '@warden-sk/design/private/helpers';
 
 function Test({ types: t }: typeof babel): babel.PluginObj {
   return {
