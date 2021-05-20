@@ -3,7 +3,13 @@ import commonParameters from './commonParameters.json';
 
 const PATH = '@warden-sk/design/private/helpers';
 
-function Test({ types: t }: typeof babel): babel.PluginObj {
+interface S {
+  decodeClassNameIdentifier: babel.types.Identifier;
+  decodeResponsiveClassNameIdentifier: babel.types.Identifier;
+  yes: boolean;
+}
+
+function Test({ types: t }: typeof babel): babel.PluginObj<S> {
   return {
     name: 'Test',
     visitor: {

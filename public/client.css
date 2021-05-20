@@ -3,7 +3,7 @@
 }
 
 html {
-  font-size: clamp(1rem, 2vw, 3rem);
+  font-size: clamp(1rem, 1.5vw, 2.25rem);
 }
 
 body {
