@@ -1,5 +1,21 @@
 import * as babel from '@babel/core';
-import commonParameters from './commonParameters.json';
+
+const commonParameters: Record<string, string> = {
+  m: 'm',
+  mB: 'm-b',
+  mL: 'm-l',
+  mR: 'm-r',
+  mT: 'm-t',
+  mX: 'm-x',
+  mY: 'm-y',
+  p: 'p',
+  pB: 'p-b',
+  pL: 'p-l',
+  pR: 'p-r',
+  pT: 'p-t',
+  pX: 'p-x',
+  pY: 'p-y',
+};
 
 const PATH = '@warden-sk/design/private/helpers';
 
@@ -16,7 +32,7 @@ function Test({ types: t }: typeof babel): babel.PluginObj<S> {
       JSXOpeningElement(path, state) {
         const attributes = [];
 
-        const className = [];
+        const className: any[] = [];
 
         path.node.attributes.forEach(attribute => {
           if (t.isJSXAttribute(attribute)) {
@@ -48,6 +64,7 @@ function Test({ types: t }: typeof babel): babel.PluginObj<S> {
                   className.push(
                     t.callExpression(state.decodeResponsiveClassNameIdentifier, [
                       t.stringLiteral(commonParameters[attribute.name.name]),
+                      //@ts-ignore
                       attribute.value.expression,
                     ])
                   );
