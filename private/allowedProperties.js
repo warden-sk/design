@@ -17,6 +17,6 @@ const allowedProperties = {
     pR: 'p-r-',
     pT: 'p-t-',
     pX: 'p-x-',
-    pY: 'p-y-',
+    pY: 'p-y-', // padding-bottom, padding-top
 };
 exports.default = allowedProperties;

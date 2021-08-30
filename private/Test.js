@@ -23,8 +23,10 @@ function Test({ types: t }) {
                                     return;
                                 }
                                 if (t.isJSXExpressionContainer(attribute.value)) {
-                                    className.push(attribute.value.expression);
-                                    return;
+                                    if (t.isExpression(attribute.value.expression)) {
+                                        className.push(attribute.value.expression);
+                                        return;
+                                    }
                                 }
                             }
                             if (attribute.name.name in allowedProperties_1.default) {
@@ -36,12 +38,13 @@ function Test({ types: t }) {
                                     return;
                                 }
                                 if (t.isJSXExpressionContainer(attribute.value)) {
-                                    className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
-                                        t.stringLiteral(allowedProperties_1.default[attribute.name.name]),
-                                        // @ts-ignore
-                                        attribute.value.expression,
-                                    ]));
-                                    return;
+                                    if (t.isExpression(attribute.value.expression)) {
+                                        className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
+                                            t.stringLiteral(allowedProperties_1.default[attribute.name.name]),
+                                            attribute.value.expression,
+                                        ]));
+                                        return;
+                                    }
                                 }
                             }
                         }
@@ -50,7 +53,6 @@ function Test({ types: t }) {
                 });
                 if (className.length) {
                     attributes.push(t.jsxAttribute(t.jsxIdentifier('className'), t.jsxExpressionContainer(t.callExpression(state.decodeClassNameIdentifier, [t.arrayExpression(className)]))));
-                    state.yes = true;
                 }
                 path.node.attributes = attributes;
             },
@@ -60,9 +62,7 @@ function Test({ types: t }) {
                     state.decodeResponsiveClassNameIdentifier = t.identifier('decodeResponsiveClassName');
                 },
                 exit(path, state) {
-                    if (state.yes) {
-                        path.node.body.unshift(t.importDeclaration([t.importDefaultSpecifier(state.decodeClassNameIdentifier)], t.stringLiteral('@warden-sk/design/private/helpers/decodeClassName')), t.importDeclaration([t.importDefaultSpecifier(state.decodeResponsiveClassNameIdentifier)], t.stringLiteral('@warden-sk/design/private/helpers/decodeResponsiveClassName')));
-                    }
+                    path.node.body.unshift(t.importDeclaration([t.importDefaultSpecifier(state.decodeClassNameIdentifier)], t.stringLiteral('@warden-sk/design/private/helpers/decodeClassName')), t.importDeclaration([t.importDefaultSpecifier(state.decodeResponsiveClassNameIdentifier)], t.stringLiteral('@warden-sk/design/private/helpers/decodeResponsiveClassName')));
                 },
             },
         },

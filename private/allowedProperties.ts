@@ -3,20 +3,20 @@
  */
 
 const allowedProperties: Record<string, string> = {
-  m: 'm-',
-  mB: 'm-b-',
-  mL: 'm-l-',
-  mR: 'm-r-',
-  mT: 'm-t-',
-  mX: 'm-x-',
-  mY: 'm-y-',
-  p: 'p-',
-  pB: 'p-b-',
-  pL: 'p-l-',
-  pR: 'p-r-',
-  pT: 'p-t-',
-  pX: 'p-x-',
-  pY: 'p-y-',
+  m: 'm-', // margin
+  mB: 'm-b-', // margin-bottom
+  mL: 'm-l-', // margin-left
+  mR: 'm-r-', // margin-right
+  mT: 'm-t-', // margin-top
+  mX: 'm-x-', // margin-left, margin-right
+  mY: 'm-y-', // margin-bottom, margin-top
+  p: 'p-', // padding
+  pB: 'p-b-', // padding-bottom
+  pL: 'p-l-', // padding-left
+  pR: 'p-r-', // padding-right
+  pT: 'p-t-', // padding-top
+  pX: 'p-x-', // padding-left, padding-right
+  pY: 'p-y-', // padding-bottom, padding-top
 };
 
 export default allowedProperties;
