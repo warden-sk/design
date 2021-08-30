@@ -50,6 +50,7 @@ function Test({ types: t }: typeof babel): babel.PluginObj<S> {
                   className.push(
                     t.callExpression(state.decodeResponsiveClassNameIdentifier, [
                       t.stringLiteral(commonParameters[attribute.name.name]),
+                      // @ts-ignore
                       attribute.value.expression,
                     ])
                   );
