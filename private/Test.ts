@@ -1,23 +1,9 @@
+/*
+ * Copyright 2021 Marek Kobida
+ */
+
 import * as babel from '@babel/core';
-
-const commonParameters: Record<string, string> = {
-  m: 'm',
-  mB: 'm-b',
-  mL: 'm-l',
-  mR: 'm-r',
-  mT: 'm-t',
-  mX: 'm-x',
-  mY: 'm-y',
-  p: 'p',
-  pB: 'p-b',
-  pL: 'p-l',
-  pR: 'p-r',
-  pT: 'p-t',
-  pX: 'p-x',
-  pY: 'p-y',
-};
-
-const PATH = '@warden-sk/design/private/helpers';
+import commonParameters from './commonParameters';
 
 interface S {
   decodeClassNameIdentifier: babel.types.Identifier;
@@ -64,7 +50,6 @@ function Test({ types: t }: typeof babel): babel.PluginObj<S> {
                   className.push(
                     t.callExpression(state.decodeResponsiveClassNameIdentifier, [
                       t.stringLiteral(commonParameters[attribute.name.name]),
-                      //@ts-ignore
                       attribute.value.expression,
                     ])
                   );
@@ -94,19 +79,19 @@ function Test({ types: t }: typeof babel): babel.PluginObj<S> {
       },
       Program: {
         enter(path, state) {
-          state.decodeClassNameIdentifier = path.scope.generateUidIdentifier('decodeClassName');
-          state.decodeResponsiveClassNameIdentifier = path.scope.generateUidIdentifier('decodeResponsiveClassName');
+          state.decodeClassNameIdentifier = t.identifier('decodeClassName');
+          state.decodeResponsiveClassNameIdentifier = t.identifier('decodeResponsiveClassName');
         },
         exit(path, state) {
           if (state.yes) {
             path.node.body.unshift(
               t.importDeclaration(
                 [t.importDefaultSpecifier(state.decodeClassNameIdentifier)],
-                t.stringLiteral(`${PATH}/decodeClassName`)
+                t.stringLiteral('@warden-sk/design/private/helpers/decodeClassName')
               ),
               t.importDeclaration(
                 [t.importDefaultSpecifier(state.decodeResponsiveClassNameIdentifier)],
-                t.stringLiteral(`${PATH}/decodeResponsiveClassName`)
+                t.stringLiteral('@warden-sk/design/private/helpers/decodeResponsiveClassName')
               )
             );
           }
