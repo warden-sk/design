@@ -6,7 +6,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const commonParameters_1 = __importDefault(require("./commonParameters"));
+const allowedProperties_1 = __importDefault(require("./allowedProperties"));
 function Test({ types: t }) {
     return {
         name: 'Test',
@@ -27,17 +27,17 @@ function Test({ types: t }) {
                                     return;
                                 }
                             }
-                            if (attribute.name.name in commonParameters_1.default) {
+                            if (attribute.name.name in allowedProperties_1.default) {
                                 if (t.isStringLiteral(attribute.value)) {
                                     className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
-                                        t.stringLiteral(commonParameters_1.default[attribute.name.name]),
+                                        t.stringLiteral(allowedProperties_1.default[attribute.name.name]),
                                         attribute.value,
                                     ]));
                                     return;
                                 }
                                 if (t.isJSXExpressionContainer(attribute.value)) {
                                     className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
-                                        t.stringLiteral(commonParameters_1.default[attribute.name.name]),
+                                        t.stringLiteral(allowedProperties_1.default[attribute.name.name]),
                                         // @ts-ignore
                                         attribute.value.expression,
                                     ]));

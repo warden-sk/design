@@ -3,7 +3,7 @@
  * Copyright 2021 Marek Kobida
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-const commonParameters = {
+const allowedProperties = {
     m: 'm-',
     mB: 'm-b-',
     mL: 'm-l-',
@@ -19,4 +19,4 @@ const commonParameters = {
     pX: 'p-x-',
     pY: 'p-y-',
 };
-exports.default = commonParameters;
+exports.default = allowedProperties;

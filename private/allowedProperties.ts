@@ -2,7 +2,7 @@
  * Copyright 2021 Marek Kobida
  */
 
-const commonParameters: Record<string, string> = {
+const allowedProperties: Record<string, string> = {
   m: 'm-',
   mB: 'm-b-',
   mL: 'm-l-',
@@ -19,4 +19,4 @@ const commonParameters: Record<string, string> = {
   pY: 'p-y-',
 };
 
-export default commonParameters;
+export default allowedProperties;

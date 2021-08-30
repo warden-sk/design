@@ -3,7 +3,7 @@
  */
 
 import * as babel from '@babel/core';
-import commonParameters from './commonParameters';
+import allowedProperties from './allowedProperties';
 
 interface S {
   decodeClassNameIdentifier: babel.types.Identifier;
@@ -35,11 +35,11 @@ function Test({ types: t }: typeof babel): babel.PluginObj<S> {
                 }
               }
 
-              if (attribute.name.name in commonParameters) {
+              if (attribute.name.name in allowedProperties) {
                 if (t.isStringLiteral(attribute.value)) {
                   className.push(
                     t.callExpression(state.decodeResponsiveClassNameIdentifier, [
-                      t.stringLiteral(commonParameters[attribute.name.name]),
+                      t.stringLiteral(allowedProperties[attribute.name.name]),
                       attribute.value,
                     ])
                   );
@@ -49,7 +49,7 @@ function Test({ types: t }: typeof babel): babel.PluginObj<S> {
                 if (t.isJSXExpressionContainer(attribute.value)) {
                   className.push(
                     t.callExpression(state.decodeResponsiveClassNameIdentifier, [
-                      t.stringLiteral(commonParameters[attribute.name.name]),
+                      t.stringLiteral(allowedProperties[attribute.name.name]),
                       // @ts-ignore
                       attribute.value.expression,
                     ])
