@@ -3,16 +3,15 @@
  */
 
 import * as babel from '@babel/core';
-import allowedProperties from './allowedProperties';
+import allowedAttributes from './allowedAttributes';
 
 interface S {
   decodeClassNameIdentifier: babel.types.Identifier;
   decodeResponsiveClassNameIdentifier: babel.types.Identifier;
 }
 
-function Test({ types: t }: typeof babel): babel.PluginObj<S> {
+export default function ({ types: t }: typeof babel): babel.PluginObj<S> {
   return {
-    name: 'Test',
     visitor: {
       JSXOpeningElement(path, state) {
         const attributes: (babel.types.JSXAttribute | babel.types.JSXSpreadAttribute)[] = [];
@@ -22,41 +21,46 @@ function Test({ types: t }: typeof babel): babel.PluginObj<S> {
         path.node.attributes.forEach(attribute => {
           if (t.isJSXAttribute(attribute)) {
             if (t.isJSXIdentifier(attribute.name)) {
-              if (attribute.name.name === 'className') {
-                if (t.isStringLiteral(attribute.value)) {
-                  className.push(attribute.value);
-                  return;
-                }
+              //                              ⬇️ JSXAttribute
+              const { name: attributeName } = attribute.name;
 
+              if (attributeName === 'className') {
                 if (t.isJSXExpressionContainer(attribute.value)) {
                   if (t.isExpression(attribute.value.expression)) {
                     className.push(attribute.value.expression);
                     return;
                   }
                 }
-              }
 
-              if (attribute.name.name in allowedProperties) {
                 if (t.isStringLiteral(attribute.value)) {
-                  className.push(
-                    t.callExpression(state.decodeResponsiveClassNameIdentifier, [
-                      t.stringLiteral(allowedProperties[attribute.name.name]),
-                      attribute.value,
-                    ])
-                  );
+                  className.push(attribute.value);
                   return;
                 }
 
+                return;
+              }
+
+              if (attributeName in allowedAttributes) {
                 if (t.isJSXExpressionContainer(attribute.value)) {
                   if (t.isExpression(attribute.value.expression)) {
                     className.push(
                       t.callExpression(state.decodeResponsiveClassNameIdentifier, [
-                        t.stringLiteral(allowedProperties[attribute.name.name]),
+                        t.stringLiteral(allowedAttributes[attribute.name.name]),
                         attribute.value.expression,
                       ])
                     );
                     return;
                   }
+                }
+
+                if (t.isStringLiteral(attribute.value)) {
+                  className.push(
+                    t.callExpression(state.decodeResponsiveClassNameIdentifier, [
+                      t.stringLiteral(allowedAttributes[attribute.name.name]),
+                      attribute.value,
+                    ])
+                  );
+                  return;
                 }
               }
             }
@@ -84,7 +88,7 @@ function Test({ types: t }: typeof babel): babel.PluginObj<S> {
           state.decodeResponsiveClassNameIdentifier = t.identifier('decodeResponsiveClassName');
         },
         exit(path, state) {
-          path.node.body.unshift(
+          path.unshiftContainer('body', [
             t.importDeclaration(
               [t.importDefaultSpecifier(state.decodeClassNameIdentifier)],
               t.stringLiteral('@warden-sk/design/private/helpers/decodeClassName')
@@ -92,12 +96,10 @@ function Test({ types: t }: typeof babel): babel.PluginObj<S> {
             t.importDeclaration(
               [t.importDefaultSpecifier(state.decodeResponsiveClassNameIdentifier)],
               t.stringLiteral('@warden-sk/design/private/helpers/decodeResponsiveClassName')
-            )
-          );
+            ),
+          ]);
         },
       },
     },
   };
 }
-
-export default Test;

@@ -3,7 +3,7 @@
  * Copyright 2021 Marek Kobida
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-const allowedProperties = {
+const allowedAttributes = {
     m: 'm-',
     mB: 'm-b-',
     mL: 'm-l-',
@@ -19,4 +19,4 @@ const allowedProperties = {
     pX: 'p-x-',
     pY: 'p-y-', // padding-bottom, padding-top
 };
-exports.default = allowedProperties;
+exports.default = allowedAttributes;

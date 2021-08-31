@@ -2,7 +2,7 @@
  * Copyright 2021 Marek Kobida
  */
 
-const allowedProperties: Record<string, string> = {
+const allowedAttributes: Record<string, string> = {
   m: 'm-', // margin
   mB: 'm-b-', // margin-bottom
   mL: 'm-l-', // margin-left
@@ -19,4 +19,4 @@ const allowedProperties: Record<string, string> = {
   pY: 'p-y-', // padding-bottom, padding-top
 };
 
-export default allowedProperties;
+export default allowedAttributes;

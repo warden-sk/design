@@ -6,10 +6,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const allowedProperties_1 = __importDefault(require("./allowedProperties"));
-function Test({ types: t }) {
+const allowedAttributes_1 = __importDefault(require("./allowedAttributes"));
+function default_1({ types: t }) {
     return {
-        name: 'Test',
         visitor: {
             JSXOpeningElement(path, state) {
                 const attributes = [];
@@ -17,34 +16,37 @@ function Test({ types: t }) {
                 path.node.attributes.forEach(attribute => {
                     if (t.isJSXAttribute(attribute)) {
                         if (t.isJSXIdentifier(attribute.name)) {
-                            if (attribute.name.name === 'className') {
-                                if (t.isStringLiteral(attribute.value)) {
-                                    className.push(attribute.value);
-                                    return;
-                                }
+                            //                              ⬇️ JSXAttribute
+                            const { name: attributeName } = attribute.name;
+                            if (attributeName === 'className') {
                                 if (t.isJSXExpressionContainer(attribute.value)) {
                                     if (t.isExpression(attribute.value.expression)) {
                                         className.push(attribute.value.expression);
                                         return;
                                     }
                                 }
-                            }
-                            if (attribute.name.name in allowedProperties_1.default) {
                                 if (t.isStringLiteral(attribute.value)) {
-                                    className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
-                                        t.stringLiteral(allowedProperties_1.default[attribute.name.name]),
-                                        attribute.value,
-                                    ]));
+                                    className.push(attribute.value);
                                     return;
                                 }
+                                return;
+                            }
+                            if (attributeName in allowedAttributes_1.default) {
                                 if (t.isJSXExpressionContainer(attribute.value)) {
                                     if (t.isExpression(attribute.value.expression)) {
                                         className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
-                                            t.stringLiteral(allowedProperties_1.default[attribute.name.name]),
+                                            t.stringLiteral(allowedAttributes_1.default[attribute.name.name]),
                                             attribute.value.expression,
                                         ]));
                                         return;
                                     }
+                                }
+                                if (t.isStringLiteral(attribute.value)) {
+                                    className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
+                                        t.stringLiteral(allowedAttributes_1.default[attribute.name.name]),
+                                        attribute.value,
+                                    ]));
+                                    return;
                                 }
                             }
                         }
@@ -62,10 +64,13 @@ function Test({ types: t }) {
                     state.decodeResponsiveClassNameIdentifier = t.identifier('decodeResponsiveClassName');
                 },
                 exit(path, state) {
-                    path.node.body.unshift(t.importDeclaration([t.importDefaultSpecifier(state.decodeClassNameIdentifier)], t.stringLiteral('@warden-sk/design/private/helpers/decodeClassName')), t.importDeclaration([t.importDefaultSpecifier(state.decodeResponsiveClassNameIdentifier)], t.stringLiteral('@warden-sk/design/private/helpers/decodeResponsiveClassName')));
+                    path.unshiftContainer('body', [
+                        t.importDeclaration([t.importDefaultSpecifier(state.decodeClassNameIdentifier)], t.stringLiteral('@warden-sk/design/private/helpers/decodeClassName')),
+                        t.importDeclaration([t.importDefaultSpecifier(state.decodeResponsiveClassNameIdentifier)], t.stringLiteral('@warden-sk/design/private/helpers/decodeResponsiveClassName')),
+                    ]);
                 },
             },
         },
     };
 }
-exports.default = Test;
+exports.default = default_1;
