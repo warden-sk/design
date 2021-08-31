@@ -6,34 +6,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const allowedAttributes_1 = __importDefault(require("./allowedAttributes"));
+const allowedJSXAttributes_1 = __importDefault(require("./allowedJSXAttributes"));
+const package_json_1 = __importDefault(require("../package.json"));
 function default_1({ types: t }) {
     return {
         visitor: {
-            JSXOpeningElement(path, state) {
+            JSXOpeningElement(path) {
                 const attributes = [];
                 const className = [];
                 path.node.attributes.forEach(attribute => {
                     if (t.isJSXAttribute(attribute))
                         if (t.isJSXIdentifier(attribute.name)) {
-                            const { name: attributeName } = attribute.name;
-                            if (attributeName === 'className') {
+                            if (attribute.name.name === 'className') {
                                 if (t.isJSXExpressionContainer(attribute.value))
                                     if (t.isExpression(attribute.value.expression))
                                         return className.push(attribute.value.expression);
                                 if (t.isStringLiteral(attribute.value))
                                     return className.push(attribute.value);
                             }
-                            if (attributeName in allowedAttributes_1.default) {
+                            if (attribute.name.name in allowedJSXAttributes_1.default) {
                                 if (t.isJSXExpressionContainer(attribute.value))
                                     if (t.isExpression(attribute.value.expression))
-                                        return className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
-                                            t.stringLiteral(allowedAttributes_1.default[attribute.name.name]),
+                                        return className.push(t.callExpression(t.identifier('decodeResponsiveClassName'), [
+                                            t.stringLiteral(allowedJSXAttributes_1.default[attribute.name.name]),
                                             attribute.value.expression,
                                         ]));
                                 if (t.isStringLiteral(attribute.value))
-                                    return className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
-                                        t.stringLiteral(allowedAttributes_1.default[attribute.name.name]),
+                                    return className.push(t.callExpression(t.identifier('decodeResponsiveClassName'), [
+                                        t.stringLiteral(allowedJSXAttributes_1.default[attribute.name.name]),
                                         attribute.value,
                                     ]));
                             }
@@ -41,20 +41,14 @@ function default_1({ types: t }) {
                     attributes.push(attribute);
                 });
                 if (className.length)
-                    attributes.push(t.jsxAttribute(t.jsxIdentifier('className'), t.jsxExpressionContainer(t.callExpression(state.decodeClassNameIdentifier, [t.arrayExpression(className)]))));
+                    attributes.push(t.jsxAttribute(t.jsxIdentifier('className'), t.jsxExpressionContainer(t.callExpression(t.identifier('decodeClassName'), [t.arrayExpression(className)]))));
                 path.node.attributes = attributes;
             },
-            Program: {
-                enter(path, state) {
-                    state.decodeClassNameIdentifier = t.identifier('decodeClassName');
-                    state.decodeResponsiveClassNameIdentifier = t.identifier('decodeResponsiveClassName');
-                },
-                exit(path, state) {
-                    path.unshiftContainer('body', [
-                        t.importDeclaration([t.importDefaultSpecifier(state.decodeClassNameIdentifier)], t.stringLiteral('@warden-sk/design/private/helpers/decodeClassName')),
-                        t.importDeclaration([t.importDefaultSpecifier(state.decodeResponsiveClassNameIdentifier)], t.stringLiteral('@warden-sk/design/private/helpers/decodeResponsiveClassName')),
-                    ]);
-                },
+            Program(path) {
+                path.unshiftContainer('body', [
+                    t.importDeclaration([t.importDefaultSpecifier(t.identifier('decodeClassName'))], t.stringLiteral(`${package_json_1.default.name}/private/helpers/decodeClassName`)),
+                    t.importDeclaration([t.importDefaultSpecifier(t.identifier('decodeResponsiveClassName'))], t.stringLiteral(`${package_json_1.default.name}/private/helpers/decodeResponsiveClassName`)),
+                ]);
             },
         },
     };
