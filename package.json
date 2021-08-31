@@ -2,6 +2,7 @@
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@types/babel__core": "^7.1.15",
+    "@types/react": "^17.0.19",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
     "@warden-sk/eslint-config": "github:warden-sk/eslint-config",
@@ -11,5 +12,6 @@
     "typescript": "^4.4.2"
   },
   "name": "@warden-sk/design",
+  "types": "index.d.ts",
   "version": "1.0.0"
 }
