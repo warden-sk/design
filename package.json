@@ -12,6 +12,5 @@
     "typescript": "^4.4.2"
   },
   "name": "@warden-sk/design",
-  "types": "index.d.ts",
   "version": "1.0.0"
 }
