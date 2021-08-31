@@ -15,61 +15,44 @@ export default function ({ types: t }: typeof babel): babel.PluginObj<S> {
     visitor: {
       JSXOpeningElement(path, state) {
         const attributes: (babel.types.JSXAttribute | babel.types.JSXSpreadAttribute)[] = [];
-
         const className: babel.types.Expression[] = [];
 
         path.node.attributes.forEach(attribute => {
-          if (t.isJSXAttribute(attribute)) {
+          if (t.isJSXAttribute(attribute))
             if (t.isJSXIdentifier(attribute.name)) {
-              //                              ⬇️ JSXAttribute
               const { name: attributeName } = attribute.name;
 
               if (attributeName === 'className') {
-                if (t.isJSXExpressionContainer(attribute.value)) {
-                  if (t.isExpression(attribute.value.expression)) {
-                    className.push(attribute.value.expression);
-                    return;
-                  }
-                }
+                if (t.isJSXExpressionContainer(attribute.value))
+                  if (t.isExpression(attribute.value.expression)) return className.push(attribute.value.expression);
 
-                if (t.isStringLiteral(attribute.value)) {
-                  className.push(attribute.value);
-                  return;
-                }
-
-                return;
+                if (t.isStringLiteral(attribute.value)) return className.push(attribute.value);
               }
 
               if (attributeName in allowedAttributes) {
-                if (t.isJSXExpressionContainer(attribute.value)) {
-                  if (t.isExpression(attribute.value.expression)) {
-                    className.push(
+                if (t.isJSXExpressionContainer(attribute.value))
+                  if (t.isExpression(attribute.value.expression))
+                    return className.push(
                       t.callExpression(state.decodeResponsiveClassNameIdentifier, [
                         t.stringLiteral(allowedAttributes[attribute.name.name]),
                         attribute.value.expression,
                       ])
                     );
-                    return;
-                  }
-                }
 
-                if (t.isStringLiteral(attribute.value)) {
-                  className.push(
+                if (t.isStringLiteral(attribute.value))
+                  return className.push(
                     t.callExpression(state.decodeResponsiveClassNameIdentifier, [
                       t.stringLiteral(allowedAttributes[attribute.name.name]),
                       attribute.value,
                     ])
                   );
-                  return;
-                }
               }
             }
-          }
 
           attributes.push(attribute);
         });
 
-        if (className.length) {
+        if (className.length)
           attributes.push(
             t.jsxAttribute(
               t.jsxIdentifier('className'),
@@ -78,7 +61,6 @@ export default function ({ types: t }: typeof babel): babel.PluginObj<S> {
               )
             )
           );
-        }
 
         path.node.attributes = attributes;
       },

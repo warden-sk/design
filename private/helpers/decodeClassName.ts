@@ -2,9 +2,9 @@
  * Copyright 2021 Marek Kobida
  */
 
-type DecodedClassName = string;
+export type DecodedClassName = string;
 
-type EncodedClassName =
+export type EncodedClassName =
   | EncodedClassName[]
   | boolean
   | null

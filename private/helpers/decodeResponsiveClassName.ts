@@ -2,9 +2,9 @@
  * Copyright 2021 Marek Kobida
  */
 
-type DecodedResponsiveClassName = string;
+export type DecodedResponsiveClassName = string;
 
-type EncodedResponsiveClassName<T extends number | string> =
+export type EncodedResponsiveClassName<T extends number | string> =
   | T
   | [T, { [breakpointName: string]: T }]
   | [T]

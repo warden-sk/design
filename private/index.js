@@ -14,48 +14,34 @@ function default_1({ types: t }) {
                 const attributes = [];
                 const className = [];
                 path.node.attributes.forEach(attribute => {
-                    if (t.isJSXAttribute(attribute)) {
+                    if (t.isJSXAttribute(attribute))
                         if (t.isJSXIdentifier(attribute.name)) {
-                            //                              ⬇️ JSXAttribute
                             const { name: attributeName } = attribute.name;
                             if (attributeName === 'className') {
-                                if (t.isJSXExpressionContainer(attribute.value)) {
-                                    if (t.isExpression(attribute.value.expression)) {
-                                        className.push(attribute.value.expression);
-                                        return;
-                                    }
-                                }
-                                if (t.isStringLiteral(attribute.value)) {
-                                    className.push(attribute.value);
-                                    return;
-                                }
-                                return;
+                                if (t.isJSXExpressionContainer(attribute.value))
+                                    if (t.isExpression(attribute.value.expression))
+                                        return className.push(attribute.value.expression);
+                                if (t.isStringLiteral(attribute.value))
+                                    return className.push(attribute.value);
                             }
                             if (attributeName in allowedAttributes_1.default) {
-                                if (t.isJSXExpressionContainer(attribute.value)) {
-                                    if (t.isExpression(attribute.value.expression)) {
-                                        className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
+                                if (t.isJSXExpressionContainer(attribute.value))
+                                    if (t.isExpression(attribute.value.expression))
+                                        return className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
                                             t.stringLiteral(allowedAttributes_1.default[attribute.name.name]),
                                             attribute.value.expression,
                                         ]));
-                                        return;
-                                    }
-                                }
-                                if (t.isStringLiteral(attribute.value)) {
-                                    className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
+                                if (t.isStringLiteral(attribute.value))
+                                    return className.push(t.callExpression(state.decodeResponsiveClassNameIdentifier, [
                                         t.stringLiteral(allowedAttributes_1.default[attribute.name.name]),
                                         attribute.value,
                                     ]));
-                                    return;
-                                }
                             }
                         }
-                    }
                     attributes.push(attribute);
                 });
-                if (className.length) {
+                if (className.length)
                     attributes.push(t.jsxAttribute(t.jsxIdentifier('className'), t.jsxExpressionContainer(t.callExpression(state.decodeClassNameIdentifier, [t.arrayExpression(className)]))));
-                }
                 path.node.attributes = attributes;
             },
             Program: {
