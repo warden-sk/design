@@ -2,12 +2,7 @@
  * Copyright 2021 Marek Kobida
  */
 
-export interface Size {
-  name: string;
-  size: string;
-}
-
-const sizes: Size[] = [
+const sizes: { name: string; size: string }[] = [
   { name: '0', size: '0' },
   { name: '1', size: '0.25rem' },
   { name: '2', size: '0.5rem' },

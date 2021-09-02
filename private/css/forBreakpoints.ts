@@ -6,11 +6,11 @@ import breakpoints, { Breakpoint } from './breakpoints';
 import React from 'react';
 
 // {
-//   '.test': {
+//   'body': {
 //     margin: 0,
 //   },
-//   '@media (min-width: 0)': {
-//     '.test': {
+//   '@media print': {
+//     'body': {
 //       margin: 0,
 //     },
 //   },
