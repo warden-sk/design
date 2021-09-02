@@ -10,7 +10,8 @@ const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const sizes_1 = __importDefault(require("./sizes"));
 const toString_1 = __importDefault(require("./toString"));
 function spacing() {
-    return (0, forBreakpoints_1.default)(({ name: b }) => {
+    return (0, forBreakpoints_1.default)(breakpoint => {
+        const b = breakpoint?.name ?? '';
         function auto() {
             return {
                 [`.${b}m-auto`]: { margin: 'auto !important' },

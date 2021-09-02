@@ -2,7 +2,7 @@
  * Copyright 2021 Marek Kobida
  */
 
-const sizes: { name: string; size: string }[] = [
+const sizes = [
   { name: '0', size: '0' },
   { name: '1', size: '0.25rem' },
   { name: '2', size: '0.5rem' },
@@ -12,6 +12,6 @@ const sizes: { name: string; size: string }[] = [
   { name: '6', size: '1.5rem' },
   { name: '7', size: '1.75rem' },
   { name: '8', size: '2rem' },
-];
+] as const;
 
 export default sizes;

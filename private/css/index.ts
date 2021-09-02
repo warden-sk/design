@@ -7,7 +7,9 @@ import sizes from './sizes';
 import toString from './toString';
 
 function spacing(): CSS {
-  return forBreakpoints(({ name: b }) => {
+  return forBreakpoints(breakpoint => {
+    const b: string = breakpoint?.name ?? '';
+
     function auto(): CSS {
       return {
         [`.${b}m-auto`]: { margin: 'auto !important' },
