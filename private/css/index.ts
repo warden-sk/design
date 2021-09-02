@@ -4,6 +4,7 @@
 
 import forBreakpoints, { CSS } from './forBreakpoints';
 import sizes from './sizes';
+import toString from './toString';
 
 function spacing(): CSS {
   return forBreakpoints(({ name: b }) => {
@@ -55,4 +56,4 @@ function spacing(): CSS {
   });
 }
 
-console.log(spacing());
+console.log(toString(spacing()));
