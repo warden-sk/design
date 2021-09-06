@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@types/react": "^17.0.20"
+  },
+  "name": "@types/design",
+  "types": "./index.d.ts",
+  "version": "1.0.0"
+}
