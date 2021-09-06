@@ -3,6 +3,9 @@
  * Copyright 2021 Marek Kobida
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+function isReactCSSProperties(property, properties) {
+    return !/^@/.test(property);
+}
 function propertiesToString(properties) {
     let css = '';
     for (const property in properties) {
@@ -16,10 +19,9 @@ function toString(before) {
     let after = '';
     for (const property in before) {
         const properties = before[property];
-        if (/^@media/.test(property))
-            after += `${property}{${toString(properties)}}`;
-        else
-            after += `${property}{${propertiesToString(properties)}}`;
+        isReactCSSProperties(property, properties)
+            ? (after += `${property}{${propertiesToString(properties)}}`)
+            : (after += `${property}{${toString(properties)}}`);
     }
     return after;
 }

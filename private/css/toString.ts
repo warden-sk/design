@@ -2,9 +2,12 @@
  * Copyright 2021 Marek Kobida
  */
 
-// @ts-nocheck
 import { CSS } from './forBreakpoints';
 import React from 'react';
+
+function isReactCSSProperties(property: string, properties: React.CSSProperties): properties is React.CSSProperties {
+  return !/^@/.test(property);
+}
 
 function propertiesToString(properties: React.CSSProperties): string {
   let css = '';
@@ -13,7 +16,7 @@ function propertiesToString(properties: React.CSSProperties): string {
     // from "alignContent" to "align-content"
     const _ = property.replace(/[A-Z]/g, _3 => `-${_3.toLowerCase()}`);
 
-    css += `${_}:${properties[property]};`;
+    css += `${_}:${properties[property as 'alignContent']};`;
   }
 
   return css;
@@ -25,8 +28,9 @@ function toString(before: CSS): string {
   for (const property in before) {
     const properties = before[property];
 
-    if (/^@media/.test(property)) after += `${property}{${toString(properties)}}`;
-    else after += `${property}{${propertiesToString(properties)}}`;
+    isReactCSSProperties(property, properties)
+      ? (after += `${property}{${propertiesToString(properties)}}`)
+      : (after += `${property}{${toString(properties)}}`);
   }
 
   return after;
