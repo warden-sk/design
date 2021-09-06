@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "@babel/core": "^7.15.5"
+  },
+  "name": "@warden-sk/design",
+  "version": "1.0.0"
+}
