@@ -1,10 +1,10 @@
 {
   "devDependencies": {
     "@babel/core": "^7.15.5",
-    "@types/babel__core": "^7.1.15",
+    "@types/babel__core": "^7.1.16",
     "@types/react": "^17.0.20",
-    "@typescript-eslint/eslint-plugin": "^4.30.0",
-    "@typescript-eslint/parser": "^4.30.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
     "@warden-sk/eslint-config": "github:warden-sk/eslint-config",
     "eslint": "^7.32.0",
     "eslint-plugin-prettier": "^4.0.0",
