@@ -19,7 +19,9 @@ type EncodedClassName =
   | { [decodedClassName: string]: boolean | null | undefined }; // v jednoduchej ukážke
 ```
 
-> ⚛️ React atribút `className` je štandardne `string`.
+> Atribút `className` je štandardne `string`.
+
+***
 
 ## jednoduchá ukážka
 
