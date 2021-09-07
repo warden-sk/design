@@ -1,10 +1,12 @@
-from
+## jednoduchá ukážka
+
+z `tsx`
 
 ```tsx
-<div pX={1} pY={2}>design</div>
+<div pX={1} pY={2}>👋</div>
 ```
 
-to `ts`
+do `ts`
 
 ```ts
 import decodeClassName from '@warden-sk/babel-plugin/private/helpers/decodeClassName';
@@ -17,12 +19,12 @@ React.createElement(
       decodeResponsiveClassName('p-y-', 2),
     ]),
   },
-  'design'
+  '👋'
 );
 ```
 
-to `html`
+alebo do `html`
 
 ```html
-<div class="p-x-1 p-y-2">design</div>
+<div class="p-x-1 p-y-2">👋</div>
 ```
