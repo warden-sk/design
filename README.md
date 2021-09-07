@@ -68,7 +68,7 @@ vykreslené `html`
 ```
 
 <details>
-  <summary>použité `css`</summary>
+  <summary>použité <code>css</code></summary>
 
 ```css
 .p-l-1,
@@ -100,11 +100,3 @@ vykreslené `html`
 ```
 
 </details>
-
-***
-
-## funkcia `decodeClassName`
-
-***
-
-## funkcia `decodeResponsiveClassName`
