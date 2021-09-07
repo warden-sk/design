@@ -4,6 +4,8 @@
 1. [rozšírený atribút `className`](#rozšírený-atribút-classname)
 1. [typescript](./packages/types)
 
+***
+
 ### rozšírený atribút `className`
 
 ```ts
@@ -16,6 +18,8 @@ type EncodedClassName =
   | undefined
   | { [decodedClassName: string]: boolean | null | undefined }; // v jednoduchej ukážke
 ```
+
+> ⚛️ React atribút `className` je štandardne `string`.
 
 ## jednoduchá ukážka
 
@@ -54,3 +58,7 @@ alebo do `html`
 ```html
 <div id="test" class="active p-x-1 p-y-2">👋</div>
 ```
+
+## funkcia `decodeClassName`
+
+## funkcia `decodeResponsiveClassName`
