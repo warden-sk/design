@@ -2,14 +2,28 @@
 
 1. babel
 2. react
-3. typescript
+3. rozšírený atribút `className`
+4. typescript
+
+### rozšírený atribút `className`
+
+```ts
+type EncodedClassName =
+  | EncodedClassName[]
+  | boolean
+  | null
+  | number
+  | string
+  | undefined
+  | { [decodedClassName: string]: boolean | null | undefined };
+```
 
 ## jednoduchá ukážka
 
 z `tsx`
 
 ```tsx
-<div className={{active: true}} id="test" pX="1" pY="2">
+<div className={{ active: true }} id="test" pX="1" pY="2">
   👋
 </div>;
 ```
