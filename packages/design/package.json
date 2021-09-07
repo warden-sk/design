@@ -3,6 +3,5 @@
     "@babel/core": "^7.15.5",
     "@types/babel__core": "^7.1.16"
   },
-  "name": "@warden-sk/design",
   "version": "1.0.0"
 }
