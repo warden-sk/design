@@ -1,3 +1,9 @@
+## čo je podporované?
+
+1. babel
+2. react
+3. typescript
+
 ## jednoduchá ukážka
 
 z `tsx`
