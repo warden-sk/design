@@ -77,6 +77,37 @@ alebo do `html`
 <div id="test" class="active p-x-1 #p-x-2 #p-y-2">👋</div>
 ```
 
+použité `css`
+
+```css
+.p-l-1,
+.p-x-1 {
+  padding-left: 0.25rem !important;
+}
+.p-r-1,
+.p-x-1 {
+  padding-right: 0.25rem !important;
+}
+@media (min-width: 40rem) {
+  .\#p-b-2,
+  .\#p-y-2 {
+    padding-bottom: 0.5rem !important;
+  }
+  .\#p-l-2,
+  .\#p-x-2 {
+    padding-left: 0.5rem !important;
+  }
+  .\#p-r-2,
+  .\#p-x-2 {
+    padding-right: 0.5rem !important;
+  }
+  .\#p-t-2,
+  .\#p-y-2 {
+    padding-top: 0.5rem !important;
+  }
+}
+```
+
 ***
 
 ## funkcia `decodeClassName`
