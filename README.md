@@ -39,25 +39,15 @@ do `ts`
 ```ts
 import decodeClassName from '@warden-sk/babel-plugin/private/helpers/decodeClassName';
 import decodeResponsiveClassName from '@warden-sk/babel-plugin/private/helpers/decodeResponsiveClassName';
-
 React.createElement(
   'div',
   {
-    className: decodeClassName([
-      {
-        active: true,
-      },
-      decodeResponsiveClassName('p-x-', [
-        '1',
-        {
-          '#': '2',
-        },
-      ]),
-      decodeResponsiveClassName('p-y-', {
-        '#': '2',
-      }),
-    ]),
     id: 'test',
+    className: decodeClassName([
+      { active: true },
+      decodeResponsiveClassName('p-x-', ['1', { '#': '2' }]),
+      decodeResponsiveClassName('p-y-', { '#': '2' }),
+    ]),
   },
   '👋'
 );
