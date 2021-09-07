@@ -16,7 +16,7 @@ type EncodedClassName =
   | number
   | string
   | undefined
-  | { [decodedClassName: string]: boolean | null | undefined }; // v jednoduchej ukážke
+  | { [decodedClassName: string]: boolean | null | undefined }; // v ukážke
 ```
 
 > Atribút `className` je štandardne `string`.
@@ -27,12 +27,17 @@ type EncodedClassName =
 
 ***
 
-## jednoduchá ukážka
+## ukážka
 
 z `tsx`
 
 ```tsx
-<div className={{ active: true }} id="test" pX="1" pY="2">
+<div
+  className={{ active: true }}
+  id="test"
+  pX={['1', { '#': '2' }]}
+  pY={{ '#': '2' }}
+>
   👋
 </div>;
 ```
@@ -50,8 +55,15 @@ React.createElement(
       {
         active: true,
       },
-      decodeResponsiveClassName('p-x-', '1'),
-      decodeResponsiveClassName('p-y-', '2'),
+      decodeResponsiveClassName('p-x-', [
+        '1',
+        {
+          '#': '2',
+        },
+      ]),
+      decodeResponsiveClassName('p-y-', {
+        '#': '2',
+      }),
     ]),
     id: 'test',
   },
@@ -62,9 +74,13 @@ React.createElement(
 alebo do `html`
 
 ```html
-<div id="test" class="active p-x-1 p-y-2">👋</div>
+<div id="test" class="active p-x-1 #p-x-2 #p-y-2">👋</div>
 ```
 
+***
+
 ## funkcia `decodeClassName`
+
+***
 
 ## funkcia `decodeResponsiveClassName`
