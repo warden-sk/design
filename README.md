@@ -71,7 +71,7 @@ React.createElement(
 );
 ```
 
-alebo do `html`
+vykreslené `html`
 
 ```html
 <div id="test" class="active p-x-1 #p-x-2 #p-y-2">👋</div>
