@@ -67,8 +67,8 @@ vykreslené `html`
 <div id="test" class="active p-x-1 #p-x-2 #p-y-2">👋</div>
 ```
 
-použité `css`
-
+<details>
+  <summary>použité `css`</summary>
 ```css
 .p-l-1,
 .p-x-1 {
@@ -97,6 +97,7 @@ použité `css`
   }
 }
 ```
+</details>
 
 ***
 
