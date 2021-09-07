@@ -1,3 +1,11 @@
+## podporované atribúty
+
+```ts
+[m, mB, mL, mR, mT, mX, mY, p, pB, pL, pR, pT, pX, pY];
+```
+
+***
+
 ## rozšírený atribút `className`
 
 ```ts
