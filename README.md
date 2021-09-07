@@ -1,12 +1,4 @@
-## čo je podporované?
-
-1. [babel](./packages/babel-plugin)
-1. [rozšírený atribút `className`](#rozšírený-atribút-classname)
-1. [typescript](./packages/types)
-
-***
-
-### rozšírený atribút `className`
+## rozšírený atribút `className`
 
 ```ts
 type EncodedClassName =
