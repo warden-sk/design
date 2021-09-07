@@ -3,8 +3,8 @@
  */
 
 import * as babel from '@babel/core';
-import allowedJSXAttributes from './allowedJSXAttributes';
-import json from '../package.json';
+import allowedJSXAttributes from './private/allowedJSXAttributes';
+import json from './package.json';
 
 export default function ({ types: t }: typeof babel): babel.PluginObj {
   return {

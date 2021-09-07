@@ -6,8 +6,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const allowedJSXAttributes_1 = __importDefault(require("./allowedJSXAttributes"));
-const package_json_1 = __importDefault(require("../package.json"));
+const allowedJSXAttributes_1 = __importDefault(require("./private/allowedJSXAttributes"));
+const package_json_1 = __importDefault(require("./package.json"));
 function default_1({ types: t }) {
     return {
         visitor: {
