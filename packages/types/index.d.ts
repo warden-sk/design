@@ -3,8 +3,8 @@
  */
 
 import 'react';
-import { EncodedClassName } from '../design/private/helpers/decodeClassName';
-import { EncodedResponsiveClassName } from '../design/private/helpers/decodeResponsiveClassName';
+import { EncodedClassName } from '@warden-sk/design/private/helpers/decodeClassName';
+import { EncodedResponsiveClassName } from '@warden-sk/design/private/helpers/decodeResponsiveClassName';
 
 type S = ['!1', '!2', '!3', '!4', '!5', '!6', '!7', '!8', '0', '1', '2', '3', '4', '5', '6', '7', '8', 'auto'];
 
