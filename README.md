@@ -20,6 +20,10 @@ type EncodedClassName =
 ```
 
 > Atribút `className` je štandardne `string`.
+>
+> ```tsx
+> <div className="active">👋</div>; // bez rozšírenia
+> ```
 
 ***
 
