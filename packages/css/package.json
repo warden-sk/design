@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "@types/react": "^17.0.20"
+  },
+  "name": "@warden-sk/design-css",
+  "version": "1.0.0"
+}
