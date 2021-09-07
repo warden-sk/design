@@ -1,9 +1,8 @@
 ## čo je podporované?
 
-1. babel
-2. react
-3. [rozšírený atribút `className`](#rozšírený-atribút-classname)
-4. typescript
+1. [babel](./packages/babel-plugin)
+1. [rozšírený atribút `className`](#rozšírený-atribút-classname)
+1. [typescript](./packages/types)
 
 ### rozšírený atribút `className`
 
