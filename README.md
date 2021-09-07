@@ -27,7 +27,7 @@ type EncodedClassName =
 
 ***
 
-## ukážka
+## ukážka s rozšírením
 
 z `tsx`
 
