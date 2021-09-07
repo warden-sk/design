@@ -69,6 +69,7 @@ vykreslené `html`
 
 <details>
   <summary>použité `css`</summary>
+
 ```css
 .p-l-1,
 .p-x-1 {
@@ -97,6 +98,7 @@ vykreslené `html`
   }
 }
 ```
+
 </details>
 
 ***
