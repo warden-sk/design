@@ -2,7 +2,7 @@
 
 1. babel
 2. react
-3. rozšírený atribút `className`
+3. [rozšírený atribút `className`](#rozšírený-atribút-classname)
 4. typescript
 
 ### rozšírený atribút `className`
@@ -15,7 +15,7 @@ type EncodedClassName =
   | number
   | string
   | undefined
-  | { [decodedClassName: string]: boolean | null | undefined };
+  | { [decodedClassName: string]: boolean | null | undefined }; // v jednoduchej ukážke
 ```
 
 ## jednoduchá ukážka
