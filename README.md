@@ -9,7 +9,7 @@
 z `tsx`
 
 ```tsx
-<div className={{red: true}} id="test" pX="1" pY="2">
+<div className={{active: true}} id="test" pX="1" pY="2">
   👋
 </div>;
 ```
@@ -25,7 +25,7 @@ React.createElement(
   {
     className: decodeClassName([
       {
-        red: true,
+        active: true,
       },
       decodeResponsiveClassName('p-x-', '1'),
       decodeResponsiveClassName('p-y-', '2'),
@@ -39,5 +39,5 @@ React.createElement(
 alebo do `html`
 
 ```html
-<div id="test" class="red p-x-1 p-y-2">👋</div>
+<div id="test" class="active p-x-1 p-y-2">👋</div>
 ```
