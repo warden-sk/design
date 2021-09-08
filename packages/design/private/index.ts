@@ -104,6 +104,11 @@ function width(): CSS {
 
 console.log(
   toString({
+    body: {
+      fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      lineHeight: 1.5,
+      margin: 0,
+    },
     ...alignContent,
     ...alignItems,
     ...alignSelf,

@@ -5,6 +5,7 @@
   'alignContent',
   'alignItems',
   'alignSelf',
+  'display',
   'flex',
   'flexDirection',
   'flexWrap',

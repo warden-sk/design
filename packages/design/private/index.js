@@ -77,6 +77,11 @@ function width() {
     }));
 }
 console.log((0, toString_1.default)({
+    body: {
+        fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        lineHeight: 1.5,
+        margin: 0,
+    },
     ...alignContent,
     ...alignItems,
     ...alignSelf,
