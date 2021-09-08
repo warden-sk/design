@@ -75,10 +75,6 @@ React.createElement(
   '👋'
 );
 ```
-vykreslené `html`
-```html
-<div id="test" class="active p-x-1 #p-x-2 #p-y-2">👋</div>
-```
 vykreslené `css`
 ```css
 .p-l-1,
@@ -107,4 +103,8 @@ vykreslené `css`
     padding-top: 0.5rem !important;
   }
 }
+```
+vykreslené `html`
+```html
+<div id="test" class="active p-x-1 #p-x-2 #p-y-2">👋</div>
 ```
