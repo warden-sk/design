@@ -8,7 +8,7 @@ import toString from './toString';
 
 function spacing(): CSS {
   return forBreakpoints(b => {
-    function _1(l: string, p: 'margin' | 'padding', r: '0' | 'auto' | `${string}rem`): CSS {
+    function css(l: string, p: 'margin' | 'padding', r: '0' | 'auto' | `${string}rem`): CSS {
       return {
         [`.${b}${p[0]}-${l}`]: { [p]: `${r} !important` },
         // "b", "y"
@@ -24,13 +24,13 @@ function spacing(): CSS {
 
     return {
       // .m-0
-      ...sizes.reduce((_, [l, r]) => ({ ..._, ..._1(l, 'margin', r) }), {}),
+      ...sizes.reduce((_, [l, r]) => ({ ..._, ...css(l, 'margin', r) }), {}),
       // .m-\!1
-      ...sizes.reduce((_, [l, r]) => (r === '0' ? _ : { ..._, ..._1(`\\!${l}`, 'margin', `-${r}`) }), {}),
+      ...sizes.reduce((_, [l, r]) => (r === '0' ? _ : { ..._, ...css(`\\!${l}`, 'margin', `-${r}`) }), {}),
       // .m-auto
-      ..._1('auto', 'margin', 'auto'),
+      ...css('auto', 'margin', 'auto'),
       // .p-0
-      ...sizes.reduce((_, [l, r]) => ({ ..._, ..._1(l, 'padding', r) }), {}),
+      ...sizes.reduce((_, [l, r]) => ({ ..._, ...css(l, 'padding', r) }), {}),
     };
   });
 }

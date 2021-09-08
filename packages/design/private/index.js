@@ -11,7 +11,7 @@ const sizes_1 = __importDefault(require("./sizes"));
 const toString_1 = __importDefault(require("./toString"));
 function spacing() {
     return (0, forBreakpoints_1.default)(b => {
-        function _1(l, p, r) {
+        function css(l, p, r) {
             return {
                 [`.${b}${p[0]}-${l}`]: { [p]: `${r} !important` },
                 // "b", "y"
@@ -26,13 +26,13 @@ function spacing() {
         }
         return {
             // .m-0
-            ...sizes_1.default.reduce((_, [l, r]) => ({ ..._, ..._1(l, 'margin', r) }), {}),
+            ...sizes_1.default.reduce((_, [l, r]) => ({ ..._, ...css(l, 'margin', r) }), {}),
             // .m-\!1
-            ...sizes_1.default.reduce((_, [l, r]) => (r === '0' ? _ : { ..._, ..._1(`\\!${l}`, 'margin', `-${r}`) }), {}),
+            ...sizes_1.default.reduce((_, [l, r]) => (r === '0' ? _ : { ..._, ...css(`\\!${l}`, 'margin', `-${r}`) }), {}),
             // .m-auto
-            ..._1('auto', 'margin', 'auto'),
+            ...css('auto', 'margin', 'auto'),
             // .p-0
-            ...sizes_1.default.reduce((_, [l, r]) => ({ ..._, ..._1(l, 'padding', r) }), {}),
+            ...sizes_1.default.reduce((_, [l, r]) => ({ ..._, ...css(l, 'padding', r) }), {}),
         };
     });
 }
