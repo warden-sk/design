@@ -1,9 +1,9 @@
 <h2 align="center">design</h2>
 
 <p align="center">
-  <a href="./README.md">🇬🇧</a>
+  <a href="./README.md">🇬🇧 English</a>
   ·
-  <a href="./README.sk.md">🇸🇰</a>
+  <a href="./README.sk.md">🇸🇰 Slovenčina</a>
 </p>
 
 ## podporované atribúty
