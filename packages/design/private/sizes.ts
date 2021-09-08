@@ -3,15 +3,15 @@
  */
 
 const sizes = [
-  { name: '0', size: '0' },
-  { name: '1', size: '0.25rem' },
-  { name: '2', size: '0.5rem' },
-  { name: '3', size: '0.75rem' },
-  { name: '4', size: '1rem' },
-  { name: '5', size: '1.25rem' },
-  { name: '6', size: '1.5rem' },
-  { name: '7', size: '1.75rem' },
-  { name: '8', size: '2rem' },
+  ['0', '0'],
+  ['1', '0.25rem'],
+  ['2', '0.5rem'],
+  ['3', '0.75rem'],
+  ['4', '1rem'],
+  ['5', '1.25rem'],
+  ['6', '1.5rem'],
+  ['7', '1.75rem'],
+  ['8', '2rem'],
 ] as const;
 
 export default sizes;
