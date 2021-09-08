@@ -1,32 +1,32 @@
 ## podporované atribúty
-```ts
+```json
 [
-  'alignContent',
-  'alignItems',
-  'alignSelf',
-  'display',
-  'flex',
-  'flexDirection',
-  'flexWrap',
-  'justifyContent',
-  'justifyItems',
-  'justifySelf',
-  'm',
-  'mB',
-  'mL',
-  'mR',
-  'mT',
-  'mX',
-  'mY',
-  'p',
-  'pB',
-  'pL',
-  'pR',
-  'pT',
-  'pX',
-  'pY',
-  'width',
-];
+  "alignContent",
+  "alignItems",
+  "alignSelf",
+  "display",
+  "flex",
+  "flexDirection",
+  "flexWrap",
+  "justifyContent",
+  "justifyItems",
+  "justifySelf",
+  "m",
+  "mB",
+  "mL",
+  "mR",
+  "mT",
+  "mX",
+  "mY",
+  "p",
+  "pB",
+  "pL",
+  "pR",
+  "pT",
+  "pX",
+  "pY",
+  "width"
+]
 ```
 ***
 ## rozšírený atribút `className`
@@ -38,7 +38,7 @@ type EncodedClassName =
   | number
   | string
   | undefined
-  | { [decodedClassName: string]: boolean | null | undefined }; // v ukážke
+  | { [decodedClassName: string]: boolean | null | undefined };
 ```
 > Atribút `className` je štandardne `string`.
 >
