@@ -2,33 +2,67 @@
 /*
  * Copyright 2021 Marek Kobida
  */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Width = exports.MarginLeft = exports.S = exports.JustifySelf = exports.JustifyItems = exports.JustifyContent = exports.FlexWrap = exports.FlexDirection = exports.Flex = exports.AlignSelf = exports.AlignItems = exports.AlignContent = exports.SelfPosition = exports.ContentPosition = exports.ContentDistribution = void 0;
 // https://drafts.csswg.org/css-align/#typedef-content-distribution
-const ContentDistribution = ['space-around', 'space-between', 'space-evenly', 'stretch'];
+exports.ContentDistribution = ['space-around', 'space-between', 'space-evenly', 'stretch'];
 // https://drafts.csswg.org/css-align/#typedef-content-position
-const ContentPosition = ['center', 'end', 'flex-end', 'flex-start', 'start'];
+exports.ContentPosition = ['center', 'end', 'flex-end', 'flex-start', 'start'];
 // https://drafts.csswg.org/css-align/#typedef-self-position
-const SelfPosition = ['center', 'end', 'flex-end', 'flex-start', 'self-end', 'self-start', 'start'];
+exports.SelfPosition = ['center', 'end', 'flex-end', 'flex-start', 'self-end', 'self-start', 'start'];
 // https://drafts.csswg.org/css-align/#propdef-align-content
-const AlignContent = ['baseline', ...ContentDistribution, ...ContentPosition];
+exports.AlignContent = ['baseline', ...exports.ContentDistribution, ...exports.ContentPosition];
 // https://drafts.csswg.org/css-align/#propdef-align-items
-const AlignItems = ['baseline', 'stretch', ...SelfPosition];
+exports.AlignItems = ['baseline', 'stretch', ...exports.SelfPosition];
 // https://drafts.csswg.org/css-align/#propdef-align-self
-const AlignSelf = ['auto', 'baseline', 'stretch', ...SelfPosition];
+exports.AlignSelf = ['auto', 'baseline', 'stretch', ...exports.SelfPosition];
 // https://drafts.csswg.org/css-flexbox-1/#propdef-flex
-const Flex = ['1', 'none'];
+exports.Flex = ['1', 'none'];
 // https://drafts.csswg.org/css-flexbox-1/#propdef-flex-direction
-const FlexDirection = ['column', 'column-reverse', 'row', 'row-reverse'];
+exports.FlexDirection = ['column', 'column-reverse', 'row', 'row-reverse'];
 // https://drafts.csswg.org/css-flexbox-1/#propdef-flex-wrap
-const FlexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
+exports.FlexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
 // https://drafts.csswg.org/css-align/#propdef-justify-content
-const JustifyContent = ['left', 'right', ...ContentDistribution, ...ContentPosition];
+exports.JustifyContent = ['left', 'right', ...exports.ContentDistribution, ...exports.ContentPosition];
 // https://drafts.csswg.org/css-align/#propdef-justify-items
-const JustifyItems = ['baseline', 'stretch', ...SelfPosition];
+exports.JustifyItems = ['baseline', 'stretch', ...exports.SelfPosition];
 // https://drafts.csswg.org/css-align/#propdef-justify-self
-const JustifySelf = ['auto', 'baseline', 'stretch', ...SelfPosition];
-const MarginLeft = ['1/12', '10/12', '11/12', '2/12', '3/12', '4/12', '5/12', '6/12', '7/12', '8/12', '9/12', ...S];
-const S = ['!1', '!2', '!3', '!4', '!5', '!6', '!7', '!8', '0', '1', '2', '3', '4', '5', '6', '7', '8', 'auto'];
-const Width = [
+exports.JustifySelf = ['auto', 'baseline', 'stretch', ...exports.SelfPosition];
+exports.S = [
+    '!1',
+    '!2',
+    '!3',
+    '!4',
+    '!5',
+    '!6',
+    '!7',
+    '!8',
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    'auto',
+];
+exports.MarginLeft = [
+    '1/12',
+    '10/12',
+    '11/12',
+    '2/12',
+    '3/12',
+    '4/12',
+    '5/12',
+    '6/12',
+    '7/12',
+    '8/12',
+    '9/12',
+    ...exports.S,
+];
+exports.Width = [
     '0',
     '1/12',
     '10/12',
