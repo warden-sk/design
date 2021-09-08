@@ -25,10 +25,10 @@ function spacing() {
             };
         }
         return {
+            // .m-!1
+            ...sizes_1.default.reduce((_, [l, r]) => (r === '0' ? _ : { ..._, ...css(`\\!${l}`, 'margin', `-${r}`) }), {}),
             // .m-0
             ...sizes_1.default.reduce((_, [l, r]) => ({ ..._, ...css(l, 'margin', r) }), {}),
-            // .m-\!1
-            ...sizes_1.default.reduce((_, [l, r]) => (r === '0' ? _ : { ..._, ...css(`\\!${l}`, 'margin', `-${r}`) }), {}),
             // .m-auto
             ...css('auto', 'margin', 'auto'),
             // .p-0
@@ -36,4 +36,20 @@ function spacing() {
         };
     });
 }
-console.log((0, toString_1.default)(spacing()));
+function width() {
+    const columns = 12;
+    function percentage(_1) {
+        return `${(100 * _1) / columns}%`;
+    }
+    return (0, forBreakpoints_1.default)(b => ({
+        [`.${b}width-0`]: { width: '0 !important' },
+        // .width-1/12
+        ...[...Array(columns - 1)].reduce((...[_, , i]) => ({
+            ..._,
+            [`.${b}width-${i + 1}\\/${columns}`]: { width: `${percentage(i + 1)} !important` },
+        }), {}),
+        [`.${b}width-100`]: { width: '100% !important' },
+        [`.${b}width-auto`]: { width: 'auto !important' },
+    }));
+}
+console.log((0, toString_1.default)({ ...spacing(), ...width() }));

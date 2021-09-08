@@ -23,10 +23,10 @@ function spacing(): CSS {
     }
 
     return {
+      // .m-!1
+      ...sizes.reduce((_, [l, r]) => (r === '0' ? _ : { ..._, ...css(`\\!${l}`, 'margin', `-${r}`) }), {}),
       // .m-0
       ...sizes.reduce((_, [l, r]) => ({ ..._, ...css(l, 'margin', r) }), {}),
-      // .m-\!1
-      ...sizes.reduce((_, [l, r]) => (r === '0' ? _ : { ..._, ...css(`\\!${l}`, 'margin', `-${r}`) }), {}),
       // .m-auto
       ...css('auto', 'margin', 'auto'),
       // .p-0
@@ -35,4 +35,26 @@ function spacing(): CSS {
   });
 }
 
-console.log(toString(spacing()));
+function width(): CSS {
+  const columns = 12;
+
+  function percentage(_1: number): string {
+    return `${(100 * _1) / columns}%`;
+  }
+
+  return forBreakpoints(b => ({
+    [`.${b}width-0`]: { width: '0 !important' },
+    // .width-1/12
+    ...[...Array(columns - 1)].reduce(
+      (...[_, , i]) => ({
+        ..._,
+        [`.${b}width-${i + 1}\\/${columns}`]: { width: `${percentage(i + 1)} !important` },
+      }),
+      {}
+    ),
+    [`.${b}width-100`]: { width: '100% !important' },
+    [`.${b}width-auto`]: { width: 'auto !important' },
+  }));
+}
+
+console.log(toString({ ...spacing(), ...width() }));

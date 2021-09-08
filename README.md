@@ -1,7 +1,7 @@
 ## podporované atribúty
 
 ```ts
-[m, mB, mL, mR, mT, mX, mY, p, pB, pL, pR, pT, pX, pY];
+[m, mB, mL, mR, mT, mX, mY, p, pB, pL, pR, pT, pX, pY, width];
 ```
 
 ***

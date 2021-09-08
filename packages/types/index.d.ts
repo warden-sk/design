@@ -8,6 +8,23 @@ import { EncodedResponsiveClassName } from '@warden-sk/babel-plugin/private/help
 
 type S = ['!1', '!2', '!3', '!4', '!5', '!6', '!7', '!8', '0', '1', '2', '3', '4', '5', '6', '7', '8', 'auto'];
 
+type WidthProperty = [
+  '0',
+  '1/12',
+  '10/12',
+  '100',
+  '11/12',
+  '2/12',
+  '3/12',
+  '4/12',
+  '5/12',
+  '6/12',
+  '7/12',
+  '8/12',
+  '9/12',
+  'auto'
+];
+
 interface _1 {
   className?: EncodedClassName;
   m?: EncodedResponsiveClassName<S[number]>;
@@ -24,6 +41,7 @@ interface _1 {
   pT?: EncodedResponsiveClassName<S[number]>;
   pX?: EncodedResponsiveClassName<S[number]>;
   pY?: EncodedResponsiveClassName<S[number]>;
+  width?: EncodedResponsiveClassName<WidthProperty[number]>;
 }
 
 type _2<L extends React.HTMLAttributes<R>, R> = React.DetailedHTMLProps<L, R> | _1;
