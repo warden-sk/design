@@ -1,5 +1,4 @@
 ## podporované atribúty
-
 ```ts
 [
   'alignContent',
@@ -29,11 +28,8 @@
   'width',
 ];
 ```
-
 ***
-
 ## rozšírený atribút `className`
-
 ```ts
 type EncodedClassName =
   | EncodedClassName[]
@@ -44,19 +40,14 @@ type EncodedClassName =
   | undefined
   | { [decodedClassName: string]: boolean | null | undefined }; // v ukážke
 ```
-
 > Atribút `className` je štandardne `string`.
 >
 > ```tsx
 > <div className="active">👋</div>; // bez rozšírenia
 > ```
-
 ***
-
 ## ukážka s rozšírením
-
 z `tsx`
-
 ```tsx
 <div
   className={{ active: true }}
@@ -67,9 +58,7 @@ z `tsx`
   👋
 </div>;
 ```
-
 do `ts`
-
 ```ts
 import decodeClassName from '@warden-sk/babel-plugin/private/helpers/decodeClassName';
 import decodeResponsiveClassName from '@warden-sk/babel-plugin/private/helpers/decodeResponsiveClassName';
@@ -86,15 +75,11 @@ React.createElement(
   '👋'
 );
 ```
-
 vykreslené `html`
-
 ```html
 <div id="test" class="active p-x-1 #p-x-2 #p-y-2">👋</div>
 ```
-
-použité `css`
-
+vykreslené `css`
 ```css
 .p-l-1,
 .p-x-1 {
