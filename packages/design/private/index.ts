@@ -104,10 +104,17 @@ function width(): CSS {
 
 console.log(
   toString({
+    '*': {
+      boxSizing: 'border-box',
+    },
     body: {
       fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       lineHeight: 1.5,
       margin: 0,
+    },
+    html: {
+      WebkitTextSizeAdjust: '100%',
+      fontSize: '16px',
     },
     ...alignContent,
     ...alignItems,
