@@ -64,7 +64,16 @@ type Width = [
 ];
 
 interface _1 {
+  alignContent?: EncodedResponsiveClassName<AlignContent[number]>;
+  alignItems?: EncodedResponsiveClassName<AlignItems[number]>;
+  alignSelf?: EncodedResponsiveClassName<AlignSelf[number]>;
   className?: EncodedClassName;
+  flex?: EncodedResponsiveClassName<Flex[number]>;
+  flexDirection?: EncodedResponsiveClassName<FlexDirection[number]>;
+  flexWrap?: EncodedResponsiveClassName<FlexWrap[number]>;
+  justifyContent?: EncodedResponsiveClassName<JustifyContent[number]>;
+  justifyItems?: EncodedResponsiveClassName<JustifyItems[number]>;
+  justifySelf?: EncodedResponsiveClassName<JustifySelf[number]>;
   m?: EncodedResponsiveClassName<S[number]>;
   mB?: EncodedResponsiveClassName<S[number]>;
   mL?: EncodedResponsiveClassName<MarginLeft[number]>;
