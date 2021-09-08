@@ -10,6 +10,7 @@ const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const sizes_1 = __importDefault(require("./sizes"));
 const toString_1 = __importDefault(require("./toString"));
 function spacing() {
+    const columns = 12;
     return (0, forBreakpoints_1.default)(b => {
         function css(l, p, r) {
             return {
@@ -31,6 +32,11 @@ function spacing() {
             ...sizes_1.default.reduce((_, [l, r]) => ({ ..._, ...css(l, 'margin', r) }), {}),
             // .m-auto
             ...css('auto', 'margin', 'auto'),
+            // .m-l-1/12
+            ...[...Array(columns - 1)].reduce((...[_, , i]) => ({
+                ..._,
+                [`.${b}m-l-${i + 1}\\/${columns}`]: { marginLeft: `${((i + 1) / columns) * 100}% !important` },
+            }), {}),
             // .p-0
             ...sizes_1.default.reduce((_, [l, r]) => ({ ..._, ...css(l, 'padding', r) }), {}),
         };
@@ -38,15 +44,12 @@ function spacing() {
 }
 function width() {
     const columns = 12;
-    function percentage(_1) {
-        return `${(100 * _1) / columns}%`;
-    }
     return (0, forBreakpoints_1.default)(b => ({
         [`.${b}width-0`]: { width: '0 !important' },
         // .width-1/12
         ...[...Array(columns - 1)].reduce((...[_, , i]) => ({
             ..._,
-            [`.${b}width-${i + 1}\\/${columns}`]: { width: `${percentage(i + 1)} !important` },
+            [`.${b}width-${i + 1}\\/${columns}`]: { width: `${((i + 1) / columns) * 100}% !important` },
         }), {}),
         [`.${b}width-100`]: { width: '100% !important' },
         [`.${b}width-auto`]: { width: 'auto !important' },
