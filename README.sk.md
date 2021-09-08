@@ -1,4 +1,3 @@
-## jazyky
 1. [🇬🇧](./README.md)
 1. [🇸🇰](./README.sk.md)
 ## podporované atribúty
@@ -31,7 +30,6 @@
   "width"
 ]
 ```
-***
 ## rozšírený atribút `className`
 ```ts
 type EncodedClassName =
@@ -44,12 +42,10 @@ type EncodedClassName =
   | { [decodedClassName: string]: boolean | null | undefined };
 ```
 > Atribút `className` je štandardne `string`.
->
 > ```tsx
 > <div className="active">👋</div>;
 > ```
-***
-## ako?
+## ✏️
 z `tsx`
 ```tsx
 <div className={{ active: true }} pX={['1', { '#': '2' }]} pY={{ '#': '2' }}>

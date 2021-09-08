@@ -1,4 +1,3 @@
-## languages
 1. [🇬🇧](./README.md)
 1. [🇸🇰](./README.sk.md)
 ## supported attributes
@@ -31,7 +30,6 @@
   "width"
 ]
 ```
-***
 ## enhanced attribute `className`
 ```ts
 type EncodedClassName =
@@ -43,13 +41,11 @@ type EncodedClassName =
   | undefined
   | { [decodedClassName: string]: boolean | null | undefined };
 ```
-> The `className` attribute is `string`.
->
+> The `className` attribute is of type `string`.
 > ```tsx
 > <div className="active">👋</div>;
 > ```
-***
-## how?
+## ✏️
 from `tsx`
 ```tsx
 <div className={{ active: true }} pX={['1', { '#': '2' }]} pY={{ '#': '2' }}>
