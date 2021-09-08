@@ -4,6 +4,15 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const allowedJSXAttributes = {
+    alignContent: 'align-content-',
+    alignItems: 'align-items-',
+    alignSelf: 'align-self-',
+    flex: 'flex-',
+    flexDirection: 'flex-direction-',
+    flexWrap: 'flex-wrap-',
+    justifyContent: 'justify-content-',
+    justifyItems: 'justify-items-',
+    justifySelf: 'justify-self-',
     m: 'm-',
     mB: 'm-b-',
     mL: 'm-l-',
@@ -18,5 +27,6 @@ const allowedJSXAttributes = {
     pT: 'p-t-',
     pX: 'p-x-',
     pY: 'p-y-',
+    width: 'width-',
 };
 exports.default = allowedJSXAttributes;

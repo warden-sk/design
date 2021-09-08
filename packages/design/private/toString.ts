@@ -5,35 +5,23 @@
 import { CSS } from './forBreakpoints';
 import React from 'react';
 
-function isReactCSSProperties(property: string, properties: React.CSSProperties): properties is React.CSSProperties {
-  return !/^@/.test(property);
+function _1(property: string): string {
+  // from "alignContent" to "align-content"
+  return property.replace(/[A-Z]/g, _2 => `-${_2.toLowerCase()}`);
 }
 
-function propertiesToString(properties: React.CSSProperties): string {
+function toString(properties: CSS | React.CSSProperties): string {
   let css = '';
 
-  for (const property in properties) {
-    // from "alignContent" to "align-content"
-    const _ = property.replace(/[A-Z]/g, _3 => `-${_3.toLowerCase()}`);
+  for (const propertyName in properties) {
+    const property = properties[propertyName as 'alignContent'];
 
-    css += `${_}:${properties[property as 'alignContent']};`;
+    if (typeof property === 'number' || typeof property === 'string') css += `${_1(propertyName)}:${property};`;
+
+    if (typeof property === 'object') css += `${propertyName}{${toString(property)}}`;
   }
 
   return css;
-}
-
-function toString(before: CSS): string {
-  let after = '';
-
-  for (const property in before) {
-    const properties = before[property];
-
-    isReactCSSProperties(property, properties)
-      ? (after += `${property}{${propertiesToString(properties)}}`)
-      : (after += `${property}{${toString(properties)}}`);
-  }
-
-  return after;
 }
 
 export default toString;

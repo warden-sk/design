@@ -3,6 +3,15 @@
  */
 
 const allowedJSXAttributes: { [name: string]: string } = {
+  alignContent: 'align-content-',
+  alignItems: 'align-items-',
+  alignSelf: 'align-self-',
+  flex: 'flex-',
+  flexDirection: 'flex-direction-',
+  flexWrap: 'flex-wrap-',
+  justifyContent: 'justify-content-',
+  justifyItems: 'justify-items-',
+  justifySelf: 'justify-self-',
   m: 'm-',
   mB: 'm-b-',
   mL: 'm-l-',
@@ -17,6 +26,7 @@ const allowedJSXAttributes: { [name: string]: string } = {
   pT: 'p-t-',
   pX: 'p-x-',
   pY: 'p-y-',
+  width: 'width-',
 };
 
 export default allowedJSXAttributes;
