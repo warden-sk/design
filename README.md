@@ -43,7 +43,7 @@ type EncodedClassName =
 ```
 > The `className` attribute is of type `string`.
 > ```tsx
-> <div className="active">👋</div>; // ✏️
+> <div className="active">👋</div>;
 > ```
 ## ✏️
 from `tsx`
