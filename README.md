@@ -1,7 +1,8 @@
-<h3 align="center">design</h3>
+<h2 align="center">design</h2>
 
 <p align="center">
   <a href="./README.md">🇬🇧</a>
+  ·
   <a href="./README.sk.md">🇸🇰</a>
 </p>
 
