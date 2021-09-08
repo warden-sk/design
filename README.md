@@ -1,6 +1,6 @@
 1. [🇬🇧](./README.md)
 1. [🇸🇰](./README.sk.md)
-## podporované atribúty
+## supported attributes
 ```json
 [
   "alignContent",
@@ -31,7 +31,7 @@
 ]
 ```
 ***
-## rozšírený atribút `className`
+## enhanced attribute `className`
 ```ts
 type EncodedClassName =
   | EncodedClassName[]
@@ -42,20 +42,20 @@ type EncodedClassName =
   | undefined
   | { [decodedClassName: string]: boolean | null | undefined };
 ```
-> Atribút `className` je štandardne `string`.
+> The `className` attribute is `string`.
 >
 > ```tsx
 > <div className="active">👋</div>;
 > ```
 ***
-## ukážka
-z `tsx`
+## how?
+from `tsx`
 ```tsx
 <div className={{ active: true }} pX={['1', { '#': '2' }]} pY={{ '#': '2' }}>
   👋
 </div>;
 ```
-do `ts`
+to `ts`
 ```ts
 import decodeClassName from '@warden-sk/babel-plugin/private/helpers/decodeClassName';
 import decodeResponsiveClassName from '@warden-sk/babel-plugin/private/helpers/decodeResponsiveClassName';
@@ -71,7 +71,7 @@ React.createElement(
   '👋'
 );
 ```
-vykreslený súbor `css`
+rendered file `css`
 ```css
 .p-l-1,
 .p-x-1 {
@@ -100,7 +100,7 @@ vykreslený súbor `css`
   }
 }
 ```
-vykreslený súbor `html`
+rendered file `html`
 ```html
 <div class="active p-x-1 #p-x-2 #p-y-2">👋</div>
 ```

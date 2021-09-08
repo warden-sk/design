@@ -48,7 +48,7 @@ type EncodedClassName =
 > <div className="active">👋</div>;
 > ```
 ***
-## ukážka
+## ako?
 z `tsx`
 ```tsx
 <div className={{ active: true }} pX={['1', { '#': '2' }]} pY={{ '#': '2' }}>
