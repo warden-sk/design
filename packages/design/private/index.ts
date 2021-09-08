@@ -33,7 +33,7 @@ function spacing(): CSS {
       ...css('auto', 'margin', 'auto'),
       // .m-l-1/12
       ...[...Array(columns - 1)].reduce(
-        (...[_, , i]) => ({
+        (_, __, i) => ({
           ..._,
           [`.${b}m-l-${i + 1}\\/${columns}`]: { marginLeft: `${((i + 1) / columns) * 100}% !important` },
         }),
@@ -49,16 +49,19 @@ function width(): CSS {
   const columns = 12;
 
   return forBreakpoints(b => ({
+    // .width-0
     [`.${b}width-0`]: { width: '0 !important' },
     // .width-1/12
     ...[...Array(columns - 1)].reduce(
-      (...[_, , i]) => ({
+      (_, __, i) => ({
         ..._,
         [`.${b}width-${i + 1}\\/${columns}`]: { width: `${((i + 1) / columns) * 100}% !important` },
       }),
       {}
     ),
+    // .width-100
     [`.${b}width-100`]: { width: '100% !important' },
+    // .width-auto
     [`.${b}width-auto`]: { width: 'auto !important' },
   }));
 }

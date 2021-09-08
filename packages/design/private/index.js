@@ -33,7 +33,7 @@ function spacing() {
             // .m-auto
             ...css('auto', 'margin', 'auto'),
             // .m-l-1/12
-            ...[...Array(columns - 1)].reduce((...[_, , i]) => ({
+            ...[...Array(columns - 1)].reduce((_, __, i) => ({
                 ..._,
                 [`.${b}m-l-${i + 1}\\/${columns}`]: { marginLeft: `${((i + 1) / columns) * 100}% !important` },
             }), {}),
@@ -45,13 +45,16 @@ function spacing() {
 function width() {
     const columns = 12;
     return (0, forBreakpoints_1.default)(b => ({
+        // .width-0
         [`.${b}width-0`]: { width: '0 !important' },
         // .width-1/12
-        ...[...Array(columns - 1)].reduce((...[_, , i]) => ({
+        ...[...Array(columns - 1)].reduce((_, __, i) => ({
             ..._,
             [`.${b}width-${i + 1}\\/${columns}`]: { width: `${((i + 1) / columns) * 100}% !important` },
         }), {}),
+        // .width-100
         [`.${b}width-100`]: { width: '100% !important' },
+        // .width-auto
         [`.${b}width-auto`]: { width: 'auto !important' },
     }));
 }
