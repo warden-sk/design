@@ -2,6 +2,7 @@
   <a href="./README.md">🇬🇧</a>
   <a href="./README.sk.md">🇸🇰</a>
 </p>
+
 ## podporované atribúty
 ```json
 [
