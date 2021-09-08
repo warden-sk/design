@@ -1,7 +1,32 @@
 ## podporované atribúty
 
 ```ts
-[m, mB, mL, mR, mT, mX, mY, p, pB, pL, pR, pT, pX, pY, width];
+[
+  'alignContent',
+  'alignItems',
+  'alignSelf',
+  'flex',
+  'flexDirection',
+  'flexWrap',
+  'justifyContent',
+  'justifyItems',
+  'justifySelf',
+  'm',
+  'mB',
+  'mL',
+  'mR',
+  'mT',
+  'mX',
+  'mY',
+  'p',
+  'pB',
+  'pL',
+  'pR',
+  'pT',
+  'pX',
+  'pY',
+  'width',
+];
 ```
 
 ***
