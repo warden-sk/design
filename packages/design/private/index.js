@@ -6,9 +6,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const types_1 = require("../../types");
 const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const sizes_1 = __importDefault(require("./sizes"));
 const toString_1 = __importDefault(require("./toString"));
+function alignItems() {
+    return (0, forBreakpoints_1.default)(b => types_1.AlignItems.reduce((_, p) => {
+        return {
+            ..._,
+            [`.${b}align-items-${p}`]: {
+                alignItems: `${p} !important`,
+            },
+        };
+    }, {}));
+}
+function justifyContent() {
+    return (0, forBreakpoints_1.default)(b => types_1.JustifyContent.reduce((_, p) => {
+        return {
+            ..._,
+            [`.${b}justify-content-${p}`]: {
+                justifyContent: `${p} !important`,
+            },
+        };
+    }, {}));
+}
 function spacing() {
     const columns = 12;
     return (0, forBreakpoints_1.default)(b => {
@@ -58,4 +79,4 @@ function width() {
         [`.${b}width-auto`]: { width: 'auto !important' },
     }));
 }
-console.log((0, toString_1.default)({ ...spacing(), ...width() }));
+console.log((0, toString_1.default)({ ...alignItems(), ...justifyContent(), ...spacing(), ...width() }));

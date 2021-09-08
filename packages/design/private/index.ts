@@ -2,9 +2,36 @@
  * Copyright 2021 Marek Kobida
  */
 
+import { AlignItems, JustifyContent } from '../../types';
 import forBreakpoints, { CSS } from './forBreakpoints';
 import sizes from './sizes';
 import toString from './toString';
+
+function alignItems(): CSS {
+  return forBreakpoints(b =>
+    AlignItems.reduce((_, p) => {
+      return {
+        ..._,
+        [`.${b}align-items-${p}`]: {
+          alignItems: `${p} !important`,
+        },
+      };
+    }, {})
+  );
+}
+
+function justifyContent(): CSS {
+  return forBreakpoints(b =>
+    JustifyContent.reduce((_, p) => {
+      return {
+        ..._,
+        [`.${b}justify-content-${p}`]: {
+          justifyContent: `${p} !important`,
+        },
+      };
+    }, {})
+  );
+}
 
 function spacing(): CSS {
   const columns = 12;
@@ -66,4 +93,4 @@ function width(): CSS {
   }));
 }
 
-console.log(toString({ ...spacing(), ...width() }));
+console.log(toString({ ...alignItems(), ...justifyContent(), ...spacing(), ...width() }));

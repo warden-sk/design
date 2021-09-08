@@ -3,8 +3,8 @@
  */
 
 import 'react';
-import { EncodedClassName } from '@warden-sk/babel-plugin/private/helpers/decodeClassName';
-import { EncodedResponsiveClassName } from '@warden-sk/babel-plugin/private/helpers/decodeResponsiveClassName';
+import { EncodedClassName } from '../babel-plugin/private/helpers/decodeClassName';
+import { EncodedResponsiveClassName } from '../babel-plugin/private/helpers/decodeResponsiveClassName';
 
 // https://drafts.csswg.org/css-align/#typedef-content-distribution
 export const ContentDistribution = ['space-around', 'space-between', 'space-evenly', 'stretch'] as const;
