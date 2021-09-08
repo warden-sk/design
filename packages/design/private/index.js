@@ -10,26 +10,19 @@ const types_1 = require("../../types");
 const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const sizes_1 = __importDefault(require("./sizes"));
 const toString_1 = __importDefault(require("./toString"));
-function alignItems() {
-    return (0, forBreakpoints_1.default)(b => types_1.AlignItems.reduce((_, p) => {
-        return {
-            ..._,
-            [`.${b}align-items-${p}`]: {
-                alignItems: `${p} !important`,
-            },
-        };
-    }, {}));
+function test(_1, _2) {
+    const _3 = _2.replace(/[A-Z]/g, _4 => `-${_4.toLowerCase()}`);
+    return (0, forBreakpoints_1.default)(b => _1.reduce((_, p) => ({ ..._, [`.${b}${_3}-${p}`]: { [_2]: `${p} !important` } }), {}));
 }
-function justifyContent() {
-    return (0, forBreakpoints_1.default)(b => types_1.JustifyContent.reduce((_, p) => {
-        return {
-            ..._,
-            [`.${b}justify-content-${p}`]: {
-                justifyContent: `${p} !important`,
-            },
-        };
-    }, {}));
-}
+const alignContent = test(types_1.AlignContent, 'alignContent');
+const alignItems = test(types_1.AlignItems, 'alignItems');
+const alignSelf = test(types_1.AlignSelf, 'alignSelf');
+const flex = test(types_1.Flex, 'flex');
+const flexDirection = test(types_1.FlexDirection, 'flexDirection');
+const flexWrap = test(types_1.FlexWrap, 'flexWrap');
+const justifyContent = test(types_1.JustifyContent, 'justifyContent');
+const justifyItems = test(types_1.JustifyItems, 'justifyItems');
+const justifySelf = test(types_1.JustifySelf, 'justifySelf');
 function spacing() {
     const columns = 12;
     return (0, forBreakpoints_1.default)(b => {
@@ -79,4 +72,16 @@ function width() {
         [`.${b}width-auto`]: { width: 'auto !important' },
     }));
 }
-console.log((0, toString_1.default)({ ...alignItems(), ...justifyContent(), ...spacing(), ...width() }));
+console.log((0, toString_1.default)({
+    ...alignContent,
+    ...alignItems,
+    ...alignSelf,
+    ...flex,
+    ...flexDirection,
+    ...flexWrap,
+    ...justifyContent,
+    ...justifyItems,
+    ...justifySelf,
+    ...spacing(),
+    ...width(),
+}));

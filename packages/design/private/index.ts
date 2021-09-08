@@ -2,36 +2,36 @@
  * Copyright 2021 Marek Kobida
  */
 
-import { AlignItems, JustifyContent } from '../../types';
+import {
+  AlignContent,
+  AlignItems,
+  AlignSelf,
+  Flex,
+  FlexDirection,
+  FlexWrap,
+  JustifyContent,
+  JustifyItems,
+  JustifySelf,
+} from '../../types';
 import forBreakpoints, { CSS } from './forBreakpoints';
 import sizes from './sizes';
 import toString from './toString';
 
-function alignItems(): CSS {
-  return forBreakpoints(b =>
-    AlignItems.reduce((_, p) => {
-      return {
-        ..._,
-        [`.${b}align-items-${p}`]: {
-          alignItems: `${p} !important`,
-        },
-      };
-    }, {})
-  );
+function test(_1: readonly string[], _2: string): CSS {
+  const _3 = _2.replace(/[A-Z]/g, _4 => `-${_4.toLowerCase()}`);
+
+  return forBreakpoints(b => _1.reduce((_, p) => ({ ..._, [`.${b}${_3}-${p}`]: { [_2]: `${p} !important` } }), {}));
 }
 
-function justifyContent(): CSS {
-  return forBreakpoints(b =>
-    JustifyContent.reduce((_, p) => {
-      return {
-        ..._,
-        [`.${b}justify-content-${p}`]: {
-          justifyContent: `${p} !important`,
-        },
-      };
-    }, {})
-  );
-}
+const alignContent = test(AlignContent, 'alignContent');
+const alignItems = test(AlignItems, 'alignItems');
+const alignSelf = test(AlignSelf, 'alignSelf');
+const flex = test(Flex, 'flex');
+const flexDirection = test(FlexDirection, 'flexDirection');
+const flexWrap = test(FlexWrap, 'flexWrap');
+const justifyContent = test(JustifyContent, 'justifyContent');
+const justifyItems = test(JustifyItems, 'justifyItems');
+const justifySelf = test(JustifySelf, 'justifySelf');
 
 function spacing(): CSS {
   const columns = 12;
@@ -93,4 +93,18 @@ function width(): CSS {
   }));
 }
 
-console.log(toString({ ...alignItems(), ...justifyContent(), ...spacing(), ...width() }));
+console.log(
+  toString({
+    ...alignContent,
+    ...alignItems,
+    ...alignSelf,
+    ...flex,
+    ...flexDirection,
+    ...flexWrap,
+    ...justifyContent,
+    ...justifyItems,
+    ...justifySelf,
+    ...spacing(),
+    ...width(),
+  })
+);
