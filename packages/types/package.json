@@ -4,6 +4,6 @@
     "react": "^17.0.2"
   },
   "name": "@types/nkopeio4mlq650kj",
-  "types": "./index.d.ts",
+  "types": "./index.ts",
   "version": "1.0.0"
 }
