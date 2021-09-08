@@ -1,5 +1,7 @@
-1. [🇬🇧](./README.md)
-1. [🇸🇰](./README.sk.md)
+<p align="center">
+  <a href="./README.md">🇬🇧</a>
+  <a href="./README.sk.md">🇸🇰</a>
+</p>
 ## supported attributes
 ```json
 [
