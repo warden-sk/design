@@ -1,5 +1,3 @@
-<h2 align="center">design</h2>
-
 <p align="center">
   <a href="./README.md">🇬🇧 English</a>
   ·
