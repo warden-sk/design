@@ -7,13 +7,13 @@ import { EncodedClassName } from '@warden-sk/babel-plugin/private/helpers/decode
 import { EncodedResponsiveClassName } from '@warden-sk/babel-plugin/private/helpers/decodeResponsiveClassName';
 
 // https://drafts.csswg.org/css-align/#propdef-align-content
-type AlignContent = ['baseline', 'normal', ...ContentDistribution, ...ContentPosition];
+type AlignContent = ['baseline', ...ContentDistribution, ...ContentPosition];
 
 // https://drafts.csswg.org/css-align/#propdef-align-items
-type AlignItems = ['baseline', 'normal', 'stretch', ...SelfPosition];
+type AlignItems = ['baseline', 'stretch', ...SelfPosition];
 
 // https://drafts.csswg.org/css-align/#propdef-align-self
-type AlignSelf = ['auto', 'baseline', 'normal', 'stretch', ...SelfPosition];
+type AlignSelf = ['auto', 'baseline', 'stretch', ...SelfPosition];
 
 // https://drafts.csswg.org/css-align/#typedef-content-distribution
 type ContentDistribution = ['space-around', 'space-between', 'space-evenly', 'stretch'];
@@ -30,8 +30,14 @@ type FlexDirection = ['column', 'column-reverse', 'row', 'row-reverse'];
 // https://drafts.csswg.org/css-flexbox-1/#propdef-flex-wrap
 type FlexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
 
-// https://drafts.csswg.org/css-align/#justify-items-property
-type JustifyContent = ['left', 'normal', 'right', ...ContentDistribution, ...ContentPosition];
+// https://drafts.csswg.org/css-align/#propdef-justify-content
+type JustifyContent = ['left', 'right', ...ContentDistribution, ...ContentPosition];
+
+// https://drafts.csswg.org/css-align/#propdef-justify-items
+type JustifyItems = ['baseline', 'stretch', ...SelfPosition];
+
+// https://drafts.csswg.org/css-align/#propdef-justify-self
+type JustifySelf = ['auto', 'baseline', 'stretch', ...SelfPosition];
 
 type MarginLeft = ['1/12', '10/12', '11/12', '2/12', '3/12', '4/12', '5/12', '6/12', '7/12', '8/12', '9/12', ...S];
 
