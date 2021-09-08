@@ -100,5 +100,5 @@ vykreslené `css`
 ```
 vykreslené `html`
 ```html
-<div class="p-x-1 #p-x-2 #p-y-2">👋</div>
+<div class="active p-x-1 #p-x-2 #p-y-2">👋</div>
 ```
