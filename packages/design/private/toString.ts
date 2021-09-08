@@ -4,11 +4,7 @@
 
 import { CSS } from './forBreakpoints';
 import React from 'react';
-
-function _1(property: string): string {
-  // from "alignContent" to "align-content"
-  return property.replace(/[A-Z]/g, _2 => `-${_2.toLowerCase()}`);
-}
+import formatPropertyName from './formatPropertyName';
 
 function toString(properties: CSS | React.CSSProperties): string {
   let css = '';
@@ -16,7 +12,8 @@ function toString(properties: CSS | React.CSSProperties): string {
   for (const propertyName in properties) {
     const property = properties[propertyName as 'alignContent'];
 
-    if (typeof property === 'number' || typeof property === 'string') css += `${_1(propertyName)}:${property};`;
+    if (typeof property === 'number' || typeof property === 'string')
+      css += `${formatPropertyName(propertyName)}:${property};`;
 
     if (typeof property === 'object') css += `${propertyName}{${toString(property)}}`;
   }

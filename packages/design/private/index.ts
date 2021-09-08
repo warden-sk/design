@@ -6,6 +6,7 @@ import {
   AlignContent,
   AlignItems,
   AlignSelf,
+  Display,
   Flex,
   FlexDirection,
   FlexWrap,
@@ -14,24 +15,32 @@ import {
   JustifySelf,
 } from '../../types/types';
 import forBreakpoints, { CSS } from './forBreakpoints';
+import formatPropertyName from './formatPropertyName';
 import sizes from './sizes';
 import toString from './toString';
 
-function test(_1: readonly string[], _2: string): CSS {
-  const _3 = _2.replace(/[A-Z]/g, _4 => `-${_4.toLowerCase()}`);
-
-  return forBreakpoints(b => _1.reduce((_, p) => ({ ..._, [`.${b}${_3}-${p}`]: { [_2]: `${p} !important` } }), {}));
+function toHelper(propertyName: string, type: readonly string[]): CSS {
+  return forBreakpoints(b =>
+    type.reduce(
+      (_, property) => ({
+        ..._,
+        [`.${b}${formatPropertyName(propertyName)}-${property}`]: { [propertyName]: `${property} !important` },
+      }),
+      {}
+    )
+  );
 }
 
-const alignContent = test(AlignContent, 'alignContent');
-const alignItems = test(AlignItems, 'alignItems');
-const alignSelf = test(AlignSelf, 'alignSelf');
-const flex = test(Flex, 'flex');
-const flexDirection = test(FlexDirection, 'flexDirection');
-const flexWrap = test(FlexWrap, 'flexWrap');
-const justifyContent = test(JustifyContent, 'justifyContent');
-const justifyItems = test(JustifyItems, 'justifyItems');
-const justifySelf = test(JustifySelf, 'justifySelf');
+const alignContent = toHelper('alignContent', AlignContent);
+const alignItems = toHelper('alignItems', AlignItems);
+const alignSelf = toHelper('alignSelf', AlignSelf);
+const display = toHelper('display', Display);
+const flex = toHelper('flex', Flex);
+const flexDirection = toHelper('flexDirection', FlexDirection);
+const flexWrap = toHelper('flexWrap', FlexWrap);
+const justifyContent = toHelper('justifyContent', JustifyContent);
+const justifyItems = toHelper('justifyItems', JustifyItems);
+const justifySelf = toHelper('justifySelf', JustifySelf);
 
 function spacing(): CSS {
   const columns = 12;
@@ -98,6 +107,7 @@ console.log(
     ...alignContent,
     ...alignItems,
     ...alignSelf,
+    ...display,
     ...flex,
     ...flexDirection,
     ...flexWrap,

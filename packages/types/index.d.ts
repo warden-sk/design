@@ -7,6 +7,7 @@ import {
   AlignContent,
   AlignItems,
   AlignSelf,
+  Display,
   Flex,
   FlexDirection,
   FlexWrap,
@@ -25,6 +26,7 @@ interface _1 {
   alignItems?: EncodedResponsiveClassName<typeof AlignItems[number]>;
   alignSelf?: EncodedResponsiveClassName<typeof AlignSelf[number]>;
   className?: EncodedClassName;
+  display?: EncodedResponsiveClassName<typeof Display[number]>;
   flex?: EncodedResponsiveClassName<typeof Flex[number]>;
   flexDirection?: EncodedResponsiveClassName<typeof FlexDirection[number]>;
   flexWrap?: EncodedResponsiveClassName<typeof FlexWrap[number]>;

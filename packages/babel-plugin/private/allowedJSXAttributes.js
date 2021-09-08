@@ -7,6 +7,7 @@ const allowedJSXAttributes = {
     alignContent: 'align-content-',
     alignItems: 'align-items-',
     alignSelf: 'align-self-',
+    display: 'display-',
     flex: 'flex-',
     flexDirection: 'flex-direction-',
     flexWrap: 'flex-wrap-',

@@ -8,21 +8,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const types_1 = require("../../types/types");
 const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
+const formatPropertyName_1 = __importDefault(require("./formatPropertyName"));
 const sizes_1 = __importDefault(require("./sizes"));
 const toString_1 = __importDefault(require("./toString"));
-function test(_1, _2) {
-    const _3 = _2.replace(/[A-Z]/g, _4 => `-${_4.toLowerCase()}`);
-    return (0, forBreakpoints_1.default)(b => _1.reduce((_, p) => ({ ..._, [`.${b}${_3}-${p}`]: { [_2]: `${p} !important` } }), {}));
+function toHelper(propertyName, type) {
+    return (0, forBreakpoints_1.default)(b => type.reduce((_, property) => ({
+        ..._,
+        [`.${b}${(0, formatPropertyName_1.default)(propertyName)}-${property}`]: { [propertyName]: `${property} !important` },
+    }), {}));
 }
-const alignContent = test(types_1.AlignContent, 'alignContent');
-const alignItems = test(types_1.AlignItems, 'alignItems');
-const alignSelf = test(types_1.AlignSelf, 'alignSelf');
-const flex = test(types_1.Flex, 'flex');
-const flexDirection = test(types_1.FlexDirection, 'flexDirection');
-const flexWrap = test(types_1.FlexWrap, 'flexWrap');
-const justifyContent = test(types_1.JustifyContent, 'justifyContent');
-const justifyItems = test(types_1.JustifyItems, 'justifyItems');
-const justifySelf = test(types_1.JustifySelf, 'justifySelf');
+const alignContent = toHelper('alignContent', types_1.AlignContent);
+const alignItems = toHelper('alignItems', types_1.AlignItems);
+const alignSelf = toHelper('alignSelf', types_1.AlignSelf);
+const display = toHelper('display', types_1.Display);
+const flex = toHelper('flex', types_1.Flex);
+const flexDirection = toHelper('flexDirection', types_1.FlexDirection);
+const flexWrap = toHelper('flexWrap', types_1.FlexWrap);
+const justifyContent = toHelper('justifyContent', types_1.JustifyContent);
+const justifyItems = toHelper('justifyItems', types_1.JustifyItems);
+const justifySelf = toHelper('justifySelf', types_1.JustifySelf);
 function spacing() {
     const columns = 12;
     return (0, forBreakpoints_1.default)(b => {
@@ -76,6 +80,7 @@ console.log((0, toString_1.default)({
     ...alignContent,
     ...alignItems,
     ...alignSelf,
+    ...display,
     ...flex,
     ...flexDirection,
     ...flexWrap,

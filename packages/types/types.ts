@@ -8,8 +8,22 @@ export const ContentDistribution = ['space-around', 'space-between', 'space-even
 // https://drafts.csswg.org/css-align/#typedef-content-position
 export const ContentPosition = ['center', 'end', 'flex-end', 'flex-start', 'start'] as const;
 
+// https://drafts.csswg.org/css-display-3/#typedef-display-box
+export const DisplayBox = ['none'] as const;
+
+// https://drafts.csswg.org/css-display-3/#typedef-display-inside
+export const DisplayInside = ['flex', 'grid'] as const;
+
+// https://drafts.csswg.org/css-display-3/#typedef-display-legacy
+export const DisplayLegacy = ['inline-block', 'inline-flex', 'inline-grid'] as const;
+
+// https://drafts.csswg.org/css-display-3/#typedef-display-outside
+export const DisplayOutside = ['block', 'inline'] as const;
+
 // https://drafts.csswg.org/css-align/#typedef-self-position
 export const SelfPosition = ['center', 'end', 'flex-end', 'flex-start', 'self-end', 'self-start', 'start'] as const;
+
+//
 
 // https://drafts.csswg.org/css-align/#propdef-align-content
 export const AlignContent = ['baseline', ...ContentDistribution, ...ContentPosition] as const;
@@ -19,6 +33,9 @@ export const AlignItems = ['baseline', 'stretch', ...SelfPosition] as const;
 
 // https://drafts.csswg.org/css-align/#propdef-align-self
 export const AlignSelf = ['auto', 'baseline', 'stretch', ...SelfPosition] as const;
+
+// https://drafts.csswg.org/css-display-3/#propdef-display
+export const Display = [...DisplayBox, ...DisplayInside, ...DisplayLegacy, ...DisplayOutside] as const;
 
 // https://drafts.csswg.org/css-flexbox-1/#propdef-flex
 export const Flex = ['1', 'none'] as const;

@@ -3,19 +3,30 @@
  * Copyright 2021 Marek Kobida
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Width = exports.MarginLeft = exports.S = exports.JustifySelf = exports.JustifyItems = exports.JustifyContent = exports.FlexWrap = exports.FlexDirection = exports.Flex = exports.AlignSelf = exports.AlignItems = exports.AlignContent = exports.SelfPosition = exports.ContentPosition = exports.ContentDistribution = void 0;
+exports.Width = exports.MarginLeft = exports.S = exports.JustifySelf = exports.JustifyItems = exports.JustifyContent = exports.FlexWrap = exports.FlexDirection = exports.Flex = exports.Display = exports.AlignSelf = exports.AlignItems = exports.AlignContent = exports.SelfPosition = exports.DisplayOutside = exports.DisplayLegacy = exports.DisplayInside = exports.DisplayBox = exports.ContentPosition = exports.ContentDistribution = void 0;
 // https://drafts.csswg.org/css-align/#typedef-content-distribution
 exports.ContentDistribution = ['space-around', 'space-between', 'space-evenly', 'stretch'];
 // https://drafts.csswg.org/css-align/#typedef-content-position
 exports.ContentPosition = ['center', 'end', 'flex-end', 'flex-start', 'start'];
+// https://drafts.csswg.org/css-display-3/#typedef-display-box
+exports.DisplayBox = ['none'];
+// https://drafts.csswg.org/css-display-3/#typedef-display-inside
+exports.DisplayInside = ['flex', 'grid'];
+// https://drafts.csswg.org/css-display-3/#typedef-display-legacy
+exports.DisplayLegacy = ['inline-block', 'inline-flex', 'inline-grid'];
+// https://drafts.csswg.org/css-display-3/#typedef-display-outside
+exports.DisplayOutside = ['block', 'inline'];
 // https://drafts.csswg.org/css-align/#typedef-self-position
 exports.SelfPosition = ['center', 'end', 'flex-end', 'flex-start', 'self-end', 'self-start', 'start'];
+//
 // https://drafts.csswg.org/css-align/#propdef-align-content
 exports.AlignContent = ['baseline', ...exports.ContentDistribution, ...exports.ContentPosition];
 // https://drafts.csswg.org/css-align/#propdef-align-items
 exports.AlignItems = ['baseline', 'stretch', ...exports.SelfPosition];
 // https://drafts.csswg.org/css-align/#propdef-align-self
 exports.AlignSelf = ['auto', 'baseline', 'stretch', ...exports.SelfPosition];
+// https://drafts.csswg.org/css-display-3/#propdef-display
+exports.Display = [...exports.DisplayBox, ...exports.DisplayInside, ...exports.DisplayLegacy, ...exports.DisplayOutside];
 // https://drafts.csswg.org/css-flexbox-1/#propdef-flex
 exports.Flex = ['1', 'none'];
 // https://drafts.csswg.org/css-flexbox-1/#propdef-flex-direction
