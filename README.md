@@ -1,3 +1,4 @@
+[🇬🇧](./README.md) | [🇸🇰](./README.sk.md)
 ## podporované atribúty
 ```json
 [
@@ -43,10 +44,10 @@ type EncodedClassName =
 > Atribút `className` je štandardne `string`.
 >
 > ```tsx
-> <div className="active">👋</div>; // bez rozšírenia
+> <div className="active">👋</div>;
 > ```
 ***
-## ukážka s rozšírením
+## ukážka
 z `tsx`
 ```tsx
 <div className={{ active: true }} pX={['1', { '#': '2' }]} pY={{ '#': '2' }}>
@@ -69,7 +70,7 @@ React.createElement(
   '👋'
 );
 ```
-vykreslené `css`
+vykreslený súbor `css`
 ```css
 .p-l-1,
 .p-x-1 {
@@ -98,7 +99,7 @@ vykreslené `css`
   }
 }
 ```
-vykreslené `html`
+vykreslený súbor `html`
 ```html
 <div class="active p-x-1 #p-x-2 #p-y-2">👋</div>
 ```
