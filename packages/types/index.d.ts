@@ -6,12 +6,41 @@ import 'react';
 import { EncodedClassName } from '@warden-sk/babel-plugin/private/helpers/decodeClassName';
 import { EncodedResponsiveClassName } from '@warden-sk/babel-plugin/private/helpers/decodeResponsiveClassName';
 
-type MarginLeftProperty = S &
-  ['1/12', '10/12', '11/12', '2/12', '3/12', '4/12', '5/12', '6/12', '7/12', '8/12', '9/12'];
+// https://drafts.csswg.org/css-align/#propdef-align-content
+type AlignContent = ['baseline', 'normal', ...ContentDistribution, ...ContentPosition];
+
+// https://drafts.csswg.org/css-align/#propdef-align-items
+type AlignItems = ['baseline', 'normal', 'stretch', ...SelfPosition];
+
+// https://drafts.csswg.org/css-align/#propdef-align-self
+type AlignSelf = ['auto', 'baseline', 'normal', 'stretch', ...SelfPosition];
+
+// https://drafts.csswg.org/css-align/#typedef-content-distribution
+type ContentDistribution = ['space-around', 'space-between', 'space-evenly', 'stretch'];
+
+// https://drafts.csswg.org/css-align/#typedef-content-position
+type ContentPosition = ['center', 'end', 'flex-end', 'flex-start', 'start'];
+
+// https://drafts.csswg.org/css-flexbox-1/#propdef-flex
+type Flex = ['1', 'none'];
+
+// https://drafts.csswg.org/css-flexbox-1/#propdef-flex-direction
+type FlexDirection = ['column', 'column-reverse', 'row', 'row-reverse'];
+
+// https://drafts.csswg.org/css-flexbox-1/#propdef-flex-wrap
+type FlexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
+
+// https://drafts.csswg.org/css-align/#justify-items-property
+type JustifyContent = ['left', 'normal', 'right', ...ContentDistribution, ...ContentPosition];
+
+type MarginLeft = ['1/12', '10/12', '11/12', '2/12', '3/12', '4/12', '5/12', '6/12', '7/12', '8/12', '9/12', ...S];
 
 type S = ['!1', '!2', '!3', '!4', '!5', '!6', '!7', '!8', '0', '1', '2', '3', '4', '5', '6', '7', '8', 'auto'];
 
-type WidthProperty = [
+// https://drafts.csswg.org/css-align/#typedef-self-position
+type SelfPosition = ['center', 'end', 'flex-end', 'flex-start', 'self-end', 'self-start', 'start'];
+
+type Width = [
   '0',
   '1/12',
   '10/12',
@@ -32,7 +61,7 @@ interface _1 {
   className?: EncodedClassName;
   m?: EncodedResponsiveClassName<S[number]>;
   mB?: EncodedResponsiveClassName<S[number]>;
-  mL?: EncodedResponsiveClassName<MarginLeftProperty[number]>;
+  mL?: EncodedResponsiveClassName<MarginLeft[number]>;
   mR?: EncodedResponsiveClassName<S[number]>;
   mT?: EncodedResponsiveClassName<S[number]>;
   mX?: EncodedResponsiveClassName<S[number]>;
@@ -44,7 +73,7 @@ interface _1 {
   pT?: EncodedResponsiveClassName<S[number]>;
   pX?: EncodedResponsiveClassName<S[number]>;
   pY?: EncodedResponsiveClassName<S[number]>;
-  width?: EncodedResponsiveClassName<WidthProperty[number]>;
+  width?: EncodedResponsiveClassName<Width[number]>;
 }
 
 type _2<L extends React.HTMLAttributes<R>, R> = React.DetailedHTMLProps<L, R> | _1;
