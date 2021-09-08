@@ -72,7 +72,7 @@ React.createElement(
   '👋'
 );
 ```
-rendered file `css`
+rendered `css`
 ```css
 .p-l-1,
 .p-x-1 {
@@ -101,7 +101,7 @@ rendered file `css`
   }
 }
 ```
-rendered file `html`
+rendered `html`
 ```html
 <div class="active p-x-1 #p-x-2 #p-y-2">👋</div>
 ```

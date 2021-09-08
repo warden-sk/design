@@ -72,7 +72,7 @@ React.createElement(
   '👋'
 );
 ```
-vykreslený súbor `css`
+vykreslené `css`
 ```css
 .p-l-1,
 .p-x-1 {
@@ -101,7 +101,7 @@ vykreslený súbor `css`
   }
 }
 ```
-vykreslený súbor `html`
+vykreslené `html`
 ```html
 <div class="active p-x-1 #p-x-2 #p-y-2">👋</div>
 ```
