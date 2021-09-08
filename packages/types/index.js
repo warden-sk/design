@@ -4,6 +4,7 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Width = exports.MarginLeft = exports.S = exports.JustifySelf = exports.JustifyItems = exports.JustifyContent = exports.FlexWrap = exports.FlexDirection = exports.Flex = exports.AlignSelf = exports.AlignItems = exports.AlignContent = exports.SelfPosition = exports.ContentPosition = exports.ContentDistribution = void 0;
+require("react");
 // https://drafts.csswg.org/css-align/#typedef-content-distribution
 exports.ContentDistribution = ['space-around', 'space-between', 'space-evenly', 'stretch'];
 // https://drafts.csswg.org/css-align/#typedef-content-position
