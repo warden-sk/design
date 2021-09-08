@@ -2,7 +2,7 @@
  * Copyright 2021 Marek Kobida
  */
 
-const allowedJSXAttributes: { [name: string]: string } = {
+const allowedJSXAttributes = {
   alignContent: 'align-content-',
   alignItems: 'align-items-',
   alignSelf: 'align-self-',
@@ -28,6 +28,6 @@ const allowedJSXAttributes: { [name: string]: string } = {
   pX: 'p-x-',
   pY: 'p-y-',
   width: 'width-',
-};
+} as const;
 
 export default allowedJSXAttributes;

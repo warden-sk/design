@@ -28,7 +28,7 @@ export default function ({ types: t }: typeof babel): babel.PluginObj {
                   if (t.isExpression(attribute.value.expression))
                     return className.push(
                       t.callExpression(t.identifier('decodeResponsiveClassName'), [
-                        t.stringLiteral(allowedJSXAttributes[attribute.name.name]),
+                        t.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
                         attribute.value.expression,
                       ])
                     );
@@ -36,7 +36,7 @@ export default function ({ types: t }: typeof babel): babel.PluginObj {
                 if (t.isStringLiteral(attribute.value))
                   return className.push(
                     t.callExpression(t.identifier('decodeResponsiveClassName'), [
-                      t.stringLiteral(allowedJSXAttributes[attribute.name.name]),
+                      t.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
                       attribute.value,
                     ])
                   );
