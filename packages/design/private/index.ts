@@ -12,7 +12,7 @@ import {
   JustifyContent,
   JustifyItems,
   JustifySelf,
-} from '../../types';
+} from '../../types/types';
 import forBreakpoints, { CSS } from './forBreakpoints';
 import sizes from './sizes';
 import toString from './toString';

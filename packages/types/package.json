@@ -1,9 +1,7 @@
 {
   "devDependencies": {
-    "@types/react": "^17.0.20",
-    "react": "^17.0.2"
+    "@types/react": "^17.0.20"
   },
-  "name": "@types/nkopeio4mlq650kj",
-  "types": "./index.ts",
+  "name": "@types/warden-sk__babel-plugin",
   "version": "1.0.0"
 }
