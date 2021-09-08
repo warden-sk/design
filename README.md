@@ -49,12 +49,7 @@ type EncodedClassName =
 ## ukážka s rozšírením
 z `tsx`
 ```tsx
-<div
-  className={{ active: true }}
-  id="test"
-  pX={['1', { '#': '2' }]}
-  pY={{ '#': '2' }}
->
+<div className={{ active: true }} pX={['1', { '#': '2' }]} pY={{ '#': '2' }}>
   👋
 </div>;
 ```
@@ -65,7 +60,6 @@ import decodeResponsiveClassName from '@warden-sk/babel-plugin/private/helpers/d
 React.createElement(
   'div',
   {
-    id: 'test',
     className: decodeClassName([
       { active: true },
       decodeResponsiveClassName('p-x-', ['1', { '#': '2' }]),
@@ -106,5 +100,5 @@ vykreslené `css`
 ```
 vykreslené `html`
 ```html
-<div id="test" class="active p-x-1 #p-x-2 #p-y-2">👋</div>
+<div class="active p-x-1 #p-x-2 #p-y-2">👋</div>
 ```
