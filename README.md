@@ -50,7 +50,7 @@ type EncodedClassName =
   | undefined
   | { [decodedClassName: string]: boolean | null | undefined };
 ```
-> The `className` attribute is of type `string`.
+> The `className` attribute is of type `string` before the enhancement.
 > ```tsx
 > <div className="active">👋</div>;
 > ```
