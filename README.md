@@ -42,6 +42,9 @@ type EncodedResponsiveClassName<T extends number | string> =
   | [T]
   | { [breakpointName: string]: T };
 ```
+
+***
+
 ## enhanced attribute `className`
 ```ts
 type EncodedClassName =
@@ -57,6 +60,9 @@ type EncodedClassName =
 > ```tsx
 > <div className="active">👋</div>;
 > ```
+
+***
+
 ## code
 from `tsx`
 ```tsx
