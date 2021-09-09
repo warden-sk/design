@@ -49,9 +49,7 @@ interface _1 {
   pY?: EncodedResponsiveClassName<typeof S[number]>;
   width?: EncodedResponsiveClassName<typeof Width[number]>;
 }
-
 type _2<L extends React.HTMLAttributes<R>, R> = React.DetailedHTMLProps<L, R> | _1;
-
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
