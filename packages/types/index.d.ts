@@ -21,7 +21,7 @@ import {
 import { EncodedClassName } from '@warden-sk/babel-plugin/private/helpers/decodeClassName';
 import { EncodedResponsiveClassName } from '@warden-sk/babel-plugin/private/helpers/decodeResponsiveClassName';
 
-interface _1 {
+interface Attributes {
   alignContent?: EncodedResponsiveClassName<typeof AlignContent[number]>;
   alignItems?: EncodedResponsiveClassName<typeof AlignItems[number]>;
   alignSelf?: EncodedResponsiveClassName<typeof AlignSelf[number]>;
@@ -49,120 +49,135 @@ interface _1 {
   pY?: EncodedResponsiveClassName<typeof S[number]>;
   width?: EncodedResponsiveClassName<typeof Width[number]>;
 }
-type _2<L extends React.HTMLAttributes<R>, R> = React.DetailedHTMLProps<L, R> | _1;
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      a: _2<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
-      abbr: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      address: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      area: _2<React.AreaHTMLAttributes<HTMLAreaElement>, HTMLAreaElement>;
-      article: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      aside: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      audio: _2<React.AudioHTMLAttributes<HTMLAudioElement>, HTMLAudioElement>;
-      b: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      base: _2<React.BaseHTMLAttributes<HTMLBaseElement>, HTMLBaseElement>;
-      bdi: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      bdo: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      blockquote: _2<React.BlockquoteHTMLAttributes<HTMLElement>, HTMLElement>;
-      body: _2<React.HTMLAttributes<HTMLBodyElement>, HTMLBodyElement>;
-      br: _2<React.HTMLAttributes<HTMLBRElement>, HTMLBRElement>;
-      button: _2<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
-      canvas: _2<React.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement>;
-      caption: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      cite: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      code: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      col: _2<React.ColHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>;
-      colgroup: _2<React.ColgroupHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>;
-      data: _2<React.DataHTMLAttributes<HTMLDataElement>, HTMLDataElement>;
-      datalist: _2<React.HTMLAttributes<HTMLDataListElement>, HTMLDataListElement>;
-      dd: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      del: _2<React.DelHTMLAttributes<HTMLElement>, HTMLElement>;
-      details: _2<React.DetailsHTMLAttributes<HTMLElement>, HTMLElement>;
-      dfn: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      div: _2<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-      dl: _2<React.HTMLAttributes<HTMLDListElement>, HTMLDListElement>;
-      dt: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      em: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      embed: _2<React.EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement>;
-      fieldset: _2<React.FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>;
-      figcaption: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      figure: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      footer: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      form: _2<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
-      h1: _2<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-      h2: _2<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-      h3: _2<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-      h4: _2<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-      h5: _2<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-      h6: _2<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
-      head: _2<React.HTMLAttributes<HTMLHeadElement>, HTMLHeadElement>;
-      header: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      hr: _2<React.HTMLAttributes<HTMLHRElement>, HTMLHRElement>;
-      html: _2<React.HtmlHTMLAttributes<HTMLHtmlElement>, HTMLHtmlElement>;
-      i: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      iframe: _2<React.IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement>;
-      img: _2<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>;
-      input: _2<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
-      ins: _2<React.InsHTMLAttributes<HTMLModElement>, HTMLModElement>;
-      kbd: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      label: _2<React.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>;
-      legend: _2<React.HTMLAttributes<HTMLLegendElement>, HTMLLegendElement>;
-      li: _2<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
-      link: _2<React.LinkHTMLAttributes<HTMLLinkElement>, HTMLLinkElement>;
-      main: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      map: _2<React.MapHTMLAttributes<HTMLMapElement>, HTMLMapElement>;
-      mark: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      menu: _2<React.MenuHTMLAttributes<HTMLElement>, HTMLElement>;
-      meta: _2<React.MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>;
-      meter: _2<React.MeterHTMLAttributes<HTMLElement>, HTMLElement>;
-      nav: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      noscript: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      object: _2<React.ObjectHTMLAttributes<HTMLObjectElement>, HTMLObjectElement>;
-      ol: _2<React.OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>;
-      optgroup: _2<React.OptgroupHTMLAttributes<HTMLOptGroupElement>, HTMLOptGroupElement>;
-      option: _2<React.OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement>;
-      output: _2<React.OutputHTMLAttributes<HTMLElement>, HTMLElement>;
-      p: _2<React.HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>;
-      param: _2<React.ParamHTMLAttributes<HTMLParamElement>, HTMLParamElement>;
-      picture: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      pre: _2<React.HTMLAttributes<HTMLPreElement>, HTMLPreElement>;
-      progress: _2<React.ProgressHTMLAttributes<HTMLProgressElement>, HTMLProgressElement>;
-      q: _2<React.QuoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement>;
-      rp: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      rt: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      ruby: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      s: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      samp: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      script: _2<React.ScriptHTMLAttributes<HTMLScriptElement>, HTMLScriptElement>;
-      section: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      select: _2<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>;
-      slot: _2<React.SlotHTMLAttributes<HTMLSlotElement>, HTMLSlotElement>;
-      small: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      source: _2<React.SourceHTMLAttributes<HTMLSourceElement>, HTMLSourceElement>;
-      span: _2<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
-      strong: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      style: _2<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>;
-      sub: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      summary: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      sup: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      table: _2<React.TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>;
-      tbody: _2<React.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
-      td: _2<React.TdHTMLAttributes<HTMLTableCellElement>, HTMLTableCellElement>;
-      template: _2<React.HTMLAttributes<HTMLTemplateElement>, HTMLTemplateElement>;
-      textarea: _2<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>;
-      tfoot: _2<React.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
-      th: _2<React.ThHTMLAttributes<HTMLTableCellElement>, HTMLTableCellElement>;
-      thead: _2<React.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>;
-      time: _2<React.TimeHTMLAttributes<HTMLElement>, HTMLElement>;
-      title: _2<React.HTMLAttributes<HTMLTitleElement>, HTMLTitleElement>;
-      tr: _2<React.HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement>;
-      track: _2<React.TrackHTMLAttributes<HTMLTrackElement>, HTMLTrackElement>;
-      u: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      ul: _2<React.HTMLAttributes<HTMLUListElement>, HTMLUListElement>;
-      var: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      video: _2<React.VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement>;
-      wbr: _2<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      a: React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> | Attributes;
+      abbr: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      address: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      area: React.DetailedHTMLProps<React.AreaHTMLAttributes<HTMLAreaElement>, HTMLAreaElement> | Attributes;
+      article: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      aside: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      audio: React.DetailedHTMLProps<React.AudioHTMLAttributes<HTMLAudioElement>, HTMLAudioElement> | Attributes;
+      b: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      base: React.DetailedHTMLProps<React.BaseHTMLAttributes<HTMLBaseElement>, HTMLBaseElement> | Attributes;
+      bdi: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      bdo: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      blockquote: React.DetailedHTMLProps<React.BlockquoteHTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      body: React.DetailedHTMLProps<React.HTMLAttributes<HTMLBodyElement>, HTMLBodyElement> | Attributes;
+      br: React.DetailedHTMLProps<React.HTMLAttributes<HTMLBRElement>, HTMLBRElement> | Attributes;
+      button: React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> | Attributes;
+      canvas: React.DetailedHTMLProps<React.CanvasHTMLAttributes<HTMLCanvasElement>, HTMLCanvasElement> | Attributes;
+      caption: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      cite: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      code: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      col: React.DetailedHTMLProps<React.ColHTMLAttributes<HTMLTableColElement>, HTMLTableColElement> | Attributes;
+      colgroup:
+        | React.DetailedHTMLProps<React.ColgroupHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>
+        | Attributes;
+      data: React.DetailedHTMLProps<React.DataHTMLAttributes<HTMLDataElement>, HTMLDataElement> | Attributes;
+      datalist: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDataListElement>, HTMLDataListElement> | Attributes;
+      dd: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      del: React.DetailedHTMLProps<React.DelHTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      details: React.DetailedHTMLProps<React.DetailsHTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      dfn: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      div: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> | Attributes;
+      dl: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDListElement>, HTMLDListElement> | Attributes;
+      dt: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      em: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      embed: React.DetailedHTMLProps<React.EmbedHTMLAttributes<HTMLEmbedElement>, HTMLEmbedElement> | Attributes;
+      fieldset:
+        | React.DetailedHTMLProps<React.FieldsetHTMLAttributes<HTMLFieldSetElement>, HTMLFieldSetElement>
+        | Attributes;
+      figcaption: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      figure: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      footer: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      form: React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement> | Attributes;
+      h1: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement> | Attributes;
+      h2: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement> | Attributes;
+      h3: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement> | Attributes;
+      h4: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement> | Attributes;
+      h5: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement> | Attributes;
+      h6: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement> | Attributes;
+      head: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadElement>, HTMLHeadElement> | Attributes;
+      header: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      hr: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHRElement>, HTMLHRElement> | Attributes;
+      html: React.DetailedHTMLProps<React.HtmlHTMLAttributes<HTMLHtmlElement>, HTMLHtmlElement> | Attributes;
+      i: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      iframe: React.DetailedHTMLProps<React.IframeHTMLAttributes<HTMLIFrameElement>, HTMLIFrameElement> | Attributes;
+      img: React.DetailedHTMLProps<React.ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> | Attributes;
+      input: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> | Attributes;
+      ins: React.DetailedHTMLProps<React.InsHTMLAttributes<HTMLModElement>, HTMLModElement> | Attributes;
+      kbd: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      label: React.DetailedHTMLProps<React.LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement> | Attributes;
+      legend: React.DetailedHTMLProps<React.HTMLAttributes<HTMLLegendElement>, HTMLLegendElement> | Attributes;
+      li: React.DetailedHTMLProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement> | Attributes;
+      link: React.DetailedHTMLProps<React.LinkHTMLAttributes<HTMLLinkElement>, HTMLLinkElement> | Attributes;
+      main: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      map: React.DetailedHTMLProps<React.MapHTMLAttributes<HTMLMapElement>, HTMLMapElement> | Attributes;
+      mark: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      menu: React.DetailedHTMLProps<React.MenuHTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      meta: React.DetailedHTMLProps<React.MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement> | Attributes;
+      meter: React.DetailedHTMLProps<React.MeterHTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      nav: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      noscript: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      object: React.DetailedHTMLProps<React.ObjectHTMLAttributes<HTMLObjectElement>, HTMLObjectElement> | Attributes;
+      ol: React.DetailedHTMLProps<React.OlHTMLAttributes<HTMLOListElement>, HTMLOListElement> | Attributes;
+      optgroup:
+        | React.DetailedHTMLProps<React.OptgroupHTMLAttributes<HTMLOptGroupElement>, HTMLOptGroupElement>
+        | Attributes;
+      option: React.DetailedHTMLProps<React.OptionHTMLAttributes<HTMLOptionElement>, HTMLOptionElement> | Attributes;
+      output: React.DetailedHTMLProps<React.OutputHTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      p: React.DetailedHTMLProps<React.HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement> | Attributes;
+      param: React.DetailedHTMLProps<React.ParamHTMLAttributes<HTMLParamElement>, HTMLParamElement> | Attributes;
+      picture: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      pre: React.DetailedHTMLProps<React.HTMLAttributes<HTMLPreElement>, HTMLPreElement> | Attributes;
+      progress:
+        | React.DetailedHTMLProps<React.ProgressHTMLAttributes<HTMLProgressElement>, HTMLProgressElement>
+        | Attributes;
+      q: React.DetailedHTMLProps<React.QuoteHTMLAttributes<HTMLQuoteElement>, HTMLQuoteElement> | Attributes;
+      rp: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      rt: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      ruby: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      s: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      samp: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      script: React.DetailedHTMLProps<React.ScriptHTMLAttributes<HTMLScriptElement>, HTMLScriptElement> | Attributes;
+      section: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      select: React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement> | Attributes;
+      slot: React.DetailedHTMLProps<React.SlotHTMLAttributes<HTMLSlotElement>, HTMLSlotElement> | Attributes;
+      small: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      source: React.DetailedHTMLProps<React.SourceHTMLAttributes<HTMLSourceElement>, HTMLSourceElement> | Attributes;
+      span: React.DetailedHTMLProps<React.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> | Attributes;
+      strong: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      style: React.DetailedHTMLProps<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement> | Attributes;
+      sub: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      summary: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      sup: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      table: React.DetailedHTMLProps<React.TableHTMLAttributes<HTMLTableElement>, HTMLTableElement> | Attributes;
+      tbody:
+        | React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>
+        | Attributes;
+      td: React.DetailedHTMLProps<React.TdHTMLAttributes<HTMLTableCellElement>, HTMLTableCellElement> | Attributes;
+      template: React.DetailedHTMLProps<React.HTMLAttributes<HTMLTemplateElement>, HTMLTemplateElement> | Attributes;
+      textarea:
+        | React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
+        | Attributes;
+      tfoot:
+        | React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>
+        | Attributes;
+      th: React.DetailedHTMLProps<React.ThHTMLAttributes<HTMLTableCellElement>, HTMLTableCellElement> | Attributes;
+      thead:
+        | React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>
+        | Attributes;
+      time: React.DetailedHTMLProps<React.TimeHTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      title: React.DetailedHTMLProps<React.HTMLAttributes<HTMLTitleElement>, HTMLTitleElement> | Attributes;
+      tr: React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement> | Attributes;
+      track: React.DetailedHTMLProps<React.TrackHTMLAttributes<HTMLTrackElement>, HTMLTrackElement> | Attributes;
+      u: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      ul: React.DetailedHTMLProps<React.HTMLAttributes<HTMLUListElement>, HTMLUListElement> | Attributes;
+      var: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
+      video: React.DetailedHTMLProps<React.VideoHTMLAttributes<HTMLVideoElement>, HTMLVideoElement> | Attributes;
+      wbr: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> | Attributes;
     }
   }
 }
