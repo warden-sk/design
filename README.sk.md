@@ -34,6 +34,14 @@
   "width"
 ]
 ```
+> Podporovaný atribút je `EncodedResponsiveClassName`.
+```ts
+type EncodedResponsiveClassName<T extends number | string> =
+  | T
+  | [T, { [breakpointName: string]: T }]
+  | [T]
+  | { [breakpointName: string]: T };
+```
 ## rozšírený atribút `className`
 ```ts
 type EncodedClassName =

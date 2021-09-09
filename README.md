@@ -34,6 +34,14 @@
   "width"
 ]
 ```
+> The supported attribute is of type `EncodedResponsiveClassName`.
+```ts
+type EncodedResponsiveClassName<T extends number | string> =
+  | T
+  | [T, { [breakpointName: string]: T }]
+  | [T]
+  | { [breakpointName: string]: T };
+```
 ## enhanced attribute `className`
 ```ts
 type EncodedClassName =
