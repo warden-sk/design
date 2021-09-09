@@ -1,7 +1,7 @@
 <p align="center">
-  <a href="./README.md">🇬🇧 English</a>
+  <a href="./README.md">English</a>
   ·
-  <a href="./README.sk.md">🇸🇰 Slovenčina</a>
+  <a href="./README.sk.md">Slovenčina</a>
 </p>
 
 ## supported attributes
@@ -49,7 +49,7 @@ type EncodedClassName =
 > ```tsx
 > <div className="active">👋</div>;
 > ```
-## ✏️
+## code
 from `tsx`
 ```tsx
 <div className={{ active: true }} pX={['1', { '#': '2' }]} pY={{ '#': '2' }}>
