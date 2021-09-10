@@ -39,6 +39,7 @@ exports.JustifyContent = ['left', 'right', ...exports.ContentDistribution, ...ex
 exports.JustifyItems = ['baseline', 'stretch', ...exports.SelfPosition];
 // https://drafts.csswg.org/css-align/#propdef-justify-self
 exports.JustifySelf = ['auto', 'baseline', 'stretch', ...exports.SelfPosition];
+//
 exports.S = [
     '!1',
     '!2',
@@ -59,6 +60,7 @@ exports.S = [
     '8',
     'auto',
 ];
+//
 exports.MarginLeft = [
     '1/12',
     '10/12',

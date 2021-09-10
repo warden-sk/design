@@ -4,8 +4,8 @@
 
 import 'react';
 import * as t from './types';
-import { EncodedClassName } from '@warden-sk/babel-plugin/private/helpers/decodeClassName';
-import { EncodedResponsiveClassName } from '@warden-sk/babel-plugin/private/helpers/decodeResponsiveClassName';
+import { EncodedClassName } from '@warden-sk/babel-plugin/private/decodeClassName';
+import { EncodedResponsiveClassName } from '@warden-sk/babel-plugin/private/decodeResponsiveClassName';
 
 interface A {
   alignContent?: EncodedResponsiveClassName<typeof t.AlignContent[number]>;

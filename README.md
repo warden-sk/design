@@ -66,8 +66,8 @@ from `tsx`
 ```
 to `ts`
 ```ts
-import decodeClassName from '@warden-sk/babel-plugin/private/helpers/decodeClassName';
-import decodeResponsiveClassName from '@warden-sk/babel-plugin/private/helpers/decodeResponsiveClassName';
+import decodeClassName from '@warden-sk/babel-plugin/private/decodeClassName';
+import decodeResponsiveClassName from '@warden-sk/babel-plugin/private/decodeResponsiveClassName';
 React.createElement(
   'div',
   {
