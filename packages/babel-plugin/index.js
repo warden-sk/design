@@ -48,6 +48,7 @@ function default_1({ types: t }) {
                 path.unshiftContainer('body', [
                     t.importDeclaration([t.importDefaultSpecifier(t.identifier('decodeClassName'))], t.stringLiteral(`${package_json_1.default.name}/private/decodeClassName`)),
                     t.importDeclaration([t.importDefaultSpecifier(t.identifier('decodeResponsiveClassName'))], t.stringLiteral(`${package_json_1.default.name}/private/decodeResponsiveClassName`)),
+                    t.importDeclaration([], t.stringLiteral('@warden-sk/design/public/index.css')),
                 ]);
             },
         },

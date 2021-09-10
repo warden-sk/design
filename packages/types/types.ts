@@ -22,7 +22,7 @@ export const AlignContent = ['baseline', ...ContentDistribution, ...ContentPosit
 // https://drafts.csswg.org/css-align/#propdef-align-items
 export const AlignItems = ['baseline', 'stretch', ...SelfPosition] as const;
 // https://drafts.csswg.org/css-align/#propdef-align-self
-export const AlignSelf = ['auto', 'baseline', 'stretch', ...SelfPosition] as const;
+export const AlignSelf = ['baseline', 'stretch', ...SelfPosition] as const;
 // https://drafts.csswg.org/css-display-3/#propdef-display
 export const Display = [...DisplayBox, ...DisplayInside, ...DisplayLegacy, ...DisplayOutside] as const;
 // https://drafts.csswg.org/css-flexbox-1/#propdef-flex
@@ -36,7 +36,7 @@ export const JustifyContent = ['left', 'right', ...ContentDistribution, ...Conte
 // https://drafts.csswg.org/css-align/#propdef-justify-items
 export const JustifyItems = ['baseline', 'stretch', ...SelfPosition] as const;
 // https://drafts.csswg.org/css-align/#propdef-justify-self
-export const JustifySelf = ['auto', 'baseline', 'stretch', ...SelfPosition] as const;
+export const JustifySelf = ['baseline', 'stretch', ...SelfPosition] as const;
 //
 export const S = [
   '!1',

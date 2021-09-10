@@ -68,6 +68,7 @@ export default function ({ types: t }: typeof babel): babel.PluginObj {
             [t.importDefaultSpecifier(t.identifier('decodeResponsiveClassName'))],
             t.stringLiteral(`${json.name}/private/decodeResponsiveClassName`)
           ),
+          t.importDeclaration([], t.stringLiteral('@warden-sk/design/public/index.css')),
         ]);
       },
     },

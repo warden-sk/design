@@ -24,7 +24,7 @@ exports.AlignContent = ['baseline', ...exports.ContentDistribution, ...exports.C
 // https://drafts.csswg.org/css-align/#propdef-align-items
 exports.AlignItems = ['baseline', 'stretch', ...exports.SelfPosition];
 // https://drafts.csswg.org/css-align/#propdef-align-self
-exports.AlignSelf = ['auto', 'baseline', 'stretch', ...exports.SelfPosition];
+exports.AlignSelf = ['baseline', 'stretch', ...exports.SelfPosition];
 // https://drafts.csswg.org/css-display-3/#propdef-display
 exports.Display = [...exports.DisplayBox, ...exports.DisplayInside, ...exports.DisplayLegacy, ...exports.DisplayOutside];
 // https://drafts.csswg.org/css-flexbox-1/#propdef-flex
@@ -38,7 +38,7 @@ exports.JustifyContent = ['left', 'right', ...exports.ContentDistribution, ...ex
 // https://drafts.csswg.org/css-align/#propdef-justify-items
 exports.JustifyItems = ['baseline', 'stretch', ...exports.SelfPosition];
 // https://drafts.csswg.org/css-align/#propdef-justify-self
-exports.JustifySelf = ['auto', 'baseline', 'stretch', ...exports.SelfPosition];
+exports.JustifySelf = ['baseline', 'stretch', ...exports.SelfPosition];
 //
 exports.S = [
     '!1',
