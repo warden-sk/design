@@ -104,7 +104,7 @@ function width(): CSS {
 
 console.log(
   toString({
-    '*': {
+    '*,*::after,*::before': {
       boxSizing: 'border-box',
     },
     body: {

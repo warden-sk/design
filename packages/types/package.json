@@ -4,7 +4,7 @@
   },
   "name": "@types/warden-sk__babel-plugin",
   "repository": {
-    "directory": "./packages/types",
+    "directory": "packages/types",
     "type": "git",
     "url": "https://github.com/warden-sk/design.git"
   },

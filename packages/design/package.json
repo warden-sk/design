@@ -5,7 +5,7 @@
   "name": "@warden-sk/design",
   "private": true,
   "repository": {
-    "directory": "./packages/design",
+    "directory": "packages/design",
     "type": "git",
     "url": "https://github.com/warden-sk/design.git"
   },
