@@ -1,6 +1,7 @@
-/*
- * Copyright 2021 Marek Kobida
- */
+// Type definitions for @warden-sk/babel-plugin
+// Project: https://github.com/warden-sk/design
+// Definitions by: Marek Kobida <https://github.com/marekkobida>
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 import 'react';
 import * as t from './types';
