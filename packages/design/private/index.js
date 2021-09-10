@@ -77,7 +77,7 @@ function width() {
     }));
 }
 console.log((0, toString_1.default)({
-    '*': {
+    '*,*::after,*::before': {
         boxSizing: 'border-box',
     },
     body: {

@@ -62,11 +62,11 @@ export default function ({ types: t }: typeof babel): babel.PluginObj {
         path.unshiftContainer('body', [
           t.importDeclaration(
             [t.importDefaultSpecifier(t.identifier('decodeClassName'))],
-            t.stringLiteral(`${json.name}/private/helpers/decodeClassName`)
+            t.stringLiteral(`${json.name}/private/decodeClassName`)
           ),
           t.importDeclaration(
             [t.importDefaultSpecifier(t.identifier('decodeResponsiveClassName'))],
-            t.stringLiteral(`${json.name}/private/helpers/decodeResponsiveClassName`)
+            t.stringLiteral(`${json.name}/private/decodeResponsiveClassName`)
           ),
         ]);
       },
