@@ -3,7 +3,6 @@
     "@types/react": "^17.0.20"
   },
   "name": "@warden-sk/design",
-  "private": true,
   "repository": {
     "directory": "packages/design",
     "type": "git",
