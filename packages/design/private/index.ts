@@ -13,7 +13,7 @@ import {
   JustifyContent,
   JustifyItems,
   JustifySelf,
-} from '../../types/types';
+} from '../../babel-plugin/private/types';
 import forBreakpoints, { CSS } from './forBreakpoints';
 import formatPropertyName from './formatPropertyName';
 import sizes from './sizes';
