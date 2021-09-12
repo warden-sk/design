@@ -3,14 +3,14 @@
  */
 
 // @ts-ignore
-function o(t, ...e) {
-  for (const f of e)
-    for (const e in f) {
-      const n = f[e],
-        c = t[e];
-      t[e] = 'object' !== typeof n || 'object' !== typeof c ? n : o(c, n);
+function _1(_2, ..._3) {
+  for (const _4 of _3)
+    for (const _5 in _4) {
+      const _6 = _4[_5],
+        _7 = _2[_5];
+      _2[_5] = 'object' !== typeof _6 || 'object' !== typeof _7 ? _6 : _1(_7, _6);
     }
-  return t;
+  return _2;
 }
 
-export default o;
+export default _1;
