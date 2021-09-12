@@ -7,7 +7,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const breakpoints_1 = __importDefault(require("./breakpoints"));
-function forBreakpoints(_1) {
-    return breakpoints_1.default.reduce((_2, breakpoint) => ({ ..._2, [`@media(min-width:${breakpoint[1]})`]: _1(breakpoint) }), _1(['', '']));
+function forBreakpoints(on) {
+    return breakpoints_1.default.reduce((_, breakpoint) => ({ ..._, [`@media(min-width:${breakpoint[1]})`]: on(breakpoint) }), on(['', '']));
 }
 exports.default = forBreakpoints;

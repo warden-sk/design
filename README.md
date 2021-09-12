@@ -30,7 +30,7 @@
 ```
 > The supported attribute is of type `EncodedResponsiveClassName`.
 ```ts
-type EncodedResponsiveClassName<T extends number | string> =
+type EncodedResponsiveClassName<T extends string> =
   | T
   | [T, { [breakpointName: string]: T }]
   | [T]

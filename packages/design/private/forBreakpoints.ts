@@ -16,13 +16,13 @@ import breakpoints from './breakpoints';
 //   },
 // }
 export interface CSS {
-  [_1: string]: CSS | React.CSSProperties;
+  [_: string]: CSS | React.CSSProperties;
 }
 
-function forBreakpoints(_1: (breakpoint: readonly [string, string]) => CSS): CSS {
+function forBreakpoints(on: (breakpoint: readonly [string, string]) => CSS): CSS {
   return breakpoints.reduce(
-    (_2, breakpoint) => ({ ..._2, [`@media(min-width:${breakpoint[1]})`]: _1(breakpoint) }),
-    _1(['', ''])
+    (_, breakpoint) => ({ ..._, [`@media(min-width:${breakpoint[1]})`]: on(breakpoint) }),
+    on(['', ''])
   );
 }
 
