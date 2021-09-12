@@ -14,11 +14,7 @@ export type EncodedClassName =
   | { [decodedClassName: string]: boolean | null | undefined };
 
 function decodeClassName(...encodedClassNames: EncodedClassName[]): DecodedClassName | undefined {
-  let decodedClassNames: DecodedClassName[] = [];
-
-  function addDecodedClassName(decodedClassName: DecodedClassName) {
-    decodedClassNames = [...decodedClassNames, decodedClassName];
-  }
+  const decodedClassNames: DecodedClassName[] = [];
 
   for (const encodedClassName of encodedClassNames) {
     // EncodedClassName[]
@@ -26,19 +22,19 @@ function decodeClassName(...encodedClassNames: EncodedClassName[]): DecodedClass
       const decodedClassName = decodeClassName(...encodedClassName);
 
       if (typeof decodedClassName === 'string') {
-        addDecodedClassName(decodedClassName);
+        decodedClassNames.push(decodedClassName);
       }
     }
 
     // number
     else if (typeof encodedClassName === 'number') {
-      addDecodedClassName(`${encodedClassName}`);
+      decodedClassNames.push(`${encodedClassName}`);
     }
 
     // string
     else if (typeof encodedClassName === 'string') {
       for (const decodedClassName of encodedClassName.split(' ')) {
-        addDecodedClassName(decodedClassName);
+        decodedClassNames.push(decodedClassName);
       }
     }
 
@@ -46,13 +42,13 @@ function decodeClassName(...encodedClassNames: EncodedClassName[]): DecodedClass
     else if (encodedClassName !== null && typeof encodedClassName === 'object') {
       for (const decodedClassName in encodedClassName) {
         if (encodedClassName[decodedClassName]) {
-          addDecodedClassName(decodedClassName);
+          decodedClassNames.push(decodedClassName);
         }
       }
     }
   }
 
-  if (decodedClassNames.length > 0) {
+  if (decodedClassNames.length) {
     return decodedClassNames.join(' ');
   }
 }

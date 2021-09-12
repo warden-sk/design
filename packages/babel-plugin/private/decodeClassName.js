@@ -4,38 +4,35 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 function decodeClassName(...encodedClassNames) {
-    let decodedClassNames = [];
-    function addDecodedClassName(decodedClassName) {
-        decodedClassNames = [...decodedClassNames, decodedClassName];
-    }
+    const decodedClassNames = [];
     for (const encodedClassName of encodedClassNames) {
         // EncodedClassName[]
         if (Array.isArray(encodedClassName)) {
             const decodedClassName = decodeClassName(...encodedClassName);
             if (typeof decodedClassName === 'string') {
-                addDecodedClassName(decodedClassName);
+                decodedClassNames.push(decodedClassName);
             }
         }
         // number
         else if (typeof encodedClassName === 'number') {
-            addDecodedClassName(`${encodedClassName}`);
+            decodedClassNames.push(`${encodedClassName}`);
         }
         // string
         else if (typeof encodedClassName === 'string') {
             for (const decodedClassName of encodedClassName.split(' ')) {
-                addDecodedClassName(decodedClassName);
+                decodedClassNames.push(decodedClassName);
             }
         }
         // { [decodedClassName: string]: boolean | null | undefined }
         else if (encodedClassName !== null && typeof encodedClassName === 'object') {
             for (const decodedClassName in encodedClassName) {
                 if (encodedClassName[decodedClassName]) {
-                    addDecodedClassName(decodedClassName);
+                    decodedClassNames.push(decodedClassName);
                 }
             }
         }
     }
-    if (decodedClassNames.length > 0) {
+    if (decodedClassNames.length) {
         return decodedClassNames.join(' ');
     }
 }

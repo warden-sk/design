@@ -4,40 +4,33 @@
 
 export type DecodedResponsiveClassName = string;
 
-export type EncodedResponsiveClassName<T extends number | string> =
+export type EncodedResponsiveClassName<T extends string> =
   | T
   | [T, { [breakpointName: string]: T }]
   | [T]
   | { [breakpointName: string]: T };
 
 function decodeResponsiveClassName(
-  $: string,
-  encodedResponsiveClassName?: EncodedResponsiveClassName<number | string>
+  className: string,
+  encodedResponsiveClassName: EncodedResponsiveClassName<string>
 ): DecodedResponsiveClassName[] {
-  let decodedResponsiveClassNames: DecodedResponsiveClassName[] = [];
-
-  function addDecodedResponsiveClassName(decodedResponsiveClassName: DecodedResponsiveClassName) {
-    decodedResponsiveClassNames = [...decodedResponsiveClassNames, decodedResponsiveClassName];
-  }
+  const decodedResponsiveClassNames: DecodedResponsiveClassName[] = [];
 
   // T
-  if (typeof encodedResponsiveClassName === 'number') {
-    addDecodedResponsiveClassName(`${$}-${encodedResponsiveClassName}`);
-  }
-
-  // T
-  else if (typeof encodedResponsiveClassName === 'string') {
-    addDecodedResponsiveClassName(`${$}-${encodedResponsiveClassName}`);
+  if (typeof encodedResponsiveClassName === 'string') {
+    decodedResponsiveClassNames.push(`${className}-${encodedResponsiveClassName}`);
   }
 
   // [T]
   else if (Array.isArray(encodedResponsiveClassName)) {
-    addDecodedResponsiveClassName(`${$}-${encodedResponsiveClassName[0]}`);
+    decodedResponsiveClassNames.push(`${className}-${encodedResponsiveClassName[0]}`);
 
     // [T, { [breakpointName: string]: T }]
     if (encodedResponsiveClassName[1]) {
       for (const breakpointName in encodedResponsiveClassName[1]) {
-        addDecodedResponsiveClassName(`${breakpointName}${$}-${encodedResponsiveClassName[1][breakpointName]}`);
+        decodedResponsiveClassNames.push(
+          `${breakpointName}${className}-${encodedResponsiveClassName[1][breakpointName]}`
+        );
       }
     }
   }
@@ -45,7 +38,7 @@ function decodeResponsiveClassName(
   // { [breakpointName: string]: T }
   else if (encodedResponsiveClassName !== null && typeof encodedResponsiveClassName === 'object') {
     for (const breakpointName in encodedResponsiveClassName) {
-      addDecodedResponsiveClassName(`${breakpointName}${$}-${encodedResponsiveClassName[breakpointName]}`);
+      decodedResponsiveClassNames.push(`${breakpointName}${className}-${encodedResponsiveClassName[breakpointName]}`);
     }
   }
 

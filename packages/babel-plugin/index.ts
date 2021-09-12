@@ -3,14 +3,15 @@
  */
 
 import * as babel from '@babel/core';
+import * as t from '@babel/types';
 import allowedJSXAttributes from './private/allowedJSXAttributes';
 
-export default function ({ types: t }: typeof babel): babel.PluginObj {
+export default function (): babel.PluginItem {
   return {
     visitor: {
       JSXOpeningElement(path) {
-        const attributes: (babel.types.JSXAttribute | babel.types.JSXSpreadAttribute)[] = [];
-        const className: babel.types.Expression[] = [];
+        const attributes: (t.JSXAttribute | t.JSXSpreadAttribute)[] = [];
+        const className: t.Expression[] = [];
 
         path.node.attributes.forEach(attribute => {
           if (t.isJSXAttribute(attribute)) {
