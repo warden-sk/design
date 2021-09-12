@@ -2,50 +2,46 @@
  * Copyright 2021 Marek Kobida
  */
 
-import {
-  AlignContent,
-  AlignItems,
-  AlignSelf,
-  Display,
-  Flex,
-  FlexDirection,
-  FlexWrap,
-  JustifyContent,
-  JustifyItems,
-  JustifySelf,
-} from '../../babel-plugin/private/types';
+import * as t from '../../babel-plugin/private/types';
 import forBreakpoints, { CSS } from './forBreakpoints';
-import formatPropertyName from './formatPropertyName';
+import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
+import merge from './merge';
 import sizes from './sizes';
 import toString from './toString';
 
-function toHelper(propertyName: string, type: readonly string[]): CSS {
-  return forBreakpoints(b =>
+function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): CSS {
+  return forBreakpoints(([b]) =>
     type.reduce(
       (_, property) => ({
         ..._,
-        [`.${b}${formatPropertyName(propertyName)}-${property}`]: { [propertyName]: `${property} !important` },
+        [`.${b}${allowedJSXAttributes[propertyName]}-${property}`]: { [propertyName]: `${property} !important` },
       }),
       {}
     )
   );
 }
 
-const alignContent = toHelper('alignContent', AlignContent);
-const alignItems = toHelper('alignItems', AlignItems);
-const alignSelf = toHelper('alignSelf', AlignSelf);
-const display = toHelper('display', Display);
-const flex = toHelper('flex', Flex);
-const flexDirection = toHelper('flexDirection', FlexDirection);
-const flexWrap = toHelper('flexWrap', FlexWrap);
-const justifyContent = toHelper('justifyContent', JustifyContent);
-const justifyItems = toHelper('justifyItems', JustifyItems);
-const justifySelf = toHelper('justifySelf', JustifySelf);
+const alignContent = toHelper('alignContent', t.AlignContent);
+const alignItems = toHelper('alignItems', t.AlignItems);
+const alignSelf = toHelper('alignSelf', t.AlignSelf);
+const display = toHelper('display', t.Display);
+const flex = toHelper('flex', t.Flex);
+const flexDirection = toHelper('flexDirection', t.FlexDirection);
+const flexWrap = toHelper('flexWrap', t.FlexWrap);
+const justifyContent = toHelper('justifyContent', t.JustifyContent);
+const justifyItems = toHelper('justifyItems', t.JustifyItems);
+const justifySelf = toHelper('justifySelf', t.JustifySelf);
+
+function container(): CSS {
+  return forBreakpoints(b =>
+    b[0] ? { '.container': { maxWidth: `${b[1]} !important` } } : { '.container': { width: '100% !important' } }
+  );
+}
 
 function spacing(): CSS {
   const columns = 12;
 
-  return forBreakpoints(b => {
+  return forBreakpoints(([b]) => {
     function css(l: string, p: 'margin' | 'padding', r: '0' | 'auto' | `${string}rem`): CSS {
       return {
         [`.${b}${p[0]}-${l}`]: { [p]: `${r} !important` },
@@ -84,7 +80,7 @@ function spacing(): CSS {
 function width(): CSS {
   const columns = 12;
 
-  return forBreakpoints(b => ({
+  return forBreakpoints(([b]) => ({
     // .width-0
     [`.${b}width-0`]: { width: '0 !important' },
     // .width-1/12
@@ -102,8 +98,8 @@ function width(): CSS {
   }));
 }
 
-console.log(
-  toString({
+const css: CSS = merge(
+  {
     '*,*::after,*::before': {
       boxSizing: 'border-box',
     },
@@ -116,17 +112,20 @@ console.log(
       WebkitTextSizeAdjust: '100%',
       fontSize: '16px',
     },
-    ...alignContent,
-    ...alignItems,
-    ...alignSelf,
-    ...display,
-    ...flex,
-    ...flexDirection,
-    ...flexWrap,
-    ...justifyContent,
-    ...justifyItems,
-    ...justifySelf,
-    ...spacing(),
-    ...width(),
-  })
+  },
+  alignContent,
+  alignItems,
+  alignSelf,
+  container(),
+  display,
+  flex,
+  flexDirection,
+  flexWrap,
+  justifyContent,
+  justifyItems,
+  justifySelf,
+  spacing(),
+  width()
 );
+
+console.log(toString(css));
