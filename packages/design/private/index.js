@@ -28,7 +28,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const t = __importStar(require("../../babel-plugin/private/types"));
 const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const allowedJSXAttributes_1 = __importDefault(require("../../babel-plugin/private/allowedJSXAttributes"));
-const merge_1 = __importDefault(require("./merge"));
+const m_1 = __importDefault(require("./m"));
 const sizes_1 = __importDefault(require("./sizes"));
 const toString_1 = __importDefault(require("./toString"));
 function toHelper(propertyName, type) {
@@ -99,7 +99,7 @@ function width() {
         [`.${b}width-auto`]: { width: 'auto !important' },
     }));
 }
-const css = (0, merge_1.default)({
+const css = (0, m_1.default)({
     '*,*::after,*::before': {
         boxSizing: 'border-box',
     },

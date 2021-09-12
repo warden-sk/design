@@ -5,7 +5,7 @@
 import * as t from '../../babel-plugin/private/types';
 import forBreakpoints, { CSS } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
-import merge from './merge';
+import m from './m';
 import sizes from './sizes';
 import toString from './toString';
 
@@ -98,7 +98,7 @@ function width(): CSS {
   }));
 }
 
-const css: CSS = merge(
+const css: CSS = m(
   {
     '*,*::after,*::before': {
       boxSizing: 'border-box',
