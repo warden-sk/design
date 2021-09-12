@@ -6,7 +6,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const types_1 = require("../../types/types");
+const types_1 = require("../../babel-plugin/private/types");
 const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const formatPropertyName_1 = __importDefault(require("./formatPropertyName"));
 const sizes_1 = __importDefault(require("./sizes"));

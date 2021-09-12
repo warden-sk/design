@@ -4,7 +4,6 @@
 
 import * as babel from '@babel/core';
 import allowedJSXAttributes from './private/allowedJSXAttributes';
-import json from './package.json';
 
 export default function ({ types: t }: typeof babel): babel.PluginObj {
   return {
@@ -14,39 +13,48 @@ export default function ({ types: t }: typeof babel): babel.PluginObj {
         const className: babel.types.Expression[] = [];
 
         path.node.attributes.forEach(attribute => {
-          if (t.isJSXAttribute(attribute))
+          if (t.isJSXAttribute(attribute)) {
             if (t.isJSXIdentifier(attribute.name)) {
               if (attribute.name.name === 'className') {
-                if (t.isJSXExpressionContainer(attribute.value))
-                  if (t.isExpression(attribute.value.expression)) return className.push(attribute.value.expression);
+                if (t.isJSXExpressionContainer(attribute.value)) {
+                  if (t.isExpression(attribute.value.expression)) {
+                    return className.push(attribute.value.expression);
+                  }
+                }
 
-                if (t.isStringLiteral(attribute.value)) return className.push(attribute.value);
+                if (t.isStringLiteral(attribute.value)) {
+                  return className.push(attribute.value);
+                }
               }
 
               if (attribute.name.name in allowedJSXAttributes) {
-                if (t.isJSXExpressionContainer(attribute.value))
-                  if (t.isExpression(attribute.value.expression))
+                if (t.isJSXExpressionContainer(attribute.value)) {
+                  if (t.isExpression(attribute.value.expression)) {
                     return className.push(
                       t.callExpression(t.identifier('decodeResponsiveClassName'), [
                         t.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
                         attribute.value.expression,
                       ])
                     );
+                  }
+                }
 
-                if (t.isStringLiteral(attribute.value))
+                if (t.isStringLiteral(attribute.value)) {
                   return className.push(
                     t.callExpression(t.identifier('decodeResponsiveClassName'), [
                       t.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
                       attribute.value,
                     ])
                   );
+                }
               }
             }
+          }
 
           attributes.push(attribute);
         });
 
-        if (className.length)
+        if (className.length) {
           attributes.push(
             t.jsxAttribute(
               t.jsxIdentifier('className'),
@@ -55,6 +63,7 @@ export default function ({ types: t }: typeof babel): babel.PluginObj {
               )
             )
           );
+        }
 
         path.node.attributes = attributes;
       },
@@ -62,11 +71,11 @@ export default function ({ types: t }: typeof babel): babel.PluginObj {
         path.unshiftContainer('body', [
           t.importDeclaration(
             [t.importDefaultSpecifier(t.identifier('decodeClassName'))],
-            t.stringLiteral(`${json.name}/private/decodeClassName`)
+            t.stringLiteral('@warden-sk/babel-plugin/private/decodeClassName')
           ),
           t.importDeclaration(
             [t.importDefaultSpecifier(t.identifier('decodeResponsiveClassName'))],
-            t.stringLiteral(`${json.name}/private/decodeResponsiveClassName`)
+            t.stringLiteral('@warden-sk/babel-plugin/private/decodeResponsiveClassName')
           ),
           t.importDeclaration([], t.stringLiteral('@warden-sk/design/public/index.css')),
         ]);

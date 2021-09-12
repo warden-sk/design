@@ -9,14 +9,27 @@ export const ContentPosition = ['center', 'end', 'flex-end', 'flex-start', 'star
 // https://drafts.csswg.org/css-display-3/#typedef-display-box
 export const DisplayBox = ['none'] as const;
 // https://drafts.csswg.org/css-display-3/#typedef-display-inside
-export const DisplayInside = ['flex', 'grid'] as const;
+export const DisplayInside = ['flex', 'grid', 'table'] as const;
+// https://drafts.csswg.org/css-display-3/#typedef-display-internal
+export const DisplayInternal = [
+  'table-caption',
+  'table-cell',
+  'table-column',
+  'table-column-group',
+  'table-footer-group',
+  'table-header-group',
+  'table-row',
+  'table-row-group',
+] as const;
 // https://drafts.csswg.org/css-display-3/#typedef-display-legacy
-export const DisplayLegacy = ['inline-block', 'inline-flex', 'inline-grid'] as const;
+export const DisplayLegacy = ['inline-block', 'inline-flex', 'inline-grid', 'inline-table'] as const;
 // https://drafts.csswg.org/css-display-3/#typedef-display-outside
 export const DisplayOutside = ['block', 'inline'] as const;
 // https://drafts.csswg.org/css-align/#typedef-self-position
 export const SelfPosition = ['center', 'end', 'flex-end', 'flex-start', 'self-end', 'self-start', 'start'] as const;
-//
+/**
+ * Properties
+ */
 // https://drafts.csswg.org/css-align/#propdef-align-content
 export const AlignContent = ['baseline', ...ContentDistribution, ...ContentPosition] as const;
 // https://drafts.csswg.org/css-align/#propdef-align-items
@@ -24,7 +37,13 @@ export const AlignItems = ['baseline', 'stretch', ...SelfPosition] as const;
 // https://drafts.csswg.org/css-align/#propdef-align-self
 export const AlignSelf = ['baseline', 'stretch', ...SelfPosition] as const;
 // https://drafts.csswg.org/css-display-3/#propdef-display
-export const Display = [...DisplayBox, ...DisplayInside, ...DisplayLegacy, ...DisplayOutside] as const;
+export const Display = [
+  ...DisplayBox,
+  ...DisplayInside,
+  ...DisplayInternal,
+  ...DisplayLegacy,
+  ...DisplayOutside,
+] as const;
 // https://drafts.csswg.org/css-flexbox-1/#propdef-flex
 export const Flex = ['1', 'none'] as const;
 // https://drafts.csswg.org/css-flexbox-1/#propdef-flex-direction
@@ -37,7 +56,9 @@ export const JustifyContent = ['left', 'right', ...ContentDistribution, ...Conte
 export const JustifyItems = ['baseline', 'stretch', ...SelfPosition] as const;
 // https://drafts.csswg.org/css-align/#propdef-justify-self
 export const JustifySelf = ['baseline', 'stretch', ...SelfPosition] as const;
-//
+/**
+ * Spacing
+ */
 export const S = [
   '!1',
   '!2',
@@ -58,7 +79,6 @@ export const S = [
   '8',
   'auto',
 ] as const;
-//
 export const MarginLeft = [
   '1/12',
   '10/12',
