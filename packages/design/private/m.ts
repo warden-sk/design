@@ -3,18 +3,14 @@
  */
 
 // @ts-ignore
-function t(t) {
-  return t && 'object' === typeof t && !Array.isArray(t);
+function o(t, ...e) {
+  for (const f of e)
+    for (const e in f) {
+      const n = f[e],
+        c = t[e];
+      t[e] = 'object' !== typeof n || 'object' !== typeof c ? n : o(c, n);
+    }
+  return t;
 }
 
-// @ts-ignore
-function n(r, ...e) {
-  if (!e.length) return r;
-  const i = e.shift();
-  if (t(r) && t(i))
-    for (const e in i)
-      t(i[e]) ? (r[e] || Object.assign(r, { [e]: {} }), n(r[e], i[e])) : Object.assign(r, { [e]: i[e] });
-  return n(r, ...e);
-}
-
-export default n;
+export default o;
