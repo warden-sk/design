@@ -9,6 +9,10 @@ import m from './m';
 import sizes from './sizes';
 import toString from './toString';
 
+function percentage(l: number, r: number): string {
+  return `${((l / r) * 100).toFixed(2).replace(/\.0+$/, '')}%`;
+}
+
 function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): CSS {
   return forBreakpoints(([b]) =>
     type.reduce(
@@ -67,7 +71,7 @@ function spacing(): CSS {
       ...[...Array(columns - 1)].reduce(
         (_, __, i) => ({
           ..._,
-          [`.${b}m-l-${i + 1}\\/${columns}`]: { marginLeft: `${((i + 1) / columns) * 100}% !important` },
+          [`.${b}m-l-${i + 1}\\/${columns}`]: { marginLeft: `${percentage(i + 1, columns)} !important` },
         }),
         {}
       ),
@@ -87,7 +91,7 @@ function width(): CSS {
     ...[...Array(columns - 1)].reduce(
       (_, __, i) => ({
         ..._,
-        [`.${b}width-${i + 1}\\/${columns}`]: { width: `${((i + 1) / columns) * 100}% !important` },
+        [`.${b}width-${i + 1}\\/${columns}`]: { width: `${percentage(i + 1, columns)} !important` },
       }),
       {}
     ),

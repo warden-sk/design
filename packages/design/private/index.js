@@ -31,6 +31,9 @@ const allowedJSXAttributes_1 = __importDefault(require("../../babel-plugin/priva
 const m_1 = __importDefault(require("./m"));
 const sizes_1 = __importDefault(require("./sizes"));
 const toString_1 = __importDefault(require("./toString"));
+function percentage(l, r) {
+    return `${((l / r) * 100).toFixed(2).replace(/\.0+$/, '')}%`;
+}
 function toHelper(propertyName, type) {
     return (0, forBreakpoints_1.default)(([b]) => type.reduce((_, property) => ({
         ..._,
@@ -76,7 +79,7 @@ function spacing() {
             // .m-l-1/12
             ...[...Array(columns - 1)].reduce((_, __, i) => ({
                 ..._,
-                [`.${b}m-l-${i + 1}\\/${columns}`]: { marginLeft: `${((i + 1) / columns) * 100}% !important` },
+                [`.${b}m-l-${i + 1}\\/${columns}`]: { marginLeft: `${percentage(i + 1, columns)} !important` },
             }), {}),
             // .p-0
             ...sizes_1.default.reduce((_, [l, r]) => ({ ..._, ...css(l, 'padding', r) }), {}),
@@ -91,7 +94,7 @@ function width() {
         // .width-1/12
         ...[...Array(columns - 1)].reduce((_, __, i) => ({
             ..._,
-            [`.${b}width-${i + 1}\\/${columns}`]: { width: `${((i + 1) / columns) * 100}% !important` },
+            [`.${b}width-${i + 1}\\/${columns}`]: { width: `${percentage(i + 1, columns)} !important` },
         }), {}),
         // .width-100
         [`.${b}width-100`]: { width: '100% !important' },
