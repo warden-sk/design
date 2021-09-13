@@ -2,7 +2,8 @@
  * Copyright 2021 Marek Kobida
  */
 
-import * as t from '../../babel-plugin/private/types';
+// @ts-ignore
+import * as t from '@types/warden-sk__babel-plugin/types';
 import forBreakpoints, { CSS } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';

@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "@types/react": "^17.0.20"
+    "@types/react": "^17.0.20",
+    "@types/warden-sk__babel-plugin": "github:warden-sk/types-design"
   },
   "name": "@warden-sk/design",
   "repository": {
