@@ -6,7 +6,6 @@ import * as t from '../../babel-plugin/private/types';
 import forBreakpoints, { CSS } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
-import m from './m';
 import spacing from './components/spacing';
 import toString from './toString';
 import width from './components/width';
@@ -34,7 +33,7 @@ const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
 
-const css: CSS = m(
+const css: CSS[] = [
   {
     '*,*::after,*::before': {
       boxSizing: 'border-box',
@@ -61,7 +60,7 @@ const css: CSS = m(
   justifyItems,
   justifySelf,
   spacing(),
-  width()
-);
+  width(),
+];
 
-console.log(toString(css));
+console.log(css.reduce((_, __) => _ + toString(__), ''));
