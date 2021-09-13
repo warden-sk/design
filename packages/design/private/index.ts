@@ -5,13 +5,12 @@
 import * as t from '../../babel-plugin/private/types';
 import forBreakpoints, { CSS } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
+import container from './components/container';
 import m from './m';
+import percentage from './percentage';
 import sizes from './sizes';
 import toString from './toString';
-
-function percentage(l: number, r: number): string {
-  return `${((l / r) * 100).toFixed(2).replace(/\.0+$/, '')}%`;
-}
+import width from './components/width';
 
 function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): CSS {
   return forBreakpoints(([b]) =>
@@ -35,12 +34,6 @@ const flexWrap = toHelper('flexWrap', t.FlexWrap);
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
-
-function container(): CSS {
-  return forBreakpoints(b =>
-    b[0] ? { '.container': { maxWidth: `${b[1]} !important` } } : { '.container': { width: '100% !important' } }
-  );
-}
 
 function spacing(): CSS {
   const columns = 12;
@@ -79,27 +72,6 @@ function spacing(): CSS {
       ...sizes.reduce((_, [l, r]) => ({ ..._, ...css(l, 'padding', r) }), {}),
     };
   });
-}
-
-function width(): CSS {
-  const columns = 12;
-
-  return forBreakpoints(([b]) => ({
-    // .width-0
-    [`.${b}width-0`]: { width: '0 !important' },
-    // .width-1/12
-    ...[...Array(columns - 1)].reduce(
-      (_, __, i) => ({
-        ..._,
-        [`.${b}width-${i + 1}\\/${columns}`]: { width: `${percentage(i + 1, columns)} !important` },
-      }),
-      {}
-    ),
-    // .width-100
-    [`.${b}width-100`]: { width: '100% !important' },
-    // .width-auto
-    [`.${b}width-auto`]: { width: 'auto !important' },
-  }));
 }
 
 const css: CSS = m(
