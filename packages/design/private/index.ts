@@ -3,7 +3,7 @@
  */
 
 // @ts-ignore
-import * as t from '@types/warden-sk__babel-plugin/types';
+import * as t from '@types/warden-sk__design/types';
 import forBreakpoints, { CSS } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
