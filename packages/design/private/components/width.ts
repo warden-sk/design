@@ -3,26 +3,29 @@
  */
 
 import forBreakpoints, { CSS } from '../forBreakpoints';
+import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import percentage from '../percentage';
 
 function width(): CSS {
   const columns = 12;
 
+  const w = allowedJSXAttributes['width'];
+
   return forBreakpoints(([b]) => ({
     // .width-0
-    [`.${b}width-0`]: { width: '0 !important' },
+    [`.${b}${w}-0`]: { width: '0 !important' },
     // .width-1/12
     ...[...Array(columns - 1)].reduce(
       (_, __, i) => ({
         ..._,
-        [`.${b}width-${i + 1}\\/${columns}`]: { width: `${percentage(i + 1, columns)} !important` },
+        [`.${b}${w}-${i + 1}\\/${columns}`]: { width: `${percentage(i + 1, columns)} !important` },
       }),
       {}
     ),
     // .width-100
-    [`.${b}width-100`]: { width: '100% !important' },
+    [`.${b}${w}-100`]: { width: '100% !important' },
     // .width-auto
-    [`.${b}width-auto`]: { width: 'auto !important' },
+    [`.${b}${w}-auto`]: { width: 'auto !important' },
   }));
 }
 
