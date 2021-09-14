@@ -8,6 +8,7 @@
   "flex",
   "flexDirection",
   "flexWrap",
+  "fontSize",
   "justifyContent",
   "justifyItems",
   "justifySelf",
@@ -25,6 +26,7 @@
   "pT",
   "pX",
   "pY",
+  "textAlign",
   "width"
 ]
 ```

@@ -1,8 +1,7 @@
 {
   "devDependencies": {
     "@babel/core": "^7.15.5",
-    "@types/babel__core": "^7.1.16",
-    "@types/react": "^17.0.20"
+    "@types/babel__core": "^7.1.16"
   },
   "name": "@warden-sk/babel-plugin",
   "repository": {
@@ -10,6 +9,5 @@
     "type": "git",
     "url": "https://github.com/warden-sk/design.git"
   },
-  "types": "./types.d.ts",
   "version": "1.8.0"
 }
