@@ -11,6 +11,7 @@ const allowedJSXAttributes = {
     flex: 'flex',
     flexDirection: 'flex-direction',
     flexWrap: 'flex-wrap',
+    fontSize: 'font-size',
     justifyContent: 'justify-content',
     justifyItems: 'justify-items',
     justifySelf: 'justify-self',

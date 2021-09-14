@@ -35,6 +35,19 @@ const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
 const textAlign = toHelper('textAlign', t.TextAlign);
 
+const fontSizes = [
+  ['1', '0.75rem'],
+  ['2', '1rem'],
+  ['3', '1.25rem'],
+  ['4', '1.5rem'],
+  ['5', '1.75rem'],
+  ['6', '2rem'],
+] as const;
+
+const fontSize = forBreakpoints(([b]) =>
+  fontSizes.reduce((_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes['fontSize']}-${l}`]: `${r} !important` }), {})
+);
+
 const css: CSS[] = [
   {
     '*,*::after,*::before': {
@@ -58,6 +71,7 @@ const css: CSS[] = [
   flex,
   flexDirection,
   flexWrap,
+  fontSize,
   justifyContent,
   justifyItems,
   justifySelf,
