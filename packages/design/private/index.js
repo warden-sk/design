@@ -30,6 +30,7 @@ const t = __importStar(require("@types/warden-sk__design/types"));
 const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const allowedJSXAttributes_1 = __importDefault(require("../../babel-plugin/private/allowedJSXAttributes"));
 const container_1 = __importDefault(require("./components/container"));
+const fontSizes_1 = __importDefault(require("./fontSizes"));
 const spacing_1 = __importDefault(require("./components/spacing"));
 const toString_1 = __importDefault(require("./toString"));
 const width_1 = __importDefault(require("./components/width"));
@@ -46,19 +47,11 @@ const display = toHelper('display', t.Display);
 const flex = toHelper('flex', t.Flex);
 const flexDirection = toHelper('flexDirection', t.FlexDirection);
 const flexWrap = toHelper('flexWrap', t.FlexWrap);
+const fontSize = (0, forBreakpoints_1.default)(([b]) => fontSizes_1.default.reduce((_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes_1.default['fontSize']}-${l}`]: { fontSize: `${r} !important` } }), {}));
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
 const textAlign = toHelper('textAlign', t.TextAlign);
-const fontSizes = [
-    ['1', '0.75rem'],
-    ['2', '1rem'],
-    ['3', '1.25rem'],
-    ['4', '1.5rem'],
-    ['5', '1.75rem'],
-    ['6', '2rem'],
-];
-const fontSize = (0, forBreakpoints_1.default)(([b]) => fontSizes.reduce((_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes_1.default['fontSize']}-${l}`]: `${r} !important` }), {}));
 const css = [
     {
         '*,*::after,*::before': {

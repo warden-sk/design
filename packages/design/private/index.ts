@@ -7,6 +7,7 @@ import * as t from '@types/warden-sk__design/types';
 import forBreakpoints, { CSS } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
+import fontSizes from './fontSizes';
 import spacing from './components/spacing';
 import toString from './toString';
 import width from './components/width';
@@ -30,23 +31,16 @@ const display = toHelper('display', t.Display);
 const flex = toHelper('flex', t.Flex);
 const flexDirection = toHelper('flexDirection', t.FlexDirection);
 const flexWrap = toHelper('flexWrap', t.FlexWrap);
+const fontSize = forBreakpoints(([b]) =>
+  fontSizes.reduce(
+    (_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes['fontSize']}-${l}`]: { fontSize: `${r} !important` } }),
+    {}
+  )
+);
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
 const textAlign = toHelper('textAlign', t.TextAlign);
-
-const fontSizes = [
-  ['1', '0.75rem'],
-  ['2', '1rem'],
-  ['3', '1.25rem'],
-  ['4', '1.5rem'],
-  ['5', '1.75rem'],
-  ['6', '2rem'],
-] as const;
-
-const fontSize = forBreakpoints(([b]) =>
-  fontSizes.reduce((_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes['fontSize']}-${l}`]: `${r} !important` }), {})
-);
 
 const css: CSS[] = [
   {
