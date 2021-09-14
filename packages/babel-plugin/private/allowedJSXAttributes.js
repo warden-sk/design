@@ -28,6 +28,7 @@ const allowedJSXAttributes = {
     pT: 'p-t',
     pX: 'p-x',
     pY: 'p-y',
+    textAlign: 'text-align',
     width: 'width',
 };
 exports.default = allowedJSXAttributes;

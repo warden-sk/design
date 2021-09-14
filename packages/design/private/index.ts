@@ -33,6 +33,7 @@ const flexWrap = toHelper('flexWrap', t.FlexWrap);
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
+const textAlign = toHelper('textAlign', t.TextAlign);
 
 const css: CSS[] = [
   {
@@ -61,6 +62,7 @@ const css: CSS[] = [
   justifyItems,
   justifySelf,
   spacing(),
+  textAlign,
   width(),
 ];
 

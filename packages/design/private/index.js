@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-ignore
-const t = __importStar(require("@types/warden-sk__babel-plugin/types"));
+const t = __importStar(require("@types/warden-sk__design/types"));
 const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const allowedJSXAttributes_1 = __importDefault(require("../../babel-plugin/private/allowedJSXAttributes"));
 const container_1 = __importDefault(require("./components/container"));
@@ -49,6 +49,7 @@ const flexWrap = toHelper('flexWrap', t.FlexWrap);
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
+const textAlign = toHelper('textAlign', t.TextAlign);
 const css = [
     {
         '*,*::after,*::before': {
@@ -76,6 +77,7 @@ const css = [
     justifyItems,
     justifySelf,
     (0, spacing_1.default)(),
+    textAlign,
     (0, width_1.default)(),
 ];
 console.log(css.reduce((_, __) => _ + (0, toString_1.default)(__), ''));
