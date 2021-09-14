@@ -11,5 +11,5 @@
     "url": "https://github.com/warden-sk/design.git"
   },
   "types": "./types.d.ts",
-  "version": "1.7.0"
+  "version": "1.8.0"
 }
