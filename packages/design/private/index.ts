@@ -47,9 +47,23 @@ const css: CSS[] = [
     '*,*::after,*::before': {
       boxSizing: 'border-box',
     },
+    a: {
+      color: 'inherit',
+      textDecoration: 'none',
+    },
+    'a:hover': {
+      textDecoration: 'underline',
+    },
     body: {
       fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       lineHeight: 1.5,
+      margin: 0,
+    },
+    'h1,h2,h3,h4,h5,h6': {
+      fontSize: 'inherit',
+      fontWeight: 'inherit',
+    },
+    'h1,h2,h3,h4,h5,h6,p': {
       margin: 0,
     },
     html: {
