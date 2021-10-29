@@ -65,7 +65,7 @@ const css = [
             textDecoration: 'underline',
         },
         body: {
-            fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif",
             lineHeight: 1.5,
             margin: 0,
         },
@@ -97,4 +97,4 @@ const css = [
     textAlign,
     (0, width_1.default)(),
 ];
-console.log(css.reduce((_, __) => _ + (0, toString_1.default)(__), ''));
+console.log(css.reduce((l, r) => l + (0, toString_1.default)(r), ''));
