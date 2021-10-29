@@ -5,7 +5,7 @@
 import { CSS } from './forBreakpoints';
 import React from 'react';
 
-function _1(propertyName: string): string {
+function encodePropertyName(propertyName: string): string {
   return propertyName.replace(/[A-Z]/g, character => `-${character.toLowerCase()}`);
 }
 
@@ -15,13 +15,10 @@ function toString(properties: CSS | React.CSSProperties): string {
   for (const propertyName in properties) {
     const property = properties[propertyName as 'alignContent'];
 
-    if (typeof property === 'number' || typeof property === 'string') {
-      css += `${_1(propertyName)}:${property};`;
-    }
+    if (typeof property === 'number' || typeof property === 'string')
+      css += `${encodePropertyName(propertyName)}:${property};`;
 
-    if (typeof property === 'object') {
-      css += `${propertyName}{${toString(property)}}`;
-    }
+    if (typeof property === 'object') css += `${propertyName}{${toString(property)}}`;
   }
 
   return css;

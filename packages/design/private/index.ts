@@ -55,7 +55,7 @@ const css: CSS[] = [
       textDecoration: 'underline',
     },
     body: {
-      fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif",
       lineHeight: 1.5,
       margin: 0,
     },
@@ -88,4 +88,4 @@ const css: CSS[] = [
   width(),
 ];
 
-console.log(css.reduce((_, __) => _ + toString(__), ''));
+console.log(css.reduce((l, r) => l + toString(r), ''));
