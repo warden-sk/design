@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Marek Kobida
+ * Copyright 2022 Marek Kobida
  */
 
 function percentage(l: number, r: number): string {
