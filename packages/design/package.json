@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@types/react": "^17.0.38",
+    "@types/react": "^17.0.39",
     "@types/warden-sk__design": "github:warden-sk/types-design"
   },
   "name": "@warden-sk/design",
