@@ -6,9 +6,9 @@ export type DecodedResponsiveClassName = string;
 
 export type EncodedResponsiveClassName<T extends string> =
   | T
+  | { [breakpointName: string]: T }
   | [T, { [breakpointName: string]: T }]
-  | [T]
-  | { [breakpointName: string]: T };
+  | [T];
 
 function decodeResponsiveClassName(
   className: string,

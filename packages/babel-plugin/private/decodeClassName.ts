@@ -7,11 +7,11 @@ export type DecodedClassName = string;
 export type EncodedClassName =
   | EncodedClassName[]
   | boolean
-  | null
   | number
   | string
-  | undefined
-  | { [decodedClassName: string]: boolean | null | undefined };
+  | { [decodedClassName: string]: boolean | null | undefined }
+  | null
+  | undefined;
 
 function decodeClassName(...encodedClassNames: EncodedClassName[]): DecodedClassName | undefined {
   const decodedClassNames: DecodedClassName[] = [];
