@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@babel/core": "^7.17.8",
-    "@types/babel__core": "^7.1.19"
+    "@babel/traverse": "^7.17.3"
   },
   "name": "@warden-sk/babel-plugin",
   "repository": {
@@ -9,5 +9,5 @@
     "type": "git",
     "url": "https://github.com/warden-sk/design.git"
   },
-  "version": "1.11.0"
+  "version": "1.12.0"
 }
