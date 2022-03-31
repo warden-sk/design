@@ -1,6 +1,6 @@
 "use strict";
 /*
- * Copyright 2021 Marek Kobida
+ * Copyright 2022 Marek Kobida
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const allowedJSXAttributes = {

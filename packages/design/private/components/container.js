@@ -1,6 +1,6 @@
 "use strict";
 /*
- * Copyright 2021 Marek Kobida
+ * Copyright 2022 Marek Kobida
  */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
