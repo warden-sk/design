@@ -41,7 +41,7 @@ const width_1 = __importDefault(require("./components/width"));
 function toHelper(propertyName, type) {
     return (0, forBreakpoints_1.default)(([b]) => type.reduce((_, property) => ({
         ..._,
-        [`.${b}${allowedJSXAttributes_1.default[propertyName]}-${property}`]: { [propertyName]: `${property} !important` },
+        [`.${b}${allowedJSXAttributes_1.default[propertyName]}${property}`]: { [propertyName]: `${property} !important` },
     }), {}));
 }
 const alignContent = toHelper('alignContent', t.AlignContent);
@@ -51,7 +51,7 @@ const display = toHelper('display', t.Display);
 const flex = toHelper('flex', t.Flex);
 const flexDirection = toHelper('flexDirection', t.FlexDirection);
 const flexWrap = toHelper('flexWrap', t.FlexWrap);
-const fontSize = (0, forBreakpoints_1.default)(([b]) => fontSizes_1.default.reduce((_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes_1.default['fontSize']}-${l}`]: { fontSize: `${r} !important` } }), {}));
+const fontSize = (0, forBreakpoints_1.default)(([b]) => fontSizes_1.default.reduce((_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes_1.default['fontSize']}${l}`]: { fontSize: `${r} !important` } }), {}));
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);

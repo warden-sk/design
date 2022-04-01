@@ -31,60 +31,57 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const t = __importStar(require("@babel/types"));
 const allowedJSXAttributes_1 = __importDefault(require("./private/allowedJSXAttributes"));
-function default_1() {
-    return {
-        visitor: {
-            JSXOpeningElement(path) {
-                if (t.isJSXIdentifier(path.node.name) && path.node.name.name !== 'svg') {
-                    const attributes = [];
-                    const className = [];
-                    path.node.attributes.forEach(attribute => {
-                        if (t.isJSXAttribute(attribute)) {
-                            if (t.isJSXIdentifier(attribute.name)) {
-                                if (attribute.name.name === 'className') {
-                                    if (t.isJSXExpressionContainer(attribute.value)) {
-                                        if (t.isExpression(attribute.value.expression)) {
-                                            return className.push(attribute.value.expression);
-                                        }
-                                    }
-                                    if (t.isStringLiteral(attribute.value)) {
-                                        return className.push(attribute.value);
+exports.default = () => ({
+    visitor: {
+        JSXOpeningElement(path) {
+            if (t.isJSXIdentifier(path.node.name) && path.node.name.name !== 'svg') {
+                const attributes = [];
+                const className = [];
+                path.node.attributes.forEach(attribute => {
+                    if (t.isJSXAttribute(attribute)) {
+                        if (t.isJSXIdentifier(attribute.name)) {
+                            if (attribute.name.name === 'className') {
+                                if (t.isJSXExpressionContainer(attribute.value)) {
+                                    if (t.isExpression(attribute.value.expression)) {
+                                        return className.push(attribute.value.expression);
                                     }
                                 }
-                                if (attribute.name.name in allowedJSXAttributes_1.default) {
-                                    if (t.isJSXExpressionContainer(attribute.value)) {
-                                        if (t.isExpression(attribute.value.expression)) {
-                                            return className.push(t.callExpression(t.identifier('decodeResponsiveClassName'), [
-                                                t.stringLiteral(allowedJSXAttributes_1.default[attribute.name.name]),
-                                                attribute.value.expression,
-                                            ]));
-                                        }
-                                    }
-                                    if (t.isStringLiteral(attribute.value)) {
+                                if (t.isStringLiteral(attribute.value)) {
+                                    return className.push(attribute.value);
+                                }
+                            }
+                            if (attribute.name.name in allowedJSXAttributes_1.default) {
+                                if (t.isJSXExpressionContainer(attribute.value)) {
+                                    if (t.isExpression(attribute.value.expression)) {
                                         return className.push(t.callExpression(t.identifier('decodeResponsiveClassName'), [
                                             t.stringLiteral(allowedJSXAttributes_1.default[attribute.name.name]),
-                                            attribute.value,
+                                            attribute.value.expression,
                                         ]));
                                     }
                                 }
+                                if (t.isStringLiteral(attribute.value)) {
+                                    return className.push(t.callExpression(t.identifier('decodeResponsiveClassName'), [
+                                        t.stringLiteral(allowedJSXAttributes_1.default[attribute.name.name]),
+                                        attribute.value,
+                                    ]));
+                                }
                             }
                         }
-                        attributes.push(attribute);
-                    });
-                    if (className.length) {
-                        attributes.push(t.jsxAttribute(t.jsxIdentifier('className'), t.jsxExpressionContainer(t.callExpression(t.identifier('decodeClassName'), [t.arrayExpression(className)]))));
                     }
-                    path.node.attributes = attributes;
+                    attributes.push(attribute);
+                });
+                if (className.length) {
+                    attributes.push(t.jsxAttribute(t.jsxIdentifier('className'), t.jsxExpressionContainer(t.callExpression(t.identifier('decodeClassName'), [t.arrayExpression(className)]))));
                 }
-            },
-            Program(path) {
-                path.unshiftContainer('body', [
-                    t.importDeclaration([t.importDefaultSpecifier(t.identifier('decodeClassName'))], t.stringLiteral('@warden-sk/babel-plugin/private/decodeClassName')),
-                    t.importDeclaration([t.importDefaultSpecifier(t.identifier('decodeResponsiveClassName'))], t.stringLiteral('@warden-sk/babel-plugin/private/decodeResponsiveClassName')),
-                    t.importDeclaration([], t.stringLiteral('@warden-sk/design/public/index.css')),
-                ]);
-            },
+                path.node.attributes = attributes;
+            }
         },
-    };
-}
-exports.default = default_1;
+        Program(path) {
+            path.unshiftContainer('body', [
+                t.importDeclaration([t.importDefaultSpecifier(t.identifier('decodeClassName'))], t.stringLiteral('@warden-sk/babel-plugin/private/decodeClassName')),
+                t.importDeclaration([t.importDefaultSpecifier(t.identifier('decodeResponsiveClassName'))], t.stringLiteral('@warden-sk/babel-plugin/private/decodeResponsiveClassName')),
+                t.importDeclaration([], t.stringLiteral('@warden-sk/design/public/index.css')),
+            ]);
+        },
+    },
+});

@@ -14,16 +14,16 @@ function width() {
     const w = allowedJSXAttributes_1.default['width'];
     return (0, forBreakpoints_1.default)(([b]) => ({
         // .width-0
-        [`.${b}${w}-0`]: { width: '0 !important' },
+        [`.${b}${w}0`]: { width: '0 !important' },
         // .width-1/12
         ...[...Array(columns - 1)].reduce((_, __, i) => ({
             ..._,
-            [`.${b}${w}-${i + 1}\\/${columns}`]: { width: `${(0, percentage_1.default)(i + 1, columns)} !important` },
+            [`.${b}${w}${i + 1}\\/${columns}`]: { width: `${(0, percentage_1.default)(i + 1, columns)} !important` },
         }), {}),
         // .width-100
-        [`.${b}${w}-100`]: { width: '100% !important' },
+        [`.${b}${w}100`]: { width: '100% !important' },
         // .width-auto
-        [`.${b}${w}-auto`]: { width: 'auto !important' },
+        [`.${b}${w}auto`]: { width: 'auto !important' },
     }));
 }
 exports.default = width;
