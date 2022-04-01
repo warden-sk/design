@@ -17,7 +17,7 @@ function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonl
     type.reduce(
       (_, property) => ({
         ..._,
-        [`.${b}${allowedJSXAttributes[propertyName]}-${property}`]: { [propertyName]: `${property} !important` },
+        [`.${b}${allowedJSXAttributes[propertyName]}${property}`]: { [propertyName]: `${property} !important` },
       }),
       {}
     )
@@ -33,7 +33,7 @@ const flexDirection = toHelper('flexDirection', t.FlexDirection);
 const flexWrap = toHelper('flexWrap', t.FlexWrap);
 const fontSize = forBreakpoints(([b]) =>
   fontSizes.reduce(
-    (_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes['fontSize']}-${l}`]: { fontSize: `${r} !important` } }),
+    (_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes['fontSize']}${l}`]: { fontSize: `${r} !important` } }),
     {}
   )
 );

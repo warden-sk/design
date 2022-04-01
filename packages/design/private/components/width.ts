@@ -13,19 +13,19 @@ function width(): CSS {
 
   return forBreakpoints(([b]) => ({
     // .width-0
-    [`.${b}${w}-0`]: { width: '0 !important' },
+    [`.${b}${w}0`]: { width: '0 !important' },
     // .width-1/12
     ...[...Array(columns - 1)].reduce(
       (_, __, i) => ({
         ..._,
-        [`.${b}${w}-${i + 1}\\/${columns}`]: { width: `${percentage(i + 1, columns)} !important` },
+        [`.${b}${w}${i + 1}\\/${columns}`]: { width: `${percentage(i + 1, columns)} !important` },
       }),
       {}
     ),
     // .width-100
-    [`.${b}${w}-100`]: { width: '100% !important' },
+    [`.${b}${w}100`]: { width: '100% !important' },
     // .width-auto
-    [`.${b}${w}-auto`]: { width: 'auto !important' },
+    [`.${b}${w}auto`]: { width: 'auto !important' },
   }));
 }
 
