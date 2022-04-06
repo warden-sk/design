@@ -7,6 +7,7 @@ import * as t from '@types/warden-sk__design/types';
 import forBreakpoints, { CSS } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
+import flexBasis from './components/flexBasis';
 import fontSizes from './fontSizes';
 import spacing from './components/spacing';
 import toString from './toString';
@@ -77,6 +78,7 @@ const css: CSS[] = [
   container(),
   display,
   flex,
+  flexBasis(),
   flexDirection,
   flexWrap,
   fontSize,

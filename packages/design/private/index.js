@@ -34,6 +34,7 @@ const t = __importStar(require("@types/warden-sk__design/types"));
 const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const allowedJSXAttributes_1 = __importDefault(require("../../babel-plugin/private/allowedJSXAttributes"));
 const container_1 = __importDefault(require("./components/container"));
+const flexBasis_1 = __importDefault(require("./components/flexBasis"));
 const fontSizes_1 = __importDefault(require("./fontSizes"));
 const spacing_1 = __importDefault(require("./components/spacing"));
 const toString_1 = __importDefault(require("./toString"));
@@ -91,6 +92,7 @@ const css = [
     (0, container_1.default)(),
     display,
     flex,
+    (0, flexBasis_1.default)(),
     flexDirection,
     flexWrap,
     fontSize,

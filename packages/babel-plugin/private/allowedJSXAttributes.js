@@ -9,6 +9,7 @@ const allowedJSXAttributes = {
     alignSelf: 'align-self-',
     display: 'd-',
     flex: 'flex-',
+    flexBasis: 'flex-basis-',
     flexDirection: 'flex-direction-',
     flexWrap: 'flex-wrap-',
     fontSize: 'font-size-',
