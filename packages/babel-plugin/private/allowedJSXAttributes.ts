@@ -2,7 +2,11 @@
  * Copyright 2022 Marek Kobida
  */
 
-const allowedJSXAttributes = {
+export interface AllowedJSXAttributes {
+  [attributeName: string]: `${string}-`;
+}
+
+const allowedJSXAttributes: AllowedJSXAttributes = {
   alignContent: 'align-content-',
   alignItems: 'align-items-',
   alignSelf: 'align-self-',

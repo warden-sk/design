@@ -71,6 +71,7 @@ export default (): { visitor: Visitor } => ({
     },
     Program(path) {
       path.unshiftContainer('body', [
+        t.importDeclaration([], t.stringLiteral('@warden-sk/design/public/index.css')),
         t.importDeclaration(
           [t.importDefaultSpecifier(t.identifier('decodeClassName'))],
           t.stringLiteral('@warden-sk/babel-plugin/private/decodeClassName')
@@ -79,7 +80,6 @@ export default (): { visitor: Visitor } => ({
           [t.importDefaultSpecifier(t.identifier('decodeResponsiveClassName'))],
           t.stringLiteral('@warden-sk/babel-plugin/private/decodeResponsiveClassName')
         ),
-        t.importDeclaration([], t.stringLiteral('@warden-sk/design/public/index.css')),
       ]);
     },
   },

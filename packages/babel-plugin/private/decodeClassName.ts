@@ -2,7 +2,7 @@
  * Copyright 2022 Marek Kobida
  */
 
-export type DecodedClassName = string;
+export type DecodedClassName = string | undefined;
 
 export type EncodedClassName =
   | EncodedClassName[]
@@ -13,7 +13,7 @@ export type EncodedClassName =
   | null
   | undefined;
 
-function decodeClassName(...encodedClassNames: EncodedClassName[]): DecodedClassName | undefined {
+function decodeClassName(...encodedClassNames: EncodedClassName[]): DecodedClassName {
   const decodedClassNames: DecodedClassName[] = [];
 
   for (const encodedClassName of encodedClassNames) {
@@ -21,9 +21,7 @@ function decodeClassName(...encodedClassNames: EncodedClassName[]): DecodedClass
     if (Array.isArray(encodedClassName)) {
       const decodedClassName = decodeClassName(...encodedClassName);
 
-      if (typeof decodedClassName === 'string') {
-        decodedClassNames.push(decodedClassName);
-      }
+      decodedClassNames.push(decodedClassName);
     }
 
     // number
@@ -33,9 +31,7 @@ function decodeClassName(...encodedClassNames: EncodedClassName[]): DecodedClass
 
     // string
     else if (typeof encodedClassName === 'string') {
-      for (const decodedClassName of encodedClassName.split(' ')) {
-        decodedClassNames.push(decodedClassName);
-      }
+      decodedClassNames.push(encodedClassName);
     }
 
     // { [decodedClassName: string]: boolean | null | undefined }
@@ -48,9 +44,7 @@ function decodeClassName(...encodedClassNames: EncodedClassName[]): DecodedClass
     }
   }
 
-  if (decodedClassNames.length) {
-    return decodedClassNames.join(' ');
-  }
+  return decodedClassNames.filter(decodedClassName => !!decodedClassName).join(' ');
 }
 
 export default decodeClassName;
