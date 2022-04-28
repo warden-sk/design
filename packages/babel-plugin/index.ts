@@ -9,26 +9,29 @@ import allowedJSXAttributes from './private/allowedJSXAttributes';
 export default (): { visitor: Visitor } => ({
   visitor: {
     JSXOpeningElement(path) {
-      if (t.isJSXIdentifier(path.node.name) && path.node.name.name !== 'svg') {
+      if (t.isJSXIdentifier(path.node.name)) {
         const attributes: (t.JSXAttribute | t.JSXSpreadAttribute)[] = [];
         const className: t.Expression[] = [];
 
         path.node.attributes.forEach(attribute => {
           if (t.isJSXAttribute(attribute)) {
             if (t.isJSXIdentifier(attribute.name)) {
+              /* (1) */
               if (attribute.name.name === 'className') {
+                /* (1.1) */
                 if (t.isJSXExpressionContainer(attribute.value)) {
                   if (t.isExpression(attribute.value.expression)) {
                     return className.push(attribute.value.expression);
                   }
                 }
-
+                /* (1.2) */
                 if (t.isStringLiteral(attribute.value)) {
                   return className.push(attribute.value);
                 }
               }
-
+              /* (2) */
               if (attribute.name.name in allowedJSXAttributes) {
+                /* (2.1) */
                 if (t.isJSXExpressionContainer(attribute.value)) {
                   if (t.isExpression(attribute.value.expression)) {
                     return className.push(
@@ -39,7 +42,7 @@ export default (): { visitor: Visitor } => ({
                     );
                   }
                 }
-
+                /* (2.2) */
                 if (t.isStringLiteral(attribute.value)) {
                   return className.push(
                     t.callExpression(t.identifier('decodeResponsiveClassName'), [
