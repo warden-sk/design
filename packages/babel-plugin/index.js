@@ -34,23 +34,28 @@ const allowedJSXAttributes_1 = __importDefault(require("./private/allowedJSXAttr
 exports.default = () => ({
     visitor: {
         JSXOpeningElement(path) {
-            if (t.isJSXIdentifier(path.node.name) && path.node.name.name !== 'svg') {
+            if (t.isJSXIdentifier(path.node.name)) {
                 const attributes = [];
                 const className = [];
                 path.node.attributes.forEach(attribute => {
                     if (t.isJSXAttribute(attribute)) {
                         if (t.isJSXIdentifier(attribute.name)) {
+                            /* (1) */
                             if (attribute.name.name === 'className') {
+                                /* (1.1) */
                                 if (t.isJSXExpressionContainer(attribute.value)) {
                                     if (t.isExpression(attribute.value.expression)) {
                                         return className.push(attribute.value.expression);
                                     }
                                 }
+                                /* (1.2) */
                                 if (t.isStringLiteral(attribute.value)) {
                                     return className.push(attribute.value);
                                 }
                             }
+                            /* (2) */
                             if (attribute.name.name in allowedJSXAttributes_1.default) {
+                                /* (2.1) */
                                 if (t.isJSXExpressionContainer(attribute.value)) {
                                     if (t.isExpression(attribute.value.expression)) {
                                         return className.push(t.callExpression(t.identifier('decodeResponsiveClassName'), [
@@ -59,6 +64,7 @@ exports.default = () => ({
                                         ]));
                                     }
                                 }
+                                /* (2.2) */
                                 if (t.isStringLiteral(attribute.value)) {
                                     return className.push(t.callExpression(t.identifier('decodeResponsiveClassName'), [
                                         t.stringLiteral(allowedJSXAttributes_1.default[attribute.name.name]),
@@ -78,9 +84,9 @@ exports.default = () => ({
         },
         Program(path) {
             path.unshiftContainer('body', [
+                t.importDeclaration([], t.stringLiteral('@warden-sk/design/public/index.css')),
                 t.importDeclaration([t.importDefaultSpecifier(t.identifier('decodeClassName'))], t.stringLiteral('@warden-sk/babel-plugin/private/decodeClassName')),
                 t.importDeclaration([t.importDefaultSpecifier(t.identifier('decodeResponsiveClassName'))], t.stringLiteral('@warden-sk/babel-plugin/private/decodeResponsiveClassName')),
-                t.importDeclaration([], t.stringLiteral('@warden-sk/design/public/index.css')),
             ]);
         },
     },
