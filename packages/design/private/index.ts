@@ -38,6 +38,7 @@ const fontSize = forBreakpoints(([b]) =>
     {}
   )
 );
+const fontWeight = toHelper('fontWeight', t.FontWeight);
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
@@ -82,6 +83,7 @@ const css: CSS[] = [
   flexDirection,
   flexWrap,
   fontSize,
+  fontWeight,
   justifyContent,
   justifyItems,
   justifySelf,
