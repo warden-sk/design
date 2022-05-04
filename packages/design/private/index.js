@@ -36,10 +36,10 @@ const allowedJSXAttributes_1 = __importDefault(require("../../babel-plugin/priva
 const container_1 = __importDefault(require("./components/container"));
 const flexBasis_1 = __importDefault(require("./components/flexBasis"));
 const fontSizes_1 = __importDefault(require("./fontSizes"));
+const lineHeights_1 = __importDefault(require("./lineHeights"));
 const spacing_1 = __importDefault(require("./components/spacing"));
 const toString_1 = __importDefault(require("./toString"));
 const width_1 = __importDefault(require("./components/width"));
-const lineHeights_1 = __importDefault(require("./lineHeights"));
 function toHelper(propertyName, type) {
     return (0, forBreakpoints_1.default)(([b]) => type.reduce((_, property) => ({
         ..._,
