@@ -53,6 +53,7 @@ const flex = toHelper('flex', t.Flex);
 const flexDirection = toHelper('flexDirection', t.FlexDirection);
 const flexWrap = toHelper('flexWrap', t.FlexWrap);
 const fontSize = (0, forBreakpoints_1.default)(([b]) => fontSizes_1.default.reduce((_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes_1.default['fontSize']}${l}`]: { fontSize: `${r} !important` } }), {}));
+const fontWeight = toHelper('fontWeight', t.FontWeight);
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
@@ -96,6 +97,7 @@ const css = [
     flexDirection,
     flexWrap,
     fontSize,
+    fontWeight,
     justifyContent,
     justifyItems,
     justifySelf,
