@@ -13,6 +13,9 @@
     "type": "git",
     "url": "https://github.com/warden-sk/design.git"
   },
+  "scripts": {
+    "build": "tsc && cd ./packages/design/private && node ./index.js > ../public/index.css"
+  },
   "workspaces": [
     "./packages/*"
   ]
