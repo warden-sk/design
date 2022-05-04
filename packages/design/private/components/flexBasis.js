@@ -12,18 +12,18 @@ const percentage_1 = __importDefault(require("../percentage"));
 function flexBasis() {
     const columns = 12;
     const $ = allowedJSXAttributes_1.default['flexBasis'];
-    return (0, forBreakpoints_1.default)(([b]) => ({
+    return (0, forBreakpoints_1.default)(([breakpoint]) => ({
         // .flex-basis-0
-        [`.${b}${$}0`]: { flexBasis: '0 !important' },
+        [`.${breakpoint}${$}0`]: { flexBasis: '0 !important' },
         // .flex-basis-1/12
         ...[...Array(columns - 1)].reduce((_, __, i) => ({
             ..._,
-            [`.${b}${$}${i + 1}\\/${columns}`]: { flexBasis: `${(0, percentage_1.default)(i + 1, columns)} !important` },
+            [`.${breakpoint}${$}${i + 1}\\/${columns}`]: { flexBasis: `${(0, percentage_1.default)(i + 1, columns)} !important` },
         }), {}),
         // .flex-basis-100
-        [`.${b}${$}100`]: { flexBasis: '100% !important' },
+        [`.${breakpoint}${$}100`]: { flexBasis: '100% !important' },
         // .flex-basis-auto
-        [`.${b}${$}auto`]: { flexBasis: 'auto !important' },
+        [`.${breakpoint}${$}auto`]: { flexBasis: 'auto !important' },
     }));
 }
 exports.default = flexBasis;

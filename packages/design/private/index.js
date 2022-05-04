@@ -35,8 +35,8 @@ const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const allowedJSXAttributes_1 = __importDefault(require("../../babel-plugin/private/allowedJSXAttributes"));
 const container_1 = __importDefault(require("./components/container"));
 const flexBasis_1 = __importDefault(require("./components/flexBasis"));
-const fontSizes_1 = __importDefault(require("./fontSizes"));
-const lineHeights_1 = __importDefault(require("./lineHeights"));
+const fontSize_1 = __importDefault(require("./components/fontSize"));
+const lineHeight_1 = __importDefault(require("./components/lineHeight"));
 const spacing_1 = __importDefault(require("./components/spacing"));
 const toString_1 = __importDefault(require("./toString"));
 const width_1 = __importDefault(require("./components/width"));
@@ -53,12 +53,10 @@ const display = toHelper('display', t.Display);
 const flex = toHelper('flex', t.Flex);
 const flexDirection = toHelper('flexDirection', t.FlexDirection);
 const flexWrap = toHelper('flexWrap', t.FlexWrap);
-const fontSize = (0, forBreakpoints_1.default)(([b]) => fontSizes_1.default.reduce((_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes_1.default['fontSize']}${l}`]: { fontSize: `${r} !important` } }), {}));
 const fontWeight = toHelper('fontWeight', t.FontWeight);
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
-const lineHeight = (0, forBreakpoints_1.default)(([b]) => lineHeights_1.default.reduce((_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes_1.default['lineHeight']}${l}`]: { lineHeight: `${r} !important` } }), {}));
 const textAlign = toHelper('textAlign', t.TextAlign);
 const css = [
     {
@@ -98,12 +96,12 @@ const css = [
     (0, flexBasis_1.default)(),
     flexDirection,
     flexWrap,
-    fontSize,
+    (0, fontSize_1.default)(),
     fontWeight,
     justifyContent,
     justifyItems,
     justifySelf,
-    lineHeight,
+    (0, lineHeight_1.default)(),
     (0, spacing_1.default)(),
     textAlign,
     (0, width_1.default)(),

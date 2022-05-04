@@ -8,8 +8,8 @@ import forBreakpoints, { CSS } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
 import flexBasis from './components/flexBasis';
-import fontSizes from './fontSizes';
-import lineHeights from './lineHeights';
+import fontSize from './components/fontSize';
+import lineHeight from './components/lineHeight';
 import spacing from './components/spacing';
 import toString from './toString';
 import width from './components/width';
@@ -33,22 +33,10 @@ const display = toHelper('display', t.Display);
 const flex = toHelper('flex', t.Flex);
 const flexDirection = toHelper('flexDirection', t.FlexDirection);
 const flexWrap = toHelper('flexWrap', t.FlexWrap);
-const fontSize = forBreakpoints(([b]) =>
-  fontSizes.reduce(
-    (_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes['fontSize']}${l}`]: { fontSize: `${r} !important` } }),
-    {}
-  )
-);
 const fontWeight = toHelper('fontWeight', t.FontWeight);
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
-const lineHeight = forBreakpoints(([b]) =>
-  lineHeights.reduce(
-    (_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes['lineHeight']}${l}`]: { lineHeight: `${r} !important` } }),
-    {}
-  )
-);
 const textAlign = toHelper('textAlign', t.TextAlign);
 
 const css: CSS[] = [
@@ -89,12 +77,12 @@ const css: CSS[] = [
   flexBasis(),
   flexDirection,
   flexWrap,
-  fontSize,
+  fontSize(),
   fontWeight,
   justifyContent,
   justifyItems,
   justifySelf,
-  lineHeight,
+  lineHeight(),
   spacing(),
   textAlign,
   width(),

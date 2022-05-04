@@ -9,18 +9,18 @@ import sizes from '../sizes';
 function spacing(): CSS {
   const columns = 12;
 
-  return forBreakpoints(([b]) => {
+  return forBreakpoints(([breakpoint]) => {
     function css(l: string, p: 'margin' | 'padding', r: '0' | 'auto' | `${string}rem`): CSS {
       return {
-        [`.${b}${p[0]}-${l}`]: { [p]: `${r} !important` },
+        [`.${breakpoint}${p[0]}-${l}`]: { [p]: `${r} !important` },
         // "b", "y"
-        [`.${b}${p[0]}-b-${l},.${b}${p[0]}-y-${l}`]: { [`${p}Bottom`]: `${r} !important` },
+        [`.${breakpoint}${p[0]}-b-${l},.${breakpoint}${p[0]}-y-${l}`]: { [`${p}Bottom`]: `${r} !important` },
         // "l", "x"
-        [`.${b}${p[0]}-l-${l},.${b}${p[0]}-x-${l}`]: { [`${p}Left`]: `${r} !important` },
+        [`.${breakpoint}${p[0]}-l-${l},.${breakpoint}${p[0]}-x-${l}`]: { [`${p}Left`]: `${r} !important` },
         // "r", "x"
-        [`.${b}${p[0]}-r-${l},.${b}${p[0]}-x-${l}`]: { [`${p}Right`]: `${r} !important` },
+        [`.${breakpoint}${p[0]}-r-${l},.${breakpoint}${p[0]}-x-${l}`]: { [`${p}Right`]: `${r} !important` },
         // "t", "y"
-        [`.${b}${p[0]}-t-${l},.${b}${p[0]}-y-${l}`]: { [`${p}Top`]: `${r} !important` },
+        [`.${breakpoint}${p[0]}-t-${l},.${breakpoint}${p[0]}-y-${l}`]: { [`${p}Top`]: `${r} !important` },
       };
     }
 
@@ -35,7 +35,7 @@ function spacing(): CSS {
       ...[...Array(columns - 1)].reduce(
         (_, __, i) => ({
           ..._,
-          [`.${b}m-l-${i + 1}\\/${columns}`]: { marginLeft: `${percentage(i + 1, columns)} !important` },
+          [`.${breakpoint}m-l-${i + 1}\\/${columns}`]: { marginLeft: `${percentage(i + 1, columns)} !important` },
         }),
         {}
       ),
