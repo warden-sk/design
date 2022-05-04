@@ -39,6 +39,7 @@ const fontSizes_1 = __importDefault(require("./fontSizes"));
 const spacing_1 = __importDefault(require("./components/spacing"));
 const toString_1 = __importDefault(require("./toString"));
 const width_1 = __importDefault(require("./components/width"));
+const lineHeights_1 = __importDefault(require("./lineHeights"));
 function toHelper(propertyName, type) {
     return (0, forBreakpoints_1.default)(([b]) => type.reduce((_, property) => ({
         ..._,
@@ -57,6 +58,7 @@ const fontWeight = toHelper('fontWeight', t.FontWeight);
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
+const lineHeight = (0, forBreakpoints_1.default)(([b]) => lineHeights_1.default.reduce((_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes_1.default['lineHeight']}${l}`]: { lineHeight: `${r} !important` } }), {}));
 const textAlign = toHelper('textAlign', t.TextAlign);
 const css = [
     {
@@ -101,6 +103,7 @@ const css = [
     justifyContent,
     justifyItems,
     justifySelf,
+    lineHeight,
     (0, spacing_1.default)(),
     textAlign,
     (0, width_1.default)(),

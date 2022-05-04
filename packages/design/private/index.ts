@@ -9,6 +9,7 @@ import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttribute
 import container from './components/container';
 import flexBasis from './components/flexBasis';
 import fontSizes from './fontSizes';
+import lineHeights from './lineHeights';
 import spacing from './components/spacing';
 import toString from './toString';
 import width from './components/width';
@@ -42,6 +43,12 @@ const fontWeight = toHelper('fontWeight', t.FontWeight);
 const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
+const lineHeight = forBreakpoints(([b]) =>
+  lineHeights.reduce(
+    (_, [l, r]) => ({ ..._, [`.${b}${allowedJSXAttributes['lineHeight']}${l}`]: { lineHeight: `${r} !important` } }),
+    {}
+  )
+);
 const textAlign = toHelper('textAlign', t.TextAlign);
 
 const css: CSS[] = [
@@ -87,6 +94,7 @@ const css: CSS[] = [
   justifyContent,
   justifyItems,
   justifySelf,
+  lineHeight,
   spacing(),
   textAlign,
   width(),
