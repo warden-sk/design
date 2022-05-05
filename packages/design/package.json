@@ -1,7 +1,6 @@
 {
   "devDependencies": {
-    "@types/react": "^18.0.8",
-    "@types/warden-sk__design": "github:warden-sk/types-design"
+    "@types/react": "^18.0.8"
   },
   "name": "@warden-sk/design",
   "repository": {
@@ -9,5 +8,5 @@
     "type": "git",
     "url": "https://github.com/warden-sk/design.git"
   },
-  "version": "1.19.0"
+  "version": "1.20.0"
 }
