@@ -41,7 +41,7 @@ const textAlign = toHelper('textAlign', t.TextAlign);
 
 const css: CSS[] = [
   {
-    '*,*::after,*::before': {
+    '*,*::before,*::after': {
       boxSizing: 'border-box',
     },
     a: {
@@ -53,7 +53,6 @@ const css: CSS[] = [
     },
     body: {
       fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif",
-      lineHeight: 1.5,
       margin: 0,
     },
     'h1,h2,h3,h4,h5,h6': {
@@ -66,6 +65,7 @@ const css: CSS[] = [
     html: {
       WebkitTextSizeAdjust: '100%',
       fontSize: '16px',
+      lineHeight: 1.5,
     },
   },
   alignContent,

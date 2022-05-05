@@ -60,7 +60,7 @@ const justifySelf = toHelper('justifySelf', t.JustifySelf);
 const textAlign = toHelper('textAlign', t.TextAlign);
 const css = [
     {
-        '*,*::after,*::before': {
+        '*,*::before,*::after': {
             boxSizing: 'border-box',
         },
         a: {
@@ -72,7 +72,6 @@ const css = [
         },
         body: {
             fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif",
-            lineHeight: 1.5,
             margin: 0,
         },
         'h1,h2,h3,h4,h5,h6': {
@@ -85,6 +84,7 @@ const css = [
         html: {
             WebkitTextSizeAdjust: '100%',
             fontSize: '16px',
+            lineHeight: 1.5,
         },
     },
     alignContent,
