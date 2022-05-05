@@ -29,8 +29,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// @ts-ignore
-const t = __importStar(require("@types/warden-sk__design/types"));
+const t = __importStar(require("./storage"));
 const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const allowedJSXAttributes_1 = __importDefault(require("../../babel-plugin/private/allowedJSXAttributes"));
 const container_1 = __importDefault(require("./components/container"));
