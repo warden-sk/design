@@ -3,7 +3,7 @@
  * Copyright 2022 Marek Kobida
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Width = exports.TextAlign = exports.MarginLeft = exports.S = exports.LineHeight = exports.JustifySelf = exports.JustifyItems = exports.JustifyContent = exports.FontWeight = exports.FontSize = exports.FlexWrap = exports.FlexDirection = exports.FlexBasis = exports.Flex = exports.Display = exports.AlignSelf = exports.AlignItems = exports.AlignContent = exports.SelfPosition = exports.DisplayOutside = exports.DisplayLegacy = exports.DisplayInternal = exports.DisplayInside = exports.DisplayBox = exports.ContentPosition = exports.ContentDistribution = void 0;
+exports.Width = exports.TextAlign = exports.MarginLeft = exports.S = exports.LineHeight = exports.JustifySelf = exports.JustifyItems = exports.JustifyContent = exports.Height = exports.FontWeight = exports.FontSize = exports.FlexWrap = exports.FlexDirection = exports.FlexBasis = exports.Flex = exports.Display = exports.AlignSelf = exports.AlignItems = exports.AlignContent = exports.SelfPosition = exports.DisplayOutside = exports.DisplayLegacy = exports.DisplayInternal = exports.DisplayInside = exports.DisplayBox = exports.ContentPosition = exports.ContentDistribution = void 0;
 // https://drafts.csswg.org/css-align/#typedef-content-distribution
 exports.ContentDistribution = ['space-around', 'space-between', 'space-evenly', 'stretch'];
 // https://drafts.csswg.org/css-align/#typedef-content-position
@@ -61,6 +61,7 @@ exports.FlexDirection = ['column', 'column-reverse', 'row', 'row-reverse'];
 exports.FlexWrap = ['nowrap', 'wrap', 'wrap-reverse'];
 exports.FontSize = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 exports.FontWeight = ['100', '200', '300', '400', '500', '600', '700', '800', '900'];
+exports.Height = ['0', '100', 'auto'];
 // https://drafts.csswg.org/css-align/#propdef-justify-content
 exports.JustifyContent = ['left', 'right', ...exports.ContentDistribution, ...exports.ContentPosition];
 // https://drafts.csswg.org/css-align/#propdef-justify-items
