@@ -2,8 +2,8 @@
  * Copyright 2022 Marek Kobida
  */
 
-import { CSS } from './forBreakpoints';
-import React from 'react';
+import type { CSS } from './forBreakpoints';
+import type React from 'react';
 
 function encodePropertyName(propertyName: string): string {
   return propertyName.replace(/[A-Z]/g, character => `-${character.toLowerCase()}`);

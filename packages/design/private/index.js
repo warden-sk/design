@@ -30,11 +30,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const t = __importStar(require("./storage"));
-const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
 const allowedJSXAttributes_1 = __importDefault(require("../../babel-plugin/private/allowedJSXAttributes"));
 const container_1 = __importDefault(require("./components/container"));
 const flexBasis_1 = __importDefault(require("./components/flexBasis"));
 const fontSize_1 = __importDefault(require("./components/fontSize"));
+const forBreakpoints_1 = __importDefault(require("./forBreakpoints"));
+const height_1 = __importDefault(require("./components/height"));
 const lineHeight_1 = __importDefault(require("./components/lineHeight"));
 const spacing_1 = __importDefault(require("./components/spacing"));
 const toString_1 = __importDefault(require("./toString"));
@@ -97,6 +98,7 @@ const css = [
     flexWrap,
     (0, fontSize_1.default)(),
     fontWeight,
+    (0, height_1.default)(),
     justifyContent,
     justifyItems,
     justifySelf,

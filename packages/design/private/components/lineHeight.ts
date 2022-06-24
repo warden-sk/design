@@ -2,8 +2,9 @@
  * Copyright 2022 Marek Kobida
  */
 
-import forBreakpoints, { CSS } from '../forBreakpoints';
+import type { CSS } from '../forBreakpoints';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
+import forBreakpoints from '../forBreakpoints';
 
 const lineHeights = [
   ['1', '1'],

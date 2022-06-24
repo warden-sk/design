@@ -2,7 +2,8 @@
  * Copyright 2022 Marek Kobida
  */
 
-import forBreakpoints, { CSS } from '../forBreakpoints';
+import type { CSS } from '../forBreakpoints';
+import forBreakpoints from '../forBreakpoints';
 
 function container(): CSS {
   return forBreakpoints(b =>

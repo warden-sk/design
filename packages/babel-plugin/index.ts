@@ -2,88 +2,91 @@
  * Copyright 2022 Marek Kobida
  */
 
-import * as t from '@babel/types';
-import { Visitor } from '@babel/traverse';
 import allowedJSXAttributes from './private/allowedJSXAttributes';
+import babel from '@babel/core';
 
-export default (): { visitor: Visitor } => ({
-  visitor: {
-    JSXOpeningElement(path) {
-      if (t.isJSXIdentifier(path.node.name)) {
-        const attributes: (t.JSXAttribute | t.JSXSpreadAttribute)[] = [];
-        const className: t.Expression[] = [];
+export default (): { visitor: babel.Visitor } => {
+  return {
+    visitor: {
+      JSXOpeningElement(path) {
+        if (babel.types.isJSXIdentifier(path.node.name)) {
+          const attributes: (babel.types.JSXAttribute | babel.types.JSXSpreadAttribute)[] = [];
+          const className: babel.types.Expression[] = [];
 
-        path.node.attributes.forEach(attribute => {
-          if (t.isJSXAttribute(attribute)) {
-            if (t.isJSXIdentifier(attribute.name)) {
-              /* (1) */
-              if (attribute.name.name === 'className') {
-                /* (1.1) */
-                if (t.isJSXExpressionContainer(attribute.value)) {
-                  if (t.isExpression(attribute.value.expression)) {
-                    return className.push(attribute.value.expression);
+          path.node.attributes.forEach(attribute => {
+            if (babel.types.isJSXAttribute(attribute)) {
+              if (babel.types.isJSXIdentifier(attribute.name)) {
+                /* (1) */
+                if (attribute.name.name === 'className') {
+                  /* (1.1) */
+                  if (babel.types.isJSXExpressionContainer(attribute.value)) {
+                    if (babel.types.isExpression(attribute.value.expression)) {
+                      return className.push(attribute.value.expression);
+                    }
+                  }
+                  /* (1.2) */
+                  if (babel.types.isStringLiteral(attribute.value)) {
+                    return className.push(attribute.value);
                   }
                 }
-                /* (1.2) */
-                if (t.isStringLiteral(attribute.value)) {
-                  return className.push(attribute.value);
-                }
-              }
-              /* (2) */
-              if (attribute.name.name in allowedJSXAttributes) {
-                /* (2.1) */
-                if (t.isJSXExpressionContainer(attribute.value)) {
-                  if (t.isExpression(attribute.value.expression)) {
+                /* (2) */
+                if (attribute.name.name in allowedJSXAttributes) {
+                  /* (2.1) */
+                  if (babel.types.isJSXExpressionContainer(attribute.value)) {
+                    if (babel.types.isExpression(attribute.value.expression)) {
+                      return className.push(
+                        babel.types.callExpression(babel.types.identifier('decodeResponsiveClassName'), [
+                          babel.types.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
+                          attribute.value.expression,
+                        ])
+                      );
+                    }
+                  }
+                  /* (2.2) */
+                  if (babel.types.isStringLiteral(attribute.value)) {
                     return className.push(
-                      t.callExpression(t.identifier('decodeResponsiveClassName'), [
-                        t.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
-                        attribute.value.expression,
+                      babel.types.callExpression(babel.types.identifier('decodeResponsiveClassName'), [
+                        babel.types.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
+                        attribute.value,
                       ])
                     );
                   }
                 }
-                /* (2.2) */
-                if (t.isStringLiteral(attribute.value)) {
-                  return className.push(
-                    t.callExpression(t.identifier('decodeResponsiveClassName'), [
-                      t.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
-                      attribute.value,
-                    ])
-                  );
-                }
               }
             }
+
+            attributes.push(attribute);
+          });
+
+          if (className.length) {
+            attributes.push(
+              babel.types.jsxAttribute(
+                babel.types.jsxIdentifier('className'),
+                babel.types.jsxExpressionContainer(
+                  babel.types.callExpression(babel.types.identifier('decodeClassName'), [
+                    babel.types.arrayExpression(className),
+                  ])
+                )
+              )
+            );
           }
 
-          attributes.push(attribute);
-        });
-
-        if (className.length) {
-          attributes.push(
-            t.jsxAttribute(
-              t.jsxIdentifier('className'),
-              t.jsxExpressionContainer(
-                t.callExpression(t.identifier('decodeClassName'), [t.arrayExpression(className)])
-              )
-            )
-          );
+          path.node.attributes = attributes;
         }
-
-        path.node.attributes = attributes;
-      }
+      },
+      Program(path) {
+        path.unshiftContainer('body', [
+          babel.types.importDeclaration([], babel.types.stringLiteral('@warden-sk/design/public/index.css')),
+          babel.types.importDeclaration(
+            [babel.types.importDefaultSpecifier(babel.types.identifier('decodeClassName'))],
+            babel.types.stringLiteral('@warden-sk/babel-plugin/private/decodeClassName')
+          ),
+          babel.types.importDeclaration(
+            [babel.types.importDefaultSpecifier(babel.types.identifier('decodeResponsiveClassName'))],
+            babel.types.stringLiteral('@warden-sk/babel-plugin/private/decodeResponsiveClassName')
+          ),
+        ]);
+      },
     },
-    Program(path) {
-      path.unshiftContainer('body', [
-        t.importDeclaration([], t.stringLiteral('@warden-sk/design/public/index.css')),
-        t.importDeclaration(
-          [t.importDefaultSpecifier(t.identifier('decodeClassName'))],
-          t.stringLiteral('@warden-sk/babel-plugin/private/decodeClassName')
-        ),
-        t.importDeclaration(
-          [t.importDefaultSpecifier(t.identifier('decodeResponsiveClassName'))],
-          t.stringLiteral('@warden-sk/babel-plugin/private/decodeResponsiveClassName')
-        ),
-      ]);
-    },
-  },
-});
+  };
+};

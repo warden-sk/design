@@ -3,11 +3,13 @@
  */
 
 import * as t from './storage';
-import forBreakpoints, { CSS } from './forBreakpoints';
+import type { CSS } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
 import flexBasis from './components/flexBasis';
 import fontSize from './components/fontSize';
+import forBreakpoints from './forBreakpoints';
+import height from './components/height';
 import lineHeight from './components/lineHeight';
 import spacing from './components/spacing';
 import toString from './toString';
@@ -78,6 +80,7 @@ const css: CSS[] = [
   flexWrap,
   fontSize(),
   fontWeight,
+  height(),
   justifyContent,
   justifyItems,
   justifySelf,

@@ -14,6 +14,7 @@ const allowedJSXAttributes = {
     flexWrap: 'flex-wrap-',
     fontSize: 'font-size-',
     fontWeight: 'font-weight-',
+    height: 'height-',
     justifyContent: 'justify-content-',
     justifyItems: 'justify-items-',
     justifySelf: 'justify-self-',

@@ -2,7 +2,7 @@
  * Copyright 2022 Marek Kobida
  */
 
-import React from 'react';
+import type React from 'react';
 import breakpoints from './breakpoints';
 
 // {
