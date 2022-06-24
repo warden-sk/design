@@ -2,10 +2,10 @@
  * Copyright 2022 Marek Kobida
  */
 
+import type * as $ from '@babel/core';
 import allowedJSXAttributes from './private/allowedJSXAttributes';
-import babel from '@babel/core';
 
-export default (): { visitor: babel.Visitor } => {
+export default (babel: typeof $): { visitor: $.Visitor } => {
   return {
     visitor: {
       JSXOpeningElement(path) {
