@@ -2,7 +2,7 @@
  * Copyright 2022 Marek Kobida
  */
 
-import type { CSS } from '../forBreakpoints';
+import type { EnhancedCSS } from '../forBreakpoints';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import forBreakpoints from '../forBreakpoints';
 
@@ -14,7 +14,7 @@ const lineHeights = [
   ['5', '2'],
 ] as const;
 
-function lineHeight(): CSS {
+function lineHeight(): EnhancedCSS {
   return forBreakpoints(([breakpoint]) =>
     lineHeights.reduce(
       (css, [left, right]) => ({

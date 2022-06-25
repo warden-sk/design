@@ -2,16 +2,14 @@
  * Copyright 2022 Marek Kobida
  */
 
-import type { CSS } from '../forBreakpoints';
+import type { EnhancedCSS } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
 import percentage from '../percentage';
 import sizes from '../sizes';
 
-function spacing(): CSS {
-  const columns = 12;
-
+function spacing(columns: number): EnhancedCSS {
   return forBreakpoints(([breakpoint]) => {
-    function css(l: string, p: 'margin' | 'padding', r: '0' | 'auto' | `${string}rem`): CSS {
+    function css(l: string, p: 'margin' | 'padding', r: '0' | 'auto' | `${string}rem`): EnhancedCSS {
       return {
         [`.${breakpoint}${p[0]}-${l}`]: { [p]: `${r} !important` },
         // "b", "y"

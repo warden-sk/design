@@ -3,7 +3,7 @@
  */
 
 import * as t from './storage';
-import type { CSS } from './forBreakpoints';
+import type { EnhancedCSS } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
 import flexBasis from './components/flexBasis';
@@ -15,7 +15,7 @@ import spacing from './components/spacing';
 import toString from './toString';
 import width from './components/width';
 
-function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): CSS {
+function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): EnhancedCSS {
   return forBreakpoints(([b]) =>
     type.reduce(
       (_, property) => ({
@@ -40,7 +40,7 @@ const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
 const textAlign = toHelper('textAlign', t.TextAlign);
 
-const css: CSS[] = [
+const css: EnhancedCSS[] = [
   {
     '*,*::before,*::after': {
       boxSizing: 'border-box',
@@ -75,7 +75,7 @@ const css: CSS[] = [
   container(),
   display,
   flex,
-  flexBasis(),
+  flexBasis(12),
   flexDirection,
   flexWrap,
   fontSize(),
@@ -85,9 +85,9 @@ const css: CSS[] = [
   justifyItems,
   justifySelf,
   lineHeight(),
-  spacing(),
+  spacing(12),
   textAlign,
-  width(),
+  width(12),
 ];
 
 console.log(css.reduce((l, r) => l + toString(r), ''));

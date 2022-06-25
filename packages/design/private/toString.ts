@@ -2,23 +2,26 @@
  * Copyright 2022 Marek Kobida
  */
 
-import type { CSS } from './forBreakpoints';
-import type React from 'react';
+import type * as CSS from 'csstype';
+import type { EnhancedCSS } from './forBreakpoints';
 
 function encodePropertyName(propertyName: string): string {
   return propertyName.replace(/[A-Z]/g, character => `-${character.toLowerCase()}`);
 }
 
-function toString(properties: CSS | React.CSSProperties): string {
+function toString(properties: CSS.Properties | EnhancedCSS): string {
   let css = '';
 
   for (const propertyName in properties) {
     const property = properties[propertyName as 'alignContent'];
 
-    if (typeof property === 'number' || typeof property === 'string')
+    if (typeof property === 'number' || typeof property === 'string') {
       css += `${encodePropertyName(propertyName)}:${property};`;
+    }
 
-    if (typeof property === 'object') css += `${propertyName}{${toString(property)}}`;
+    if (typeof property === 'object') {
+      css += `${propertyName}{${toString(property)}}`;
+    }
   }
 
   return css;

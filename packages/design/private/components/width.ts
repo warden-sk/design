@@ -2,31 +2,37 @@
  * Copyright 2022 Marek Kobida
  */
 
-import type { CSS } from '../forBreakpoints';
+import type { EnhancedCSS } from '../forBreakpoints';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import forBreakpoints from '../forBreakpoints';
 import percentage from '../percentage';
 
-function width(): CSS {
-  const columns = 12;
-
+function width(columns: number): EnhancedCSS {
   const $ = allowedJSXAttributes['width'];
 
   return forBreakpoints(([b]) => ({
     // .width-0
-    [`.${b}${$}0`]: { width: '0 !important' },
+    [`.${b}${$}0`]: {
+      width: '0 !important',
+    },
     // .width-1/12
     ...[...Array(columns - 1)].reduce(
       (_, __, i) => ({
         ..._,
-        [`.${b}${$}${i + 1}\\/${columns}`]: { width: `${percentage(i + 1, columns)} !important` },
+        [`.${b}${$}${i + 1}\\/${columns}`]: {
+          width: `${percentage(i + 1, columns)} !important`,
+        },
       }),
       {}
     ),
     // .width-100
-    [`.${b}${$}100`]: { width: '100% !important' },
+    [`.${b}${$}100`]: {
+      width: '100% !important',
+    },
     // .width-auto
-    [`.${b}${$}auto`]: { width: 'auto !important' },
+    [`.${b}${$}auto`]: {
+      width: 'auto !important',
+    },
   }));
 }
 
