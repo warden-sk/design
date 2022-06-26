@@ -24,11 +24,11 @@ const fontSizes = [
 function fontSize(): EnhancedCSS {
   const $ = allowedJSXAttributes['fontSize'];
 
-  return forBreakpoints(([breakpoint]) =>
+  return forBreakpoints(([breakpointName]) =>
     fontSizes.reduce(
       (css, [left, right]) => ({
         ...css,
-        [`.${breakpoint}${$}${left}`]: {
+        [`.${breakpointName}${$}${left}`]: {
           fontSize: right,
         },
       }),

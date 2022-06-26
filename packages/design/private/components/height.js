@@ -10,17 +10,17 @@ const allowedJSXAttributes_1 = __importDefault(require("../../../babel-plugin/pr
 const forBreakpoints_1 = __importDefault(require("../forBreakpoints"));
 function height() {
     const $ = allowedJSXAttributes_1.default['height'];
-    return (0, forBreakpoints_1.default)(([b]) => ({
+    return (0, forBreakpoints_1.default)(([breakpointName]) => ({
         // .height-0
-        [`.${b}${$}0`]: {
+        [`.${breakpointName}${$}0`]: {
             height: '0',
         },
         // .height-100
-        [`.${b}${$}100`]: {
+        [`.${breakpointName}${$}100`]: {
             height: '100%',
         },
         // .height-auto
-        [`.${b}${$}auto`]: {
+        [`.${breakpointName}${$}auto`]: {
             height: 'auto',
         },
     }));

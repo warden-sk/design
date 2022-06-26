@@ -24,9 +24,9 @@ const fontSizes = [
 ];
 function fontSize() {
     const $ = allowedJSXAttributes_1.default['fontSize'];
-    return (0, forBreakpoints_1.default)(([breakpoint]) => fontSizes.reduce((css, [left, right]) => ({
+    return (0, forBreakpoints_1.default)(([breakpointName]) => fontSizes.reduce((css, [left, right]) => ({
         ...css,
-        [`.${breakpoint}${$}${left}`]: {
+        [`.${breakpointName}${$}${left}`]: {
             fontSize: right,
         },
     }), {}));

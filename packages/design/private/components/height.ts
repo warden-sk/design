@@ -9,17 +9,17 @@ import forBreakpoints from '../forBreakpoints';
 function height(): EnhancedCSS {
   const $ = allowedJSXAttributes['height'];
 
-  return forBreakpoints(([b]) => ({
+  return forBreakpoints(([breakpointName]) => ({
     // .height-0
-    [`.${b}${$}0`]: {
+    [`.${breakpointName}${$}0`]: {
       height: '0',
     },
     // .height-100
-    [`.${b}${$}100`]: {
+    [`.${breakpointName}${$}100`]: {
       height: '100%',
     },
     // .height-auto
-    [`.${b}${$}auto`]: {
+    [`.${breakpointName}${$}auto`]: {
       height: 'auto',
     },
   }));
