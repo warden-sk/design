@@ -42,7 +42,7 @@ function spacing(columns) {
             // .m-auto
             ...css('auto', 'margin', 'auto'),
             // .m-l-1/12
-            ...[...Array(columns - 1)].reduce((_, __, i) => ({
+            ...[...new Array(columns - 1)].reduce((_, __, i) => ({
                 ..._,
                 [`.${breakpoint}m-l-${i + 1}\\/${columns}`]: { marginLeft: (0, percentage_1.default)(i + 1, columns) },
             }), {}),

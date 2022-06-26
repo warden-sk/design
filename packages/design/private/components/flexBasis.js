@@ -17,7 +17,7 @@ function flexBasis(columns) {
             flexBasis: '0',
         },
         // .flex-basis-1/12
-        ...[...Array(columns - 1)].reduce((_, __, i) => ({
+        ...[...new Array(columns - 1)].reduce((_, __, i) => ({
             ..._,
             [`.${breakpointName}${$}${i + 1}\\/${columns}`]: {
                 flexBasis: (0, percentage_1.default)(i + 1, columns),

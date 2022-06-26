@@ -17,7 +17,7 @@ function width(columns) {
             width: '0',
         },
         // .width-1/12
-        ...[...Array(columns - 1)].reduce((_, __, i) => ({
+        ...[...new Array(columns - 1)].reduce((_, __, i) => ({
             ..._,
             [`.${breakpointName}${$}${i + 1}\\/${columns}`]: {
                 width: (0, percentage_1.default)(i + 1, columns),
