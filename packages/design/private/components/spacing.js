@@ -20,34 +20,57 @@ const sizes = [
     ['8', '2rem'], //    32px
 ];
 function spacing(columns) {
-    return (0, forBreakpoints_1.default)(([breakpoint]) => {
-        function css(l, p, r) {
+    return (0, forBreakpoints_1.default)(([breakpointName]) => {
+        function css(left, property, right) {
             return {
-                [`.${breakpoint}${p[0]}-${l}`]: { [p]: r },
+                [`.${breakpointName}${property[0]}-${left}`]: {
+                    [property]: right,
+                },
                 // "b", "y"
-                [`.${breakpoint}${p[0]}-b-${l},.${breakpoint}${p[0]}-y-${l}`]: { [`${p}Bottom`]: r },
+                [`.${breakpointName}${property[0]}-b-${left},.${breakpointName}${property[0]}-y-${left}`]: {
+                    [`${property}Bottom`]: right,
+                },
                 // "l", "x"
-                [`.${breakpoint}${p[0]}-l-${l},.${breakpoint}${p[0]}-x-${l}`]: { [`${p}Left`]: r },
-                // "r", "x"
-                [`.${breakpoint}${p[0]}-r-${l},.${breakpoint}${p[0]}-x-${l}`]: { [`${p}Right`]: r },
+                [`.${breakpointName}${property[0]}-l-${left},.${breakpointName}${property[0]}-x-${left}`]: {
+                    [`${property}Left`]: right,
+                },
+                // "right", "x"
+                [`.${breakpointName}${property[0]}-r-${left},.${breakpointName}${property[0]}-x-${left}`]: {
+                    [`${property}Right`]: right,
+                },
                 // "t", "y"
-                [`.${breakpoint}${p[0]}-t-${l},.${breakpoint}${p[0]}-y-${l}`]: { [`${p}Top`]: r },
+                [`.${breakpointName}${property[0]}-t-${left},.${breakpointName}${property[0]}-y-${left}`]: {
+                    [`${property}Top`]: right,
+                },
             };
         }
         return {
             // .m-!1
-            ...sizes.reduce((_, [l, r]) => (r === '0' ? _ : { ..._, ...css(`\\!${l}`, 'margin', `-${r}`) }), {}),
+            ...sizes.reduce((_, [left, right]) => right === '0'
+                ? _
+                : {
+                    ..._,
+                    ...css(`\\!${left}`, 'margin', `-${right}`),
+                }, {}),
             // .m-0
-            ...sizes.reduce((_, [l, r]) => ({ ..._, ...css(l, 'margin', r) }), {}),
+            ...sizes.reduce((_, [left, right]) => ({
+                ..._,
+                ...css(left, 'margin', right),
+            }), {}),
             // .m-auto
             ...css('auto', 'margin', 'auto'),
             // .m-l-1/12
             ...[...new Array(columns - 1)].reduce((_, __, i) => ({
                 ..._,
-                [`.${breakpoint}m-l-${i + 1}\\/${columns}`]: { marginLeft: (0, percentage_1.default)(i + 1, columns) },
+                [`.${breakpointName}m-l-${i + 1}\\/${columns}`]: {
+                    marginLeft: (0, percentage_1.default)(i + 1, columns),
+                },
             }), {}),
             // .p-0
-            ...sizes.reduce((_, [l, r]) => ({ ..._, ...css(l, 'padding', r) }), {}),
+            ...sizes.reduce((_, [left, right]) => ({
+                ..._,
+                ...css(left, 'padding', right),
+            }), {}),
         };
     });
 }
