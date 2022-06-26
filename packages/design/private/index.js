@@ -58,35 +58,35 @@ const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
 const textAlign = toHelper('textAlign', t.TextAlign);
-const css = [
-    {
-        '*,*::before,*::after': {
-            boxSizing: 'border-box',
-        },
-        a: {
-            color: 'inherit',
-            textDecoration: 'none',
-        },
-        'a:hover': {
-            textDecoration: 'underline',
-        },
-        body: {
-            fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif",
-            margin: '0',
-        },
-        'h1,h2,h3,h4,h5,h6': {
-            fontSize: 'inherit',
-            fontWeight: 'inherit',
-        },
-        'h1,h2,h3,h4,h5,h6,p': {
-            margin: '0',
-        },
-        html: {
-            WebkitTextSizeAdjust: '100%',
-            fontSize: '16px',
-            lineHeight: '1.5',
-        },
+const root = {
+    '*,*::before,*::after': {
+        boxSizing: 'border-box',
     },
+    a: {
+        color: 'inherit',
+        textDecoration: 'none',
+    },
+    'a:hover': {
+        textDecoration: 'underline',
+    },
+    body: {
+        fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif",
+        margin: '0',
+    },
+    'h1,h2,h3,h4,h5,h6': {
+        fontSize: 'inherit',
+        fontWeight: 'inherit',
+    },
+    'h1,h2,h3,h4,h5,h6,p': {
+        margin: '0',
+    },
+    html: {
+        WebkitTextSizeAdjust: '100%',
+        fontSize: '16px',
+        lineHeight: '1.5',
+    },
+};
+const css = [
     alignContent,
     alignItems,
     alignSelf,
@@ -107,4 +107,4 @@ const css = [
     textAlign,
     (0, width_1.default)(12),
 ];
-console.log(css.reduce((l, r) => l + (0, toString_1.default)(r), ''));
+console.log((0, toString_1.default)(root) + css.reduce((left, right) => left + (0, toString_1.default)(right, true), ''));
