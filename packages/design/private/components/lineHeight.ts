@@ -20,7 +20,7 @@ function lineHeight(): EnhancedCSS {
       (css, [left, right]) => ({
         ...css,
         [`.${breakpoint}${allowedJSXAttributes['lineHeight']}${left}`]: {
-          lineHeight: `${right} !important`,
+          lineHeight: right,
         },
       }),
       {}

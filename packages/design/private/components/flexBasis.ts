@@ -13,25 +13,25 @@ function flexBasis(columns: number): EnhancedCSS {
   return forBreakpoints(([breakpoint]) => ({
     // .flex-basis-0
     [`.${breakpoint}${$}0`]: {
-      flexBasis: '0 !important',
+      flexBasis: '0',
     },
     // .flex-basis-1/12
     ...[...Array(columns - 1)].reduce(
       (_, __, i) => ({
         ..._,
         [`.${breakpoint}${$}${i + 1}\\/${columns}`]: {
-          flexBasis: `${percentage(i + 1, columns)} !important`,
+          flexBasis: percentage(i + 1, columns),
         },
       }),
       {}
     ),
     // .flex-basis-100
     [`.${breakpoint}${$}100`]: {
-      flexBasis: '100% !important',
+      flexBasis: '100%',
     },
     // .flex-basis-auto
     [`.${breakpoint}${$}auto`]: {
-      flexBasis: 'auto !important',
+      flexBasis: 'auto',
     },
   }));
 }

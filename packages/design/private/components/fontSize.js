@@ -26,7 +26,7 @@ function fontSize() {
     return (0, forBreakpoints_1.default)(([breakpoint]) => fontSizes.reduce((css, [left, right]) => ({
         ...css,
         [`.${breakpoint}${allowedJSXAttributes_1.default['fontSize']}${left}`]: {
-            fontSize: `${right} !important`,
+            fontSize: right,
         },
     }), {}));
 }

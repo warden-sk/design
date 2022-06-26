@@ -43,7 +43,7 @@ const width_1 = __importDefault(require("./components/width"));
 function toHelper(propertyName, type) {
     return (0, forBreakpoints_1.default)(([b]) => type.reduce((_, property) => ({
         ..._,
-        [`.${b}${allowedJSXAttributes_1.default[propertyName]}${property}`]: { [propertyName]: `${property} !important` },
+        [`.${b}${allowedJSXAttributes_1.default[propertyName]}${property}`]: { [propertyName]: property },
     }), {}));
 }
 const alignContent = toHelper('alignContent', t.AlignContent);
@@ -93,7 +93,7 @@ const css = [
     (0, container_1.default)(),
     display,
     flex,
-    (0, flexBasis_1.default)(),
+    (0, flexBasis_1.default)(12),
     flexDirection,
     flexWrap,
     (0, fontSize_1.default)(),
@@ -103,8 +103,8 @@ const css = [
     justifyItems,
     justifySelf,
     (0, lineHeight_1.default)(),
-    (0, spacing_1.default)(),
+    (0, spacing_1.default)(12),
     textAlign,
-    (0, width_1.default)(),
+    (0, width_1.default)(12),
 ];
 console.log(css.reduce((l, r) => l + (0, toString_1.default)(r), ''));

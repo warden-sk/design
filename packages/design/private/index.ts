@@ -20,7 +20,7 @@ function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonl
     type.reduce(
       (_, property) => ({
         ..._,
-        [`.${b}${allowedJSXAttributes[propertyName]}${property}`]: { [propertyName]: `${property} !important` },
+        [`.${b}${allowedJSXAttributes[propertyName]}${property}`]: { [propertyName]: property },
       }),
       {}
     )

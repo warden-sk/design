@@ -10,10 +10,12 @@ function toString(properties) {
     let css = '';
     for (const propertyName in properties) {
         const property = properties[propertyName];
-        if (typeof property === 'number' || typeof property === 'string')
-            css += `${encodePropertyName(propertyName)}:${property};`;
-        if (typeof property === 'object')
+        if (typeof property === 'number' || typeof property === 'string') {
+            css += `${encodePropertyName(propertyName)}:${property} !important;`;
+        }
+        if (typeof property === 'object') {
             css += `${propertyName}{${toString(property)}}`;
+        }
     }
     return css;
 }

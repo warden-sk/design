@@ -10,12 +10,12 @@ function container(): EnhancedCSS {
     breakpoint[0]
       ? {
           '.container': {
-            maxWidth: `${breakpoint[1]} !important`,
+            maxWidth: breakpoint[1],
           },
         }
       : {
           '.container': {
-            width: '100% !important',
+            width: '100%',
           },
         }
   );

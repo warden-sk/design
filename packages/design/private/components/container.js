@@ -8,6 +8,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const forBreakpoints_1 = __importDefault(require("../forBreakpoints"));
 function container() {
-    return (0, forBreakpoints_1.default)(b => b[0] ? { '.container': { maxWidth: `${b[1]} !important` } } : { '.container': { width: '100% !important' } });
+    return (0, forBreakpoints_1.default)(breakpoint => breakpoint[0]
+        ? {
+            '.container': {
+                maxWidth: breakpoint[1],
+            },
+        }
+        : {
+            '.container': {
+                width: '100%',
+            },
+        });
 }
 exports.default = container;

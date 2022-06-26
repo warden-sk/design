@@ -16,7 +16,7 @@ function toString(properties: CSS.Properties | EnhancedCSS): string {
     const property = properties[propertyName as 'alignContent'];
 
     if (typeof property === 'number' || typeof property === 'string') {
-      css += `${encodePropertyName(propertyName)}:${property};`;
+      css += `${encodePropertyName(propertyName)}:${property} !important;`;
     }
 
     if (typeof property === 'object') {

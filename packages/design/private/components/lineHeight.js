@@ -19,7 +19,7 @@ function lineHeight() {
     return (0, forBreakpoints_1.default)(([breakpoint]) => lineHeights.reduce((css, [left, right]) => ({
         ...css,
         [`.${breakpoint}${allowedJSXAttributes_1.default['lineHeight']}${left}`]: {
-            lineHeight: `${right} !important`,
+            lineHeight: right,
         },
     }), {}));
 }

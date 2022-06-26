@@ -12,11 +12,17 @@ function height() {
     const $ = allowedJSXAttributes_1.default['height'];
     return (0, forBreakpoints_1.default)(([b]) => ({
         // .height-0
-        [`.${b}${$}0`]: { height: '0 !important' },
+        [`.${b}${$}0`]: {
+            height: '0',
+        },
         // .height-100
-        [`.${b}${$}100`]: { height: '100% !important' },
+        [`.${b}${$}100`]: {
+            height: '100%',
+        },
         // .height-auto
-        [`.${b}${$}auto`]: { height: 'auto !important' },
+        [`.${b}${$}auto`]: {
+            height: 'auto',
+        },
     }));
 }
 exports.default = height;

@@ -27,7 +27,7 @@ function fontSize(): EnhancedCSS {
       (css, [left, right]) => ({
         ...css,
         [`.${breakpoint}${allowedJSXAttributes['fontSize']}${left}`]: {
-          fontSize: `${right} !important`,
+          fontSize: right,
         },
       }),
       {}

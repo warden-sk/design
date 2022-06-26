@@ -12,26 +12,24 @@ function width(columns: number): EnhancedCSS {
 
   return forBreakpoints(([b]) => ({
     // .width-0
-    [`.${b}${$}0`]: {
-      width: '0 !important',
-    },
+    [`.${b}${$}0`]: { width: '0' },
     // .width-1/12
     ...[...Array(columns - 1)].reduce(
       (_, __, i) => ({
         ..._,
         [`.${b}${$}${i + 1}\\/${columns}`]: {
-          width: `${percentage(i + 1, columns)} !important`,
+          width: percentage(i + 1, columns),
         },
       }),
       {}
     ),
     // .width-100
     [`.${b}${$}100`]: {
-      width: '100% !important',
+      width: '100%',
     },
     // .width-auto
     [`.${b}${$}auto`]: {
-      width: 'auto !important',
+      width: 'auto',
     },
   }));
 }
