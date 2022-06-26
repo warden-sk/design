@@ -2,11 +2,11 @@
  * Copyright 2022 Marek Kobida
  */
 
-import type { EnhancedCSS } from '../forBreakpoints';
+import type { EnhancedCSSProperties } from '../forBreakpoints';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import forBreakpoints from '../forBreakpoints';
 
-function height(): EnhancedCSS {
+function height(): EnhancedCSSProperties {
   const $ = allowedJSXAttributes['height'];
 
   return forBreakpoints(([breakpointName]) => ({

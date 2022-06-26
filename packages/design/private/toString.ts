@@ -3,13 +3,13 @@
  */
 
 import type * as CSS from 'csstype';
-import type { EnhancedCSS } from './forBreakpoints';
+import type { EnhancedCSSProperties } from './forBreakpoints';
 
 function encodePropertyName(propertyName: string): string {
   return propertyName.replace(/[A-Z]/g, character => `-${character.toLowerCase()}`);
 }
 
-function toString(properties: CSS.Properties | EnhancedCSS): string {
+function toString(properties: CSS.Properties | EnhancedCSSProperties): string {
   let css = '';
 
   for (const propertyName in properties) {

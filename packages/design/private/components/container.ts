@@ -2,10 +2,10 @@
  * Copyright 2022 Marek Kobida
  */
 
-import type { EnhancedCSS } from '../forBreakpoints';
+import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
 
-function container(): EnhancedCSS {
+function container(): EnhancedCSSProperties {
   return forBreakpoints(breakpoint =>
     breakpoint[0]
       ? {

@@ -2,7 +2,7 @@
  * Copyright 2022 Marek Kobida
  */
 
-import type { EnhancedCSS } from '../forBreakpoints';
+import type { EnhancedCSSProperties } from '../forBreakpoints';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import forBreakpoints from '../forBreakpoints';
 
@@ -21,7 +21,7 @@ const fontSizes = [
   ['12', '3rem'], //    48px
 ] as const;
 
-function fontSize(): EnhancedCSS {
+function fontSize(): EnhancedCSSProperties {
   const $ = allowedJSXAttributes['fontSize'];
 
   return forBreakpoints(([breakpointName]) =>

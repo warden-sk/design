@@ -20,11 +20,11 @@ const breakpoints = [
 //     },
 //   },
 // }
-export interface EnhancedCSS {
-  [key: string]: CSS.Properties | EnhancedCSS;
+export interface EnhancedCSSProperties {
+  [key: string]: CSS.Properties | EnhancedCSSProperties;
 }
 
-function forBreakpoints(on: (breakpoint: readonly [string, string]) => EnhancedCSS): EnhancedCSS {
+function forBreakpoints(on: (breakpoint: readonly [string, string]) => EnhancedCSSProperties): EnhancedCSSProperties {
   return breakpoints.reduce(
     (_, breakpoint) => ({
       ..._,

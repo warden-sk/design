@@ -3,7 +3,7 @@
  */
 
 import * as t from './storage';
-import type { EnhancedCSS } from './forBreakpoints';
+import type { EnhancedCSSProperties } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
 import flexBasis from './components/flexBasis';
@@ -15,7 +15,7 @@ import spacing from './components/spacing';
 import toString from './toString';
 import width from './components/width';
 
-function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): EnhancedCSS {
+function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): EnhancedCSSProperties {
   return forBreakpoints(([b]) =>
     type.reduce(
       (_, property) => ({
@@ -40,7 +40,7 @@ const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
 const textAlign = toHelper('textAlign', t.TextAlign);
 
-const css: EnhancedCSS[] = [
+const css: EnhancedCSSProperties[] = [
   {
     '*,*::before,*::after': {
       boxSizing: 'border-box',

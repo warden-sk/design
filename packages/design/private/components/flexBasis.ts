@@ -2,12 +2,12 @@
  * Copyright 2022 Marek Kobida
  */
 
-import type { EnhancedCSS } from '../forBreakpoints';
+import type { EnhancedCSSProperties } from '../forBreakpoints';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import forBreakpoints from '../forBreakpoints';
 import percentage from '../percentage';
 
-function flexBasis(columns: number): EnhancedCSS {
+function flexBasis(columns: number): EnhancedCSSProperties {
   const $ = allowedJSXAttributes['flexBasis'];
 
   return forBreakpoints(([breakpointName]) => ({
@@ -16,7 +16,7 @@ function flexBasis(columns: number): EnhancedCSS {
       flexBasis: '0',
     },
     // .flex-basis-1/12
-    ...[...Array(columns - 1)].reduce(
+    ...[...new Array(columns - 1)].reduce(
       (_, __, i) => ({
         ..._,
         [`.${breakpointName}${$}${i + 1}\\/${columns}`]: {

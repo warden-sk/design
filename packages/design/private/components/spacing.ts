@@ -2,7 +2,7 @@
  * Copyright 2022 Marek Kobida
  */
 
-import type { EnhancedCSS } from '../forBreakpoints';
+import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
 import percentage from '../percentage';
 
@@ -18,9 +18,9 @@ const sizes = [
   ['8', '2rem'], //    32px
 ] as const;
 
-function spacing(columns: number): EnhancedCSS {
+function spacing(columns: number): EnhancedCSSProperties {
   return forBreakpoints(([breakpoint]) => {
-    function css(l: string, p: 'margin' | 'padding', r: '0' | 'auto' | `${string}rem`): EnhancedCSS {
+    function css(l: string, p: 'margin' | 'padding', r: '0' | 'auto' | `${string}rem`): EnhancedCSSProperties {
       return {
         [`.${breakpoint}${p[0]}-${l}`]: { [p]: r },
         // "b", "y"
@@ -42,7 +42,7 @@ function spacing(columns: number): EnhancedCSS {
       // .m-auto
       ...css('auto', 'margin', 'auto'),
       // .m-l-1/12
-      ...[...Array(columns - 1)].reduce(
+      ...[...new Array(columns - 1)].reduce(
         (_, __, i) => ({
           ..._,
           [`.${breakpoint}m-l-${i + 1}\\/${columns}`]: { marginLeft: percentage(i + 1, columns) },
