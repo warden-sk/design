@@ -6,6 +6,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const createArray_1 = __importDefault(require("../createArray"));
 const forBreakpoints_1 = __importDefault(require("../forBreakpoints"));
 const percentage_1 = __importDefault(require("../percentage"));
 const sizes = [
@@ -60,8 +61,8 @@ function spacing(columns) {
             // .m-auto
             ...css('auto', 'margin', 'auto'),
             // .m-l-1/12
-            ...[...new Array(columns - 1)].reduce((_, __, i) => ({
-                ..._,
+            ...(0, createArray_1.default)(columns - 1).reduce((css, i) => ({
+                ...css,
                 [`.${breakpointName}m-l-${i + 1}\\/${columns}`]: {
                     marginLeft: (0, percentage_1.default)(i + 1, columns),
                 },

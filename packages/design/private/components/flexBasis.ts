@@ -4,6 +4,7 @@
 
 import type { EnhancedCSSProperties } from '../forBreakpoints';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
+import createArray from '../createArray';
 import forBreakpoints from '../forBreakpoints';
 import percentage from '../percentage';
 
@@ -16,9 +17,9 @@ function flexBasis(columns: number): EnhancedCSSProperties {
       flexBasis: '0',
     },
     // .flex-basis-1/12
-    ...[...new Array(columns - 1)].reduce(
-      (_, __, i) => ({
-        ..._,
+    ...createArray(columns - 1).reduce(
+      (css, i) => ({
+        ...css,
         [`.${breakpointName}${$}${i + 1}\\/${columns}`]: {
           flexBasis: percentage(i + 1, columns),
         },

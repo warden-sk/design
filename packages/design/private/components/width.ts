@@ -4,6 +4,7 @@
 
 import type { EnhancedCSSProperties } from '../forBreakpoints';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
+import createArray from '../createArray';
 import forBreakpoints from '../forBreakpoints';
 import percentage from '../percentage';
 
@@ -16,9 +17,9 @@ function width(columns: number): EnhancedCSSProperties {
       width: '0',
     },
     // .width-1/12
-    ...[...new Array(columns - 1)].reduce(
-      (_, __, i) => ({
-        ..._,
+    ...createArray(columns - 1).reduce(
+      (css, i) => ({
+        ...css,
         [`.${breakpointName}${$}${i + 1}\\/${columns}`]: {
           width: percentage(i + 1, columns),
         },

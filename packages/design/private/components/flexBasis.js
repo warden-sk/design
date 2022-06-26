@@ -7,6 +7,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const allowedJSXAttributes_1 = __importDefault(require("../../../babel-plugin/private/allowedJSXAttributes"));
+const createArray_1 = __importDefault(require("../createArray"));
 const forBreakpoints_1 = __importDefault(require("../forBreakpoints"));
 const percentage_1 = __importDefault(require("../percentage"));
 function flexBasis(columns) {
@@ -17,8 +18,8 @@ function flexBasis(columns) {
             flexBasis: '0',
         },
         // .flex-basis-1/12
-        ...[...new Array(columns - 1)].reduce((_, __, i) => ({
-            ..._,
+        ...(0, createArray_1.default)(columns - 1).reduce((css, i) => ({
+            ...css,
             [`.${breakpointName}${$}${i + 1}\\/${columns}`]: {
                 flexBasis: (0, percentage_1.default)(i + 1, columns),
             },
