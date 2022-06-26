@@ -45,7 +45,7 @@ function spacing(columns: number): EnhancedCSS {
       ...[...Array(columns - 1)].reduce(
         (_, __, i) => ({
           ..._,
-          [`.${breakpoint}m-l-${i + 1}\\/${columns}`]: { marginLeft: `${percentage(i + 1, columns)}` },
+          [`.${breakpoint}m-l-${i + 1}\\/${columns}`]: { marginLeft: percentage(i + 1, columns) },
         }),
         {}
       ),

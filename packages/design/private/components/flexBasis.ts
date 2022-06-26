@@ -13,7 +13,7 @@ function flexBasis(columns: number): EnhancedCSS {
   return forBreakpoints(([breakpoint]) => ({
     // .flex-basis-0
     [`.${breakpoint}${$}0`]: {
-      flexBasis: '0',
+      flexBasis: 0,
     },
     // .flex-basis-1/12
     ...[...Array(columns - 1)].reduce(
