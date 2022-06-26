@@ -13,7 +13,9 @@ function width(columns) {
     const $ = allowedJSXAttributes_1.default['width'];
     return (0, forBreakpoints_1.default)(([b]) => ({
         // .width-0
-        [`.${b}${$}0`]: { width: '0' },
+        [`.${b}${$}0`]: {
+            width: 0,
+        },
         // .width-1/12
         ...[...Array(columns - 1)].reduce((_, __, i) => ({
             ..._,

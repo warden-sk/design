@@ -44,7 +44,7 @@ function spacing(columns) {
             // .m-l-1/12
             ...[...Array(columns - 1)].reduce((_, __, i) => ({
                 ..._,
-                [`.${breakpoint}m-l-${i + 1}\\/${columns}`]: { marginLeft: `${(0, percentage_1.default)(i + 1, columns)}` },
+                [`.${breakpoint}m-l-${i + 1}\\/${columns}`]: { marginLeft: (0, percentage_1.default)(i + 1, columns) },
             }), {}),
             // .p-0
             ...sizes.reduce((_, [l, r]) => ({ ..._, ...css(l, 'padding', r) }), {}),
