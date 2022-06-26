@@ -3,7 +3,12 @@
  */
 
 import type * as CSS from 'csstype';
-import breakpoints from './breakpoints';
+
+const breakpoints = [
+  ['\\#', '40rem'], //       640px
+  ['\\#\\#', '48rem'], //    768px
+  ['\\#\\#\\#', '64rem'], // 1024px
+] as const;
 
 // {
 //   'body': {
@@ -16,12 +21,15 @@ import breakpoints from './breakpoints';
 //   },
 // }
 export interface EnhancedCSS {
-  [_: string]: CSS.Properties | EnhancedCSS;
+  [key: string]: CSS.Properties | EnhancedCSS;
 }
 
 function forBreakpoints(on: (breakpoint: readonly [string, string]) => EnhancedCSS): EnhancedCSS {
   return breakpoints.reduce(
-    (_, breakpoint) => ({ ..._, [`@media(min-width:${breakpoint[1]})`]: on(breakpoint) }),
+    (_, breakpoint) => ({
+      ..._,
+      [`@media(min-width:${breakpoint[1]})`]: on(breakpoint),
+    }),
     on(['', ''])
   );
 }

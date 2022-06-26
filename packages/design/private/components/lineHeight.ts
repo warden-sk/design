@@ -15,11 +15,13 @@ const lineHeights = [
 ] as const;
 
 function lineHeight(): EnhancedCSS {
-  return forBreakpoints(([breakpoint]) =>
+  const $ = allowedJSXAttributes['lineHeight'];
+
+  return forBreakpoints(([breakpointName]) =>
     lineHeights.reduce(
       (css, [left, right]) => ({
         ...css,
-        [`.${breakpoint}${allowedJSXAttributes['lineHeight']}${left}`]: {
+        [`.${breakpointName}${$}${left}`]: {
           lineHeight: right,
         },
       }),

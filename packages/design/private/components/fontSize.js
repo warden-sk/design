@@ -23,9 +23,10 @@ const fontSizes = [
     ['12', '3rem'], //    48px
 ];
 function fontSize() {
+    const $ = allowedJSXAttributes_1.default['fontSize'];
     return (0, forBreakpoints_1.default)(([breakpoint]) => fontSizes.reduce((css, [left, right]) => ({
         ...css,
-        [`.${breakpoint}${allowedJSXAttributes_1.default['fontSize']}${left}`]: {
+        [`.${breakpoint}${$}${left}`]: {
             fontSize: right,
         },
     }), {}));

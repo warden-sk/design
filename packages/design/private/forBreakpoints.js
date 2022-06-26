@@ -2,12 +2,16 @@
 /*
  * Copyright 2022 Marek Kobida
  */
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const breakpoints_1 = __importDefault(require("./breakpoints"));
+const breakpoints = [
+    ['\\#', '40rem'],
+    ['\\#\\#', '48rem'],
+    ['\\#\\#\\#', '64rem'], // 1024px
+];
 function forBreakpoints(on) {
-    return breakpoints_1.default.reduce((_, breakpoint) => ({ ..._, [`@media(min-width:${breakpoint[1]})`]: on(breakpoint) }), on(['', '']));
+    return breakpoints.reduce((_, breakpoint) => ({
+        ..._,
+        [`@media(min-width:${breakpoint[1]})`]: on(breakpoint),
+    }), on(['', '']));
 }
 exports.default = forBreakpoints;

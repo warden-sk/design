@@ -12,7 +12,7 @@ function height(): EnhancedCSS {
   return forBreakpoints(([b]) => ({
     // .height-0
     [`.${b}${$}0`]: {
-      height: 0,
+      height: '0',
     },
     // .height-100
     [`.${b}${$}100`]: {
