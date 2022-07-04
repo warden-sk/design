@@ -1,10 +1,10 @@
 {
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.29.0",
-    "@typescript-eslint/parser": "^5.29.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.4",
+    "@typescript-eslint/parser": "^5.30.4",
     "@warden-sk/eslint-config": "github:warden-sk/eslint-config",
-    "eslint": "^8.18.0",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint": "^8.19.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
     "typescript": "^4.7.4"
   },
@@ -12,9 +12,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/warden-sk/design.git"
-  },
-  "scripts": {
-    "build": "tsc && cd ./packages/design/private && node ./index.js > ../public/index.css"
   },
   "workspaces": [
     "./packages/*"

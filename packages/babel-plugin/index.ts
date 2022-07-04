@@ -35,7 +35,7 @@ export default (babel: typeof $): { visitor: $.Visitor } => {
                   if (babel.types.isJSXExpressionContainer(attribute.value)) {
                     if (babel.types.isExpression(attribute.value.expression)) {
                       return className.push(
-                        babel.types.callExpression(babel.types.identifier('decodeResponsiveClassName'), [
+                        babel.types.callExpression(babel.types.identifier('decodeResponsiveClassName2'), [
                           babel.types.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
                           attribute.value.expression,
                         ])
@@ -45,7 +45,7 @@ export default (babel: typeof $): { visitor: $.Visitor } => {
                   /* (2.2) */
                   if (babel.types.isStringLiteral(attribute.value)) {
                     return className.push(
-                      babel.types.callExpression(babel.types.identifier('decodeResponsiveClassName'), [
+                      babel.types.callExpression(babel.types.identifier('decodeResponsiveClassName2'), [
                         babel.types.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
                         attribute.value,
                       ])
@@ -63,7 +63,7 @@ export default (babel: typeof $): { visitor: $.Visitor } => {
               babel.types.jsxAttribute(
                 babel.types.jsxIdentifier('className'),
                 babel.types.jsxExpressionContainer(
-                  babel.types.callExpression(babel.types.identifier('decodeClassName'), [
+                  babel.types.callExpression(babel.types.identifier('decodeClassName2'), [
                     babel.types.arrayExpression(className),
                   ])
                 )
@@ -72,17 +72,19 @@ export default (babel: typeof $): { visitor: $.Visitor } => {
           }
 
           path.node.attributes = attributes;
+
+          // console.log('attributes', attributes);
         }
       },
       Program(path) {
         path.unshiftContainer('body', [
           babel.types.importDeclaration([], babel.types.stringLiteral('@warden-sk/design/public/index.css')),
           babel.types.importDeclaration(
-            [babel.types.importDefaultSpecifier(babel.types.identifier('decodeClassName'))],
+            [babel.types.importDefaultSpecifier(babel.types.identifier('decodeClassName2'))],
             babel.types.stringLiteral('@warden-sk/babel-plugin/private/decodeClassName')
           ),
           babel.types.importDeclaration(
-            [babel.types.importDefaultSpecifier(babel.types.identifier('decodeResponsiveClassName'))],
+            [babel.types.importDefaultSpecifier(babel.types.identifier('decodeResponsiveClassName2'))],
             babel.types.stringLiteral('@warden-sk/babel-plugin/private/decodeResponsiveClassName')
           ),
         ]);
