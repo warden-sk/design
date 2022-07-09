@@ -91,4 +91,4 @@ const css: EnhancedCSSProperties[] = [
   width(12),
 ];
 
-console.log(toString(root) + css.reduce((left, right) => left + toString(right, true), ''));
+export default toString(root) + css.reduce((left, right) => left + toString(right, true), '');
