@@ -8,7 +8,7 @@ import css from '../design/private';
 import fs from 'fs';
 
 export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } => {
-  fs.writeFileSync(process.cwd() + '/private/design.css', css);
+  fs.writeFileSync(process.cwd() + '/private/design.css', css());
 
   return {
     visitor: {
@@ -74,8 +74,6 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
           }
 
           path.node.attributes = attributes;
-
-          // console.log('attributes', attributes);
         }
       },
       Program(path) {
