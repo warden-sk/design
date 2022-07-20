@@ -4,7 +4,7 @@
 
 import type * as CSS from 'csstype';
 
-const breakpoints = [
+export const breakpoints = [
   ['\\#', '40rem'], //          640px
   ['\\#\\#', '48rem'], //       768px
   ['\\#\\#\\#', '64rem'], //    1024px
