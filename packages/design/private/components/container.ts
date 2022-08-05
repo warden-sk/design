@@ -10,12 +10,13 @@ function container(): EnhancedCSSProperties {
     breakpoint[0]
       ? {
           '.container': {
-            maxWidth: breakpoint[1],
+            // maxWidth: breakpoint[1],
           },
         }
       : {
           '.container': {
-            width: '100%',
+            maxWidth: '80rem',
+            // width: '100%',
           },
         }
   );
