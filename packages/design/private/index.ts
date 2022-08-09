@@ -6,7 +6,6 @@ import * as t from './storage';
 import type { EnhancedCSSProperties } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
-import cursor from './components/cursor';
 import flexBasis from './components/flexBasis';
 import fontSize from './components/fontSize';
 import forBreakpoints from './forBreakpoints';
@@ -31,6 +30,7 @@ function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonl
 const alignContent = toHelper('alignContent', t.AlignContent);
 const alignItems = toHelper('alignItems', t.AlignItems);
 const alignSelf = toHelper('alignSelf', t.AlignSelf);
+const cursor = toHelper('cursor', t.Cursor);
 const display = toHelper('display', t.Display);
 const flex = toHelper('flex', t.Flex);
 const flexDirection = toHelper('flexDirection', t.FlexDirection);
@@ -75,7 +75,7 @@ const css: EnhancedCSSProperties[] = [
   alignItems,
   alignSelf,
   container(),
-  cursor(),
+  cursor,
   display,
   flex,
   flexBasis(12),
