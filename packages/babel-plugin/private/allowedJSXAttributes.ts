@@ -10,6 +10,7 @@ const allowedJSXAttributes: AllowedJSXAttributes = {
   alignContent: 'align-content-',
   alignItems: 'align-items-',
   alignSelf: 'align-self-',
+  cursor:'cursor-',
   display: 'd-',
   flex: 'flex-',
   flexBasis: 'flex-basis-',

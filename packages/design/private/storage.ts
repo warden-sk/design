@@ -27,6 +27,7 @@ export const AlignContent = ['baseline', ...ContentDistribution, ...ContentPosit
 export const AlignItems = ['baseline', 'stretch', ...SelfPosition] as const;
 // https://drafts.csswg.org/css-align/#propdef-align-self
 export const AlignSelf = ['baseline', 'stretch', ...SelfPosition] as const;
+export const Cursor = ['pointer'] as const;
 // https://drafts.csswg.org/css-display-3/#propdef-display
 export const Display = [
   ...DisplayBox,

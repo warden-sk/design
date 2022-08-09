@@ -6,6 +6,7 @@ import * as t from './storage';
 import type { EnhancedCSSProperties } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
+import cursor from './components/cursor';
 import flexBasis from './components/flexBasis';
 import fontSize from './components/fontSize';
 import forBreakpoints from './forBreakpoints';
@@ -74,6 +75,7 @@ const css: EnhancedCSSProperties[] = [
   alignItems,
   alignSelf,
   container(),
+  cursor(),
   display,
   flex,
   flexBasis(12),
