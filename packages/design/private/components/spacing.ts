@@ -50,6 +50,18 @@ function spacing(columns: number): EnhancedCSSProperties {
     }
 
     return {
+      ...sizes.reduce(
+        (_, [left, right]) => ({
+          ..._,
+          [`.${breakpointName}space-x-${left} > * + *`]: {
+            marginLeft: right,
+          },
+          [`.${breakpointName}space-y-${left} > * + *`]: {
+            marginTop: right,
+          },
+        }),
+        {}
+      ),
       // .m-!1
       ...sizes.reduce(
         (_, [left, right]) =>

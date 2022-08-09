@@ -36,6 +36,8 @@ const allowedJSXAttributes: AllowedJSXAttributes = {
   pT: 'p-t-',
   pX: 'p-x-',
   pY: 'p-y-',
+  spaceX: 'space-x-',
+  spaceY: 'space-y-',
   textAlign: 'text-align-',
   width: 'width-',
 } as const;

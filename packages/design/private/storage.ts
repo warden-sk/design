@@ -70,26 +70,8 @@ export const LineHeight = ['1', '2', '3', '4', '5'] as const;
 /**
  * Spacing
  */
-export const S = [
-  '!1',
-  '!2',
-  '!3',
-  '!4',
-  '!5',
-  '!6',
-  '!7',
-  '!8',
-  '0',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  'auto',
-] as const;
+export const S = ['0', '1', '2', '3', '4', '5', '6', '7', '8'] as const;
+export const Margin = ['!1', '!2', '!3', '!4', '!5', '!6', '!7', '!8', 'auto', ...S] as const;
 export const MarginLeft = [
   '1/12',
   '2/12',
@@ -102,7 +84,7 @@ export const MarginLeft = [
   '9/12',
   '10/12',
   '11/12',
-  ...S,
+  ...Margin,
 ] as const;
 export const TextAlign = ['center', 'end', 'justify', 'left', 'right', 'start'] as const;
 export const Width = FlexBasis;
