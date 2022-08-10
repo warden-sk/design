@@ -21,6 +21,7 @@ const allowedJSXAttributes: AllowedJSXAttributes = {
   gap: 'gap-',
   gapX: 'gap-x-',
   gapY: 'gap-y-',
+  gridTemplateColumns: 'grid-template-columns-',
   height: 'height-',
   justifyContent: 'justify-content-',
   justifyItems: 'justify-items-',
