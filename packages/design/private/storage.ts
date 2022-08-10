@@ -60,6 +60,7 @@ export const FlexDirection = ['column', 'column-reverse', 'row', 'row-reverse'] 
 export const FlexWrap = ['nowrap', 'wrap', 'wrap-reverse'] as const;
 export const FontSize = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'] as const;
 export const FontWeight = ['100', '200', '300', '400', '500', '600', '700', '800', '900'] as const;
+export const GridTemplateColumns = ['1', '2', '3', '4'] as const;
 export const Height = ['0', '25', '50', '75', '100', 'auto'] as const;
 // https://drafts.csswg.org/css-align/#propdef-justify-content
 export const JustifyContent = ['left', 'right', ...ContentDistribution, ...ContentPosition] as const;
