@@ -47,7 +47,7 @@ const root: EnhancedCSSProperties = {
   },
   ':root': {
     // @ts-ignore
-    '--border-width': '0.0625rem !important', /* 1px */
+    '--border-width': '0.0625rem !important' /* 1px */,
   },
   a: {
     color: 'inherit',
