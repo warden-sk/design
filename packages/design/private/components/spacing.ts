@@ -50,6 +50,16 @@ function spacing(columns: number): EnhancedCSSProperties {
     }
 
     return {
+      ...['1', '2', '3', '4'].reduce(
+        (_, left) => ({
+          ..._,
+          [`.${breakpointName}grid-template-columns-${left}`]: {
+            gridTemplateColumns: `repeat(${left}, minmax(0, 1fr))`,
+          },
+        }),
+        {}
+      ),
+      // .gap-0
       ...sizes.reduce(
         (_, [left, right]) => ({
           ..._,
