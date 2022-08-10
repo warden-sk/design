@@ -44,6 +44,7 @@ const allowedJSXAttributes: AllowedJSXAttributes = {
   spaceX: 'space-x-',
   spaceY: 'space-y-',
   textAlign: 'text-align-',
+  whiteSpace: 'white-space-',
   width: 'width-',
 } as const;
 

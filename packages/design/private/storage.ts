@@ -89,4 +89,5 @@ export const MarginLeft = [
   ...Margin,
 ] as const;
 export const TextAlign = ['center', 'end', 'justify', 'left', 'right', 'start'] as const;
+export const WhiteSpace = ['normal','nowrap','pre','pre-line','pre-wrap'] as const;
 export const Width = FlexBasis;

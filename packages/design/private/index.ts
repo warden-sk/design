@@ -40,6 +40,7 @@ const justifyContent = toHelper('justifyContent', t.JustifyContent);
 const justifyItems = toHelper('justifyItems', t.JustifyItems);
 const justifySelf = toHelper('justifySelf', t.JustifySelf);
 const textAlign = toHelper('textAlign', t.TextAlign);
+const whiteSpace = toHelper('whiteSpace', t.WhiteSpace);
 
 const root: EnhancedCSSProperties = {
   '*,*::before,*::after': {
@@ -94,6 +95,7 @@ const css: EnhancedCSSProperties[] = [
   lineHeight(),
   spacing(12),
   textAlign,
+  whiteSpace,
   width(12),
 ];
 
