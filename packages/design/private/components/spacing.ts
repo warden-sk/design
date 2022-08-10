@@ -53,6 +53,22 @@ function spacing(columns: number): EnhancedCSSProperties {
       ...sizes.reduce(
         (_, [left, right]) => ({
           ..._,
+          [`.${breakpointName}gap-${left}`]: {
+            gap: right,
+          },
+          [`.${breakpointName}gap-x-${left}`]: {
+            columnGap: right,
+          },
+          [`.${breakpointName}gap-y-${left}`]: {
+            rowGap: right,
+          },
+        }),
+        {}
+      ),
+      // .space-x-0
+      ...sizes.reduce(
+        (_, [left, right]) => ({
+          ..._,
           [`.${breakpointName}space-x-${left} > * + *`]: {
             marginLeft: right,
           },
