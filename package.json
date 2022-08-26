@@ -1,12 +1,12 @@
 {
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.33.1",
-    "@typescript-eslint/parser": "^5.33.1",
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "@typescript-eslint/parser": "^5.35.1",
     "@warden-sk/eslint-config": "github:warden-sk/eslint-config",
     "eslint": "^8.22.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.2"
   },
   "private": true,
   "repository": {
