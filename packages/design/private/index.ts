@@ -2,18 +2,18 @@
  * Copyright 2022 Marek Kobida
  */
 
-import * as t from './storage';
-import type { EnhancedCSSProperties } from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
 import flexBasis from './components/flexBasis';
 import fontSize from './components/fontSize';
-import forBreakpoints from './forBreakpoints';
 import height from './components/height';
 import lineHeight from './components/lineHeight';
 import spacing from './components/spacing';
-import toString from './toString';
 import width from './components/width';
+import type { EnhancedCSSProperties } from './forBreakpoints';
+import forBreakpoints from './forBreakpoints';
+import * as t from './storage';
+import toString from './toString';
 
 function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): EnhancedCSSProperties {
   return forBreakpoints(([b]) =>
