@@ -11,7 +11,7 @@ const testRows2 = testRows.sort((left, right) => left.localeCompare(right, 'sk')
 let rows: string[] = [];
 
 rows = [...rows, '# Breakpoints'];
-rows = [...rows, '| # | Name |'];
+rows = [...rows, '| Name | Size |'];
 rows = [...rows, '| --- | --- |'];
 rows = [...rows, ...breakpoints.map(([name, size]) => `| ${name} | ${size} |`)];
 

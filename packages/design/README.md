@@ -1,5 +1,5 @@
 # Breakpoints
-| # | Name |
+| Name | Size |
 | --- | --- |
 | \# | 40rem |
 | \#\# | 48rem |
