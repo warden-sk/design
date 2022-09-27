@@ -1,3 +1,10 @@
+# Breakpoints
+| # | Name |
+| --- | --- |
+| \# | 40rem |
+| \#\# | 48rem |
+| \#\#\# | 64rem |
+| \#\#\#\# | 80rem |
 # Properties
 | # | Name |
 | --- | --- |
