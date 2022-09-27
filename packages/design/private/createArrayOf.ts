@@ -2,7 +2,7 @@
  * Copyright 2022 Marek Kobida
  */
 
-function createArray(length: number): number[] {
+function createArrayOf(length: number): number[] {
   const $ = [];
 
   for (let i = 0; i < length; i++) {
@@ -12,4 +12,4 @@ function createArray(length: number): number[] {
   return $;
 }
 
-export default createArray;
+export default createArrayOf;

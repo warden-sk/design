@@ -16,11 +16,13 @@ import * as t from './storage';
 import toString from './toString';
 
 function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): EnhancedCSSProperties {
-  return forBreakpoints(([b]) =>
+  return forBreakpoints(([breakpointName]) =>
     type.reduce(
       (_, property) => ({
         ..._,
-        [`.${b}${allowedJSXAttributes[propertyName]}${property}`]: { [propertyName]: property },
+        [`.${breakpointName}${allowedJSXAttributes[propertyName]}${property}`]: {
+          [propertyName]: property,
+        },
       }),
       {}
     )

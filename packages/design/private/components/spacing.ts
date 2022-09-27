@@ -2,7 +2,7 @@
  * Copyright 2022 Marek Kobida
  */
 
-import createArray from '../createArray';
+import createArrayOf from '../createArrayOf';
 import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
 import percentage from '../percentage';
@@ -110,7 +110,7 @@ function spacing(columns: number): EnhancedCSSProperties {
       // .m-auto
       ...css('auto', 'margin', 'auto'),
       // .m-l-1/12
-      ...createArray(columns - 1).reduce(
+      ...createArrayOf(columns - 1).reduce(
         (css, i) => ({
           ...css,
           [`.${breakpointName}m-l-${i + 1}\\/${columns}`]: {
