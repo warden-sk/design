@@ -80,11 +80,13 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
         path.unshiftContainer('body', [
           types.importDeclaration(
             [types.importDefaultSpecifier(types.identifier('decodeClassName2'))],
-            types.stringLiteral('@warden-sk/babel-plugin/private/decodeClassName')
+            types.stringLiteral(process.cwd() + '/node_modules/@warden-sk/babel-plugin/private/decodeClassName')
           ),
           types.importDeclaration(
             [types.importDefaultSpecifier(types.identifier('decodeResponsiveClassName2'))],
-            types.stringLiteral('@warden-sk/babel-plugin/private/decodeResponsiveClassName')
+            types.stringLiteral(
+              process.cwd() + '/node_modules/@warden-sk/babel-plugin/private/decodeResponsiveClassName'
+            )
           ),
         ]);
       },
