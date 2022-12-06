@@ -7,8 +7,12 @@ import allowedJSXAttributes from './private/allowedJSXAttributes';
 import css from '../design/private';
 import fs from 'fs';
 
+function pathFromRoot(relativePath: `/${string}`): string {
+  return process.cwd() + relativePath;
+}
+
 export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } => {
-  fs.writeFileSync(process.cwd() + '/private/design.css', css());
+  fs.writeFileSync(pathFromRoot('/private/design.css'), css());
 
   return {
     visitor: {
@@ -80,13 +84,11 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
         path.unshiftContainer('body', [
           types.importDeclaration(
             [types.importDefaultSpecifier(types.identifier('decodeClassName2'))],
-            types.stringLiteral(process.cwd() + '/node_modules/@warden-sk/babel-plugin/private/decodeClassName')
+            types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeClassName'))
           ),
           types.importDeclaration(
             [types.importDefaultSpecifier(types.identifier('decodeResponsiveClassName2'))],
-            types.stringLiteral(
-              process.cwd() + '/node_modules/@warden-sk/babel-plugin/private/decodeResponsiveClassName'
-            )
+            types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeResponsiveClassName'))
           ),
         ]);
       },
