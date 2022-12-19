@@ -2,8 +2,8 @@
  * Copyright 2022 Marek Kobida
  */
 
-import createArrayOf from '../createArrayOf';
 import type { EnhancedCSSProperties } from '../forBreakpoints';
+import createArrayOf from '../createArrayOf';
 import forBreakpoints from '../forBreakpoints';
 import percentage from '../percentage';
 

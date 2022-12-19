@@ -2,9 +2,9 @@
  * Copyright 2022 Marek Kobida
  */
 
+import type { EnhancedCSSProperties } from '../forBreakpoints';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import createArrayOf from '../createArrayOf';
-import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
 import percentage from '../percentage';
 

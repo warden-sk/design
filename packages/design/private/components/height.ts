@@ -2,8 +2,8 @@
  * Copyright 2022 Marek Kobida
  */
 
-import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import type { EnhancedCSSProperties } from '../forBreakpoints';
+import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import forBreakpoints from '../forBreakpoints';
 
 function height(): EnhancedCSSProperties {
