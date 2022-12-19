@@ -110,7 +110,7 @@ function spacing(columns: number): EnhancedCSSProperties {
       // .m-auto
       ...css('auto', 'margin', 'auto'),
       // .m-l-1/12
-      ...createArrayOf(columns - 1).reduce(
+      ...createArrayOf(columns).reduce(
         (css, i) => ({
           ...css,
           [`.${breakpointName}m-l-${i + 1}\\/${columns}`]: {

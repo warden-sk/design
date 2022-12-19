@@ -17,7 +17,7 @@ function flexBasis(columns: number): EnhancedCSSProperties {
       flexBasis: '0',
     },
     // .flex-basis-1/12
-    ...createArrayOf(columns - 1).reduce(
+    ...createArrayOf(columns).reduce(
       (css, i) => ({
         ...css,
         [`.${breakpointName}${$}${i + 1}\\/${columns}`]: {

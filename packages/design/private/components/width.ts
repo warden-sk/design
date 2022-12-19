@@ -17,7 +17,7 @@ function width(columns: number): EnhancedCSSProperties {
       width: '0',
     },
     // .width-1/12
-    ...createArrayOf(columns - 1).reduce(
+    ...createArrayOf(columns).reduce(
       (css, i) => ({
         ...css,
         [`.${breakpointName}${$}${i + 1}\\/${columns}`]: {
