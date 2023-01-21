@@ -34,6 +34,7 @@ const allowedJSXAttributes: AllowedJSXAttributes = {
   mT: 'm-t-',
   mX: 'm-x-',
   mY: 'm-y-',
+  opacity: 'opacity-',
   p: 'p-',
   pB: 'p-b-',
   pL: 'p-l-',

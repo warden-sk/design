@@ -4,16 +4,17 @@
 
 import * as t from './storage';
 import type { EnhancedCSSProperties } from './forBreakpoints';
+import forBreakpoints from './forBreakpoints';
 import allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
 import flexBasis from './components/flexBasis';
 import fontSize from './components/fontSize';
-import forBreakpoints from './forBreakpoints';
 import height from './components/height';
 import lineHeight from './components/lineHeight';
 import spacing from './components/spacing';
 import toString from './toString';
 import width from './components/width';
+import opacity from './components/opacity';
 
 function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): EnhancedCSSProperties {
   return forBreakpoints(([breakpointName]) =>
@@ -95,6 +96,7 @@ const css: EnhancedCSSProperties[] = [
   justifyItems,
   justifySelf,
   lineHeight(),
+  opacity(),
   spacing(12),
   textAlign,
   whiteSpace,
