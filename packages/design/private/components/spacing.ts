@@ -3,8 +3,8 @@
  */
 
 import type { EnhancedCSSProperties } from '../forBreakpoints';
-import createArrayOf from '../createArrayOf';
 import forBreakpoints from '../forBreakpoints';
+import createArrayOf from '../createArrayOf';
 import percentage from '../percentage';
 
 const sizes = [

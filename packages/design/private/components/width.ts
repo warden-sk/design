@@ -3,9 +3,9 @@
  */
 
 import type { EnhancedCSSProperties } from '../forBreakpoints';
+import forBreakpoints from '../forBreakpoints';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import createArrayOf from '../createArrayOf';
-import forBreakpoints from '../forBreakpoints';
 import percentage from '../percentage';
 
 function width(columns: number): EnhancedCSSProperties {

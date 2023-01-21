@@ -3,8 +3,8 @@
  */
 
 import type { EnhancedCSSProperties } from '../forBreakpoints';
-import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import forBreakpoints from '../forBreakpoints';
+import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 
 function height(): EnhancedCSSProperties {
   const $ = allowedJSXAttributes['height'];
