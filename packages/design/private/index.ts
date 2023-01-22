@@ -17,11 +17,13 @@ import width from './components/width';
 import opacity from './components/opacity';
 
 function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): EnhancedCSSProperties {
+  const $ = allowedJSXAttributes[propertyName];
+
   return forBreakpoints(([breakpointName]) =>
     type.reduce(
       (_, property) => ({
         ..._,
-        [`.${breakpointName}${allowedJSXAttributes[propertyName]}${property}`]: {
+        [`.${breakpointName}${$}${property}`]: {
           [propertyName]: property,
         },
       }),

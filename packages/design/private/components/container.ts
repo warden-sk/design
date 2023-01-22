@@ -6,15 +6,17 @@ import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
 
 function container(): EnhancedCSSProperties {
+  const $ = 'container';
+
   return forBreakpoints(breakpoint =>
     breakpoint[0]
       ? {
-          '.container': {
+          [`.${$}`]: {
             maxWidth: breakpoint[1],
           },
         }
       : {
-          '.container': {
+          [`.${$}`]: {
             width: '100%',
           },
         }
