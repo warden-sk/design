@@ -21,7 +21,7 @@ function toString(properties: CSS.Properties | EnhancedCSSProperties, $ = false)
 
     // @media
     if (typeof property === 'object') {
-      css += `${encodePropertyName(propertyName)}{${toString(property, $)}}`;
+      css += `${propertyName}{${toString(property, $)}}`;
     }
   }
 

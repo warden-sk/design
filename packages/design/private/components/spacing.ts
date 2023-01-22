@@ -6,6 +6,7 @@ import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
 import createArrayOf from '../createArrayOf';
 import percentage from '../percentage';
+import allowedJSXAttributes from '@warden-sk/babel-plugin/private/allowedJSXAttributes';
 
 const sizes = [
   ['0', '0'], //       0
@@ -26,24 +27,32 @@ function spacing(columns: number): EnhancedCSSProperties {
       property: 'margin' | 'padding',
       right: '0' | 'auto' | `${string}rem`
     ): EnhancedCSSProperties {
+      const m = allowedJSXAttributes[property[0]];
+      const mB = allowedJSXAttributes[`${property[0]}B`];
+      const mL = allowedJSXAttributes[`${property[0]}L`];
+      const mR = allowedJSXAttributes[`${property[0]}R`];
+      const mT = allowedJSXAttributes[`${property[0]}T`];
+      const mX = allowedJSXAttributes[`${property[0]}X`];
+      const mY = allowedJSXAttributes[`${property[0]}Y`];
+
       return {
-        [`.${breakpointName}${property[0]}-${left}`]: {
+        [`.${breakpointName}${m}${left}`]: {
           [property]: right,
         },
         // "b", "y"
-        [`.${breakpointName}${property[0]}-b-${left},.${breakpointName}${property[0]}-y-${left}`]: {
+        [`.${breakpointName}${mB}${left},.${breakpointName}${mY}${left}`]: {
           [`${property}Bottom`]: right,
         },
         // "l", "x"
-        [`.${breakpointName}${property[0]}-l-${left},.${breakpointName}${property[0]}-x-${left}`]: {
+        [`.${breakpointName}${mL}${left},.${breakpointName}${mX}${left}`]: {
           [`${property}Left`]: right,
         },
-        // "right", "x"
-        [`.${breakpointName}${property[0]}-r-${left},.${breakpointName}${property[0]}-x-${left}`]: {
+        // "r", "x"
+        [`.${breakpointName}${mR}${left},.${breakpointName}${mX}${left}`]: {
           [`${property}Right`]: right,
         },
         // "t", "y"
-        [`.${breakpointName}${property[0]}-t-${left},.${breakpointName}${property[0]}-y-${left}`]: {
+        [`.${breakpointName}${mT}${left},.${breakpointName}${mY}${left}`]: {
           [`${property}Top`]: right,
         },
       };
@@ -53,7 +62,7 @@ function spacing(columns: number): EnhancedCSSProperties {
       ...['1', '2', '3', '4'].reduce(
         (_, left) => ({
           ..._,
-          [`.${breakpointName}grid-template-columns-${left}`]: {
+          [`.${breakpointName}${allowedJSXAttributes['gridTemplateColumns']}${left}`]: {
             gridTemplateColumns: `repeat(${left}, minmax(0, 1fr))`,
           },
         }),
@@ -63,13 +72,13 @@ function spacing(columns: number): EnhancedCSSProperties {
       ...sizes.reduce(
         (_, [left, right]) => ({
           ..._,
-          [`.${breakpointName}gap-${left}`]: {
+          [`.${breakpointName}${allowedJSXAttributes['gap']}${left}`]: {
             gap: right,
           },
-          [`.${breakpointName}gap-x-${left}`]: {
+          [`.${breakpointName}${allowedJSXAttributes['gapX']}${left}`]: {
             columnGap: right,
           },
-          [`.${breakpointName}gap-y-${left}`]: {
+          [`.${breakpointName}${allowedJSXAttributes['gapY']}${left}`]: {
             rowGap: right,
           },
         }),
@@ -79,10 +88,10 @@ function spacing(columns: number): EnhancedCSSProperties {
       ...sizes.reduce(
         (_, [left, right]) => ({
           ..._,
-          [`.${breakpointName}space-x-${left} > * + *`]: {
+          [`.${breakpointName}${allowedJSXAttributes['spaceX']}${left} > * + *`]: {
             marginLeft: right,
           },
-          [`.${breakpointName}space-y-${left} > * + *`]: {
+          [`.${breakpointName}${allowedJSXAttributes['spaceY']}${left} > * + *`]: {
             marginTop: right,
           },
         }),
@@ -113,7 +122,7 @@ function spacing(columns: number): EnhancedCSSProperties {
       ...createArrayOf(columns).reduce(
         (css, i) => ({
           ...css,
-          [`.${breakpointName}m-l-${i + 1}\\/${columns}`]: {
+          [`.${breakpointName}${allowedJSXAttributes['mL']}${i + 1}\\/${columns}`]: {
             marginLeft: percentage(i + 1, columns),
           },
         }),
