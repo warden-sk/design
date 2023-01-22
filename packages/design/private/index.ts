@@ -15,6 +15,7 @@ import spacing from './components/spacing';
 import toString from './toString';
 import width from './components/width';
 import opacity from './components/opacity';
+import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
 function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): EnhancedCSSProperties {
   const $ = allowedJSXAttributes[propertyName];
@@ -23,7 +24,7 @@ function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonl
     type.reduce(
       (_, property) => ({
         ..._,
-        [`.${breakpointName}${$}${property}`]: {
+        [`.${breakpointName}${$}${dictionary.get(property)}`]: {
           [propertyName]: property,
         },
       }),

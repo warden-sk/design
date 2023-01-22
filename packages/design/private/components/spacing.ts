@@ -7,6 +7,7 @@ import forBreakpoints from '../forBreakpoints';
 import createArrayOf from '../createArrayOf';
 import percentage from '../percentage';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
+import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
 const sizes = [
   ['0', '0'], //       0
@@ -36,23 +37,23 @@ function spacing(columns: number): EnhancedCSSProperties {
       const mY = allowedJSXAttributes[`${property[0]}Y`];
 
       return {
-        [`.${breakpointName}${m}${left}`]: {
+        [`.${breakpointName}${m}${dictionary.get(left)}`]: {
           [property]: right,
         },
         // "b", "y"
-        [`.${breakpointName}${mB}${left},.${breakpointName}${mY}${left}`]: {
+        [`.${breakpointName}${mB}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
           [`${property}Bottom`]: right,
         },
         // "l", "x"
-        [`.${breakpointName}${mL}${left},.${breakpointName}${mX}${left}`]: {
+        [`.${breakpointName}${mL}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
           [`${property}Left`]: right,
         },
         // "r", "x"
-        [`.${breakpointName}${mR}${left},.${breakpointName}${mX}${left}`]: {
+        [`.${breakpointName}${mR}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
           [`${property}Right`]: right,
         },
         // "t", "y"
-        [`.${breakpointName}${mT}${left},.${breakpointName}${mY}${left}`]: {
+        [`.${breakpointName}${mT}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
           [`${property}Top`]: right,
         },
       };
@@ -62,7 +63,7 @@ function spacing(columns: number): EnhancedCSSProperties {
       ...['1', '2', '3', '4'].reduce(
         (_, left) => ({
           ..._,
-          [`.${breakpointName}${allowedJSXAttributes['gridTemplateColumns']}${left}`]: {
+          [`.${breakpointName}${allowedJSXAttributes['gridTemplateColumns']}${dictionary.get(left)}`]: {
             gridTemplateColumns: `repeat(${left}, minmax(0, 1fr))`,
           },
         }),
@@ -72,13 +73,13 @@ function spacing(columns: number): EnhancedCSSProperties {
       ...sizes.reduce(
         (_, [left, right]) => ({
           ..._,
-          [`.${breakpointName}${allowedJSXAttributes['gap']}${left}`]: {
+          [`.${breakpointName}${allowedJSXAttributes['gap']}${dictionary.get(left)}`]: {
             gap: right,
           },
-          [`.${breakpointName}${allowedJSXAttributes['gapX']}${left}`]: {
+          [`.${breakpointName}${allowedJSXAttributes['gapX']}${dictionary.get(left)}`]: {
             columnGap: right,
           },
-          [`.${breakpointName}${allowedJSXAttributes['gapY']}${left}`]: {
+          [`.${breakpointName}${allowedJSXAttributes['gapY']}${dictionary.get(left)}`]: {
             rowGap: right,
           },
         }),
@@ -88,10 +89,10 @@ function spacing(columns: number): EnhancedCSSProperties {
       ...sizes.reduce(
         (_, [left, right]) => ({
           ..._,
-          [`.${breakpointName}${allowedJSXAttributes['spaceX']}${left} > * + *`]: {
+          [`.${breakpointName}${allowedJSXAttributes['spaceX']}${dictionary.get(left)} > * + *`]: {
             marginLeft: right,
           },
-          [`.${breakpointName}${allowedJSXAttributes['spaceY']}${left} > * + *`]: {
+          [`.${breakpointName}${allowedJSXAttributes['spaceY']}${dictionary.get(left)} > * + *`]: {
             marginTop: right,
           },
         }),
@@ -122,7 +123,7 @@ function spacing(columns: number): EnhancedCSSProperties {
       ...createArrayOf(columns).reduce(
         (css, i) => ({
           ...css,
-          [`.${breakpointName}${allowedJSXAttributes['mL']}${i + 1}\\/${columns}`]: {
+          [`.${breakpointName}${allowedJSXAttributes['mL']}${dictionary.get(`${i + 1}/${columns}`)}`]: {
             marginLeft: percentage(i + 1, columns),
           },
         }),

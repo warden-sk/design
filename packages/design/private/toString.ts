@@ -21,7 +21,7 @@ function toString(properties: CSS.Properties | EnhancedCSSProperties, $ = false)
 
     // @media
     if (typeof property === 'object') {
-      css += `${propertyName}{${toString(property, $)}}`;
+      css += `${propertyName.replace('/', '\\/')}{${toString(property, $)}}`;
     }
   }
 

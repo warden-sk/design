@@ -4,16 +4,14 @@
 
 import type $ from '@babel/core';
 import allowedJSXAttributes from './private/allowedJSXAttributes';
-import css from '../design/private';
 import fs from 'fs';
+import css from '@warden-sk/design/private';
 
 function pathFromRoot(relativePath: `/${string}`): string {
   return process.cwd() + relativePath;
 }
 
 export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } => {
-  fs.writeFileSync(pathFromRoot('/private/design.css'), css());
-
   return {
     visitor: {
       JSXOpeningElement(path) {
@@ -81,6 +79,8 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
         }
       },
       Program(path) {
+        fs.writeFileSync(pathFromRoot('/private/design.css'), css());
+
         path.unshiftContainer('body', [
           types.importDeclaration(
             [types.importDefaultSpecifier(types.identifier('decodeClassName2'))],

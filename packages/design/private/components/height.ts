@@ -5,33 +5,34 @@
 import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
 import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
+import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
 function height(): EnhancedCSSProperties {
   const $ = allowedJSXAttributes['height'];
 
   return forBreakpoints(([breakpointName]) => ({
     // .height-0
-    [`.${breakpointName}${$}0`]: {
+    [`.${breakpointName}${$}${dictionary.get('0')}`]: {
       height: '0',
     },
     // .height-25
-    [`.${breakpointName}${$}25`]: {
+    [`.${breakpointName}${$}${dictionary.get('25')}`]: {
       height: '25%',
     },
     // .height-50
-    [`.${breakpointName}${$}50`]: {
+    [`.${breakpointName}${$}${dictionary.get('50')}`]: {
       height: '50%',
     },
     // .height-75
-    [`.${breakpointName}${$}75`]: {
+    [`.${breakpointName}${$}${dictionary.get('75')}`]: {
       height: '75%',
     },
     // .height-100
-    [`.${breakpointName}${$}100`]: {
+    [`.${breakpointName}${$}${dictionary.get('100')}`]: {
       height: '100%',
     },
     // .height-auto
-    [`.${breakpointName}${$}auto`]: {
+    [`.${breakpointName}${$}${dictionary.get('auto')}`]: {
       height: 'auto',
     },
   }));
