@@ -4,20 +4,17 @@
 
 import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
-import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
 function container(): EnhancedCSSProperties {
-  const $ = dictionary.get('container');
-
   return forBreakpoints(breakpoint =>
     breakpoint[0]
       ? {
-          [`.${$}`]: {
+          '.container': {
             maxWidth: breakpoint[1],
           },
         }
       : {
-          [`.${$}`]: {
+          '.container': {
             width: '100%',
           },
         }

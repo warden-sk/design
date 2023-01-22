@@ -6,7 +6,7 @@ import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
 import createArrayOf from '../createArrayOf';
 import percentage from '../percentage';
-import allowedJSXAttributes from '@warden-sk/babel-plugin/private/allowedJSXAttributes';
+import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 
 const sizes = [
   ['0', '0'], //       0
