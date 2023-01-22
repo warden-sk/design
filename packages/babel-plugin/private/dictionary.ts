@@ -12,6 +12,4 @@ const dictionary = new Dictionary([
   ...design_decoded_keys,
 ]);
 
-console.log(dictionary);
-
 export default dictionary;
