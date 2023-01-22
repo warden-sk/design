@@ -105,7 +105,7 @@ function spacing(columns: number): EnhancedCSSProperties {
             ? _
             : {
                 ..._,
-                ...css(`\\!${left}`, 'margin', `-${right}`),
+                ...css(`!${left}`, 'margin', `-${right}`),
               },
         {}
       ),
