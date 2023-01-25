@@ -45,6 +45,6 @@ const allowedJSXAttributes: { [attributeName: string]: string } = {
   textAlign: dictionary.get('text-align-'),
   whiteSpace: dictionary.get('white-space-'),
   width: dictionary.get('width-'),
-} as const;
+};
 
 export default allowedJSXAttributes;

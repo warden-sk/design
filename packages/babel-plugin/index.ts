@@ -42,7 +42,7 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
                     if (types.isExpression(attribute.value.expression)) {
                       return className.push(
                         types.callExpression(types.identifier('decodeResponsiveClassName2'), [
-                          types.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
+                          types.stringLiteral(allowedJSXAttributes[attribute.name.name]),
                           attribute.value.expression,
                         ])
                       );
@@ -52,7 +52,7 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
                   if (types.isStringLiteral(attribute.value)) {
                     return className.push(
                       types.callExpression(types.identifier('decodeResponsiveClassName2'), [
-                        types.stringLiteral(allowedJSXAttributes[attribute.name.name as 'alignContent']),
+                        types.stringLiteral(allowedJSXAttributes[attribute.name.name]),
                         attribute.value,
                       ])
                     );
