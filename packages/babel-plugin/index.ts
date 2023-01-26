@@ -11,11 +11,125 @@ function pathFromRoot(relativePath: `/${string}`): string {
   return process.cwd() + relativePath;
 }
 
+const elements = [
+  'a',
+  'abbr',
+  'address',
+  'area',
+  'article',
+  'aside',
+  'audio',
+  'b',
+  'base',
+  'bdi',
+  'bdo',
+  'blockquote',
+  'body',
+  'br',
+  'button',
+  'canvas',
+  'caption',
+  'cite',
+  'code',
+  'col',
+  'colgroup',
+  'data',
+  'datalist',
+  'dd',
+  'del',
+  'details',
+  'dfn',
+  'div',
+  'dl',
+  'dt',
+  'em',
+  'embed',
+  'fieldset',
+  'figcaption',
+  'figure',
+  'footer',
+  'form',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'head',
+  'header',
+  'hr',
+  'html',
+  'i',
+  'iframe',
+  'img',
+  'input',
+  'ins',
+  'kbd',
+  'label',
+  'legend',
+  'li',
+  'link',
+  'main',
+  'map',
+  'mark',
+  'menu',
+  'meta',
+  'meter',
+  'nav',
+  'noscript',
+  'object',
+  'ol',
+  'optgroup',
+  'option',
+  'output',
+  'p',
+  'param',
+  'picture',
+  'pre',
+  'progress',
+  'q',
+  'rp',
+  'rt',
+  'ruby',
+  's',
+  'samp',
+  'script',
+  'section',
+  'select',
+  'slot',
+  'small',
+  'source',
+  'span',
+  'strong',
+  'style',
+  'sub',
+  'summary',
+  'sup',
+  'svg',
+  'table',
+  'tbody',
+  'td',
+  'template',
+  'textarea',
+  'tfoot',
+  'th',
+  'thead',
+  'time',
+  'title',
+  'tr',
+  'track',
+  'u',
+  'ul',
+  'var',
+  'video',
+  'wbr',
+];
+
 export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } => {
   return {
     visitor: {
       JSXOpeningElement(path) {
-        if (types.isJSXIdentifier(path.node.name)) {
+        if (types.isJSXIdentifier(path.node.name) && elements.indexOf(path.node.name.name) !== -1) {
           const attributes: ($.types.JSXAttribute | $.types.JSXSpreadAttribute)[] = [];
           const className: $.types.Expression[] = [];
 
@@ -61,6 +175,18 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
               }
             }
 
+            if (types.isJSXSpreadAttribute(attribute)) {
+              attributes.push(
+                types.jsxSpreadAttribute(
+                  types.callExpression(types.identifier('deleteFromJSXSpreadAttributes2'), [attribute.argument])
+                )
+              );
+
+              return className.push(
+                types.callExpression(types.identifier('decodeJSXSpreadAttributes2'), [attribute.argument])
+              );
+            }
+
             attributes.push(attribute);
           });
 
@@ -82,6 +208,17 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
         fs.writeFileSync(pathFromRoot('/private/design.css'), css());
 
         path.unshiftContainer('body', [
+          types.importDeclaration(
+            [types.importDefaultSpecifier(types.identifier('decodeJSXSpreadAttributes2'))],
+            types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeJSXSpreadAttributes'))
+          ),
+          types.importDeclaration(
+            [types.importDefaultSpecifier(types.identifier('deleteFromJSXSpreadAttributes2'))],
+            types.stringLiteral(
+              pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/deleteFromJSXSpreadAttributes')
+            )
+          ),
+          //------------------------------------------------------------------------------------------------------------
           types.importDeclaration(
             [types.importDefaultSpecifier(types.identifier('decodeClassName2'))],
             types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeClassName'))
