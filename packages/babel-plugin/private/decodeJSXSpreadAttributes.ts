@@ -2,9 +2,10 @@
  * Copyright 2023 Marek Kobida
  */
 
-import AllowedJSXAttributes from './allowedJSXAttributes';
+import allowedJSXAttributes from './allowedJSXAttributes';
 import decodeResponsiveClassName from './decodeResponsiveClassName';
 import type { EncodedClassName } from './decodeClassName';
+import dictionary from './dictionary';
 
 function decodeJSXSpreadAttributes(attributes: any): EncodedClassName[] {
   const $ = Object.keys(attributes).reduce<EncodedClassName[]>(($$, key) => {
@@ -14,8 +15,8 @@ function decodeJSXSpreadAttributes(attributes: any): EncodedClassName[] {
       return [...$$, attribute];
     }
 
-    if (key in AllowedJSXAttributes) {
-      return [...$$, decodeResponsiveClassName(AllowedJSXAttributes[key], attribute)];
+    if (key in allowedJSXAttributes) {
+      return [...$$, decodeResponsiveClassName(dictionary.get(allowedJSXAttributes[key]), attribute)];
     }
 
     return $$;

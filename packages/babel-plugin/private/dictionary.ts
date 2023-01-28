@@ -3,13 +3,12 @@
  */
 
 import Dictionary from '../../../../koala.sk/packages/Dictionary';
-import design_decoded_keys from '../../../../koala.sk/packages/Dictionary/design_decoded_keys';
 import storage from '@warden-sk/design/private/storage';
+import allowedJSXAttributes from './allowedJSXAttributes';
 
 const dictionary = new Dictionary([
+  ...Object.keys(allowedJSXAttributes).reduce<string[]>(($, key) => [...$, allowedJSXAttributes[key]], []),
   ...Object.keys(storage).reduce<string[]>(($, key) => [...$, ...storage[key as 'AlignContent']], []),
-  //
-  ...design_decoded_keys,
 ]);
 
 export default dictionary;
