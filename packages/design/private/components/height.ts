@@ -4,11 +4,10 @@
 
 import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
-import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
 function height(): EnhancedCSSProperties {
-  const $ = allowedJSXAttributes['height'];
+  const $ = dictionary.get('height');
 
   return forBreakpoints(([breakpointName]) => ({
     // .height-0

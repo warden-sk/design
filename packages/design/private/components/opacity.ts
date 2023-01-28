@@ -2,13 +2,12 @@
  * Copyright 2023 Marek Kobida
  */
 
-import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
 import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
 function opacity(): EnhancedCSSProperties {
-  const $ = allowedJSXAttributes['opacity'];
+  const $ = dictionary.get('opacity');
 
   return forBreakpoints(([breakpointName]) => ({
     // .opacity-0

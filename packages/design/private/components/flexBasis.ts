@@ -4,13 +4,12 @@
 
 import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
-import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import createArrayOf from '../createArrayOf';
 import percentage from '../percentage';
 import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
 function flexBasis(columns: number): EnhancedCSSProperties {
-  const $ = allowedJSXAttributes['flexBasis'];
+  const $ = dictionary.get('flexBasis');
 
   return forBreakpoints(([breakpointName]) => ({
     // .flex-basis-0

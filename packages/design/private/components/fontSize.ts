@@ -4,7 +4,6 @@
 
 import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
-import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
 const fontSizes = [
@@ -23,7 +22,7 @@ const fontSizes = [
 ] as const;
 
 function fontSize(): EnhancedCSSProperties {
-  const $ = allowedJSXAttributes['fontSize'];
+  const $ = dictionary.get('fontSize');
 
   return forBreakpoints(([breakpointName]) =>
     fontSizes.reduce(

@@ -4,7 +4,6 @@
 
 import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
-import allowedJSXAttributes from '../../../babel-plugin/private/allowedJSXAttributes';
 import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
 const lineHeights = [
@@ -16,7 +15,7 @@ const lineHeights = [
 ] as const;
 
 function lineHeight(): EnhancedCSSProperties {
-  const $ = allowedJSXAttributes['lineHeight'];
+  const $ = dictionary.get('lineHeight');
 
   return forBreakpoints(([breakpointName]) =>
     lineHeights.reduce(
