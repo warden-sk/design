@@ -4,22 +4,20 @@
 
 import AllowedJSXAttributes from './allowedJSXAttributes';
 
-function filterJSXSpreadAttributes(attributes: any): any {
-  const $ = Object.keys(attributes).reduce(($$, key) => {
+function filterJSXSpreadAttributes(attributes: { [key: string]: any }) {
+  return Object.keys(attributes).reduce(($, key) => {
     const attribute = attributes[key];
 
     if (key === 'className') {
-      return $$;
+      return $;
     }
 
     if (key in AllowedJSXAttributes) {
-      return $$;
+      return $;
     }
 
-    return { ...$$, [key]: attribute };
+    return { ...$, [key]: attribute };
   }, {});
-
-  return $;
 }
 
 export default filterJSXSpreadAttributes;

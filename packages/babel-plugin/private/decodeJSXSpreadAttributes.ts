@@ -7,22 +7,20 @@ import decodeResponsiveClassName from './decodeResponsiveClassName';
 import type { EncodedClassName } from './decodeClassName';
 import dictionary from './dictionary';
 
-function decodeJSXSpreadAttributes(attributes: any): EncodedClassName[] {
-  const $ = Object.keys(attributes).reduce<EncodedClassName[]>(($$, key) => {
+function decodeJSXSpreadAttributes(attributes: { [key: string]: any }): EncodedClassName[] {
+  return Object.keys(attributes).reduce<EncodedClassName[]>(($, key) => {
     const attribute = attributes[key];
 
     if (key === 'className') {
-      return [...$$, attribute];
+      return [...$, attribute];
     }
 
     if (key in allowedJSXAttributes) {
-      return [...$$, decodeResponsiveClassName(dictionary.get(key), attribute)];
+      return [...$, decodeResponsiveClassName(dictionary.get(key), attribute)];
     }
 
-    return $$;
+    return $;
   }, []);
-
-  return $;
 }
 
 export default decodeJSXSpreadAttributes;
