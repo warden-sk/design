@@ -5,7 +5,6 @@
 import t from './storage';
 import type { EnhancedCSSProperties } from './forBreakpoints';
 import forBreakpoints from './forBreakpoints';
-import type allowedJSXAttributes from '../../babel-plugin/private/allowedJSXAttributes';
 import container from './components/container';
 import flexBasis from './components/flexBasis';
 import fontSize from './components/fontSize';
@@ -17,8 +16,7 @@ import width from './components/width';
 import opacity from './components/opacity';
 import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
-function toHelper(propertyName: keyof typeof allowedJSXAttributes, type: readonly string[]): EnhancedCSSProperties {
-  // @ts-ignore
+function toHelper(propertyName: string, type: readonly string[]): EnhancedCSSProperties {
   const $ = dictionary.get(propertyName);
 
   return forBreakpoints(([breakpointName]) =>

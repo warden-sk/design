@@ -7,7 +7,7 @@ import storage from '@warden-sk/design/private/storage';
 import allowedJSXAttributes from './allowedJSXAttributes';
 
 const dictionary = new Dictionary([
-  ...Object.keys(allowedJSXAttributes).reduce<string[]>(($, key) => [...$, key], []),
+  ...allowedJSXAttributes,
   ...Object.keys(storage).reduce<string[]>(($, key) => [...$, ...storage[key as 'AlignContent']], []),
 ]);
 

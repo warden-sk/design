@@ -151,7 +151,7 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
                   }
                 }
                 /* (2) */
-                if (attribute.name.name in allowedJSXAttributes) {
+                if (allowedJSXAttributes.has(attribute.name.name)) {
                   /* (2.1) */
                   if (types.isJSXExpressionContainer(attribute.value)) {
                     if (types.isExpression(attribute.value.expression)) {
