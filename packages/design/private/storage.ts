@@ -92,32 +92,3 @@ export const MarginLeft = [
 export const TextAlign = ['center', 'end', 'justify', 'left', 'right', 'start'] as const;
 export const WhiteSpace = ['normal', 'nowrap', 'pre', 'pre-line', 'pre-wrap'] as const;
 export const Width = FlexBasis;
-
-const storage = {
-  AlignContent,
-  AlignItems,
-  AlignSelf,
-  Cursor,
-  Display,
-  Flex,
-  FlexBasis,
-  FlexDirection,
-  FlexWrap,
-  FontSize,
-  FontWeight,
-  GridTemplateColumns,
-  Height,
-  JustifyContent,
-  JustifyItems,
-  JustifySelf,
-  LineHeight,
-  Margin,
-  MarginLeft,
-  Opacity,
-  S,
-  TextAlign,
-  WhiteSpace,
-  Width,
-};
-
-export default storage;

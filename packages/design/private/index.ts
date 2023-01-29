@@ -2,7 +2,7 @@
  * Copyright 2023 Marek Kobida
  */
 
-import t from './storage';
+import * as t from './storage';
 import type { EnhancedCSSProperties } from './forBreakpoints';
 import forBreakpoints from './forBreakpoints';
 import container from './components/container';
