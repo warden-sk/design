@@ -7,8 +7,10 @@ import allowedJSXAttributes from './allowedJSXAttributes';
 
 const dictionary = new Dictionary([
   ...Object.keys(allowedJSXAttributes).reduce<string[]>(($, key) => [...$, key], []),
-  // @ts-ignore
-  ...Object.keys(allowedJSXAttributes).reduce<string[]>(($, key) => [...$, ...allowedJSXAttributes[key]], []),
+  ...Object.keys(allowedJSXAttributes).reduce<string[]>(
+    ($, key) => [...$, ...allowedJSXAttributes[key as keyof typeof allowedJSXAttributes]],
+    []
+  ),
 ]);
 
 export default dictionary;

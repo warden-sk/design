@@ -4,7 +4,7 @@
 
 import AllowedJSXAttributes from './allowedJSXAttributes';
 
-function deleteFromJSXSpreadAttributes(attributes: any): any {
+function filterJSXSpreadAttributes(attributes: any): any {
   const $ = Object.keys(attributes).reduce(($$, key) => {
     const attribute = attributes[key];
 
@@ -22,4 +22,4 @@ function deleteFromJSXSpreadAttributes(attributes: any): any {
   return $;
 }
 
-export default deleteFromJSXSpreadAttributes;
+export default filterJSXSpreadAttributes;

@@ -179,7 +179,7 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
             if (types.isJSXSpreadAttribute(attribute)) {
               attributes.push(
                 types.jsxSpreadAttribute(
-                  types.callExpression(types.identifier('deleteFromJSXSpreadAttributes2'), [attribute.argument])
+                  types.callExpression(types.identifier('filterJSXSpreadAttributes2'), [attribute.argument])
                 )
               );
 
@@ -214,10 +214,8 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
             types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeJSXSpreadAttributes'))
           ),
           types.importDeclaration(
-            [types.importDefaultSpecifier(types.identifier('deleteFromJSXSpreadAttributes2'))],
-            types.stringLiteral(
-              pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/deleteFromJSXSpreadAttributes')
-            )
+            [types.importDefaultSpecifier(types.identifier('filterJSXSpreadAttributes2'))],
+            types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/filterJSXSpreadAttributes'))
           ),
           //------------------------------------------------------------------------------------------------------------
           types.importDeclaration(
