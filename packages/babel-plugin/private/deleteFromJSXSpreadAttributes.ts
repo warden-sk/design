@@ -2,7 +2,7 @@
  * Copyright 2023 Marek Kobida
  */
 
-import allowedJSXAttributes from './allowedJSXAttributes';
+import AllowedJSXAttributes from './allowedJSXAttributes';
 
 function deleteFromJSXSpreadAttributes(attributes: any): any {
   const $ = Object.keys(attributes).reduce(($$, key) => {
@@ -12,7 +12,7 @@ function deleteFromJSXSpreadAttributes(attributes: any): any {
       return $$;
     }
 
-    if (allowedJSXAttributes.has(key)) {
+    if (key in AllowedJSXAttributes) {
       return $$;
     }
 

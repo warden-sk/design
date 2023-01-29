@@ -15,7 +15,7 @@ function decodeJSXSpreadAttributes(attributes: any): EncodedClassName[] {
       return [...$$, attribute];
     }
 
-    if (allowedJSXAttributes.has(key)) {
+    if (key in allowedJSXAttributes) {
       return [...$$, decodeResponsiveClassName(dictionary.get(key), attribute)];
     }
 
