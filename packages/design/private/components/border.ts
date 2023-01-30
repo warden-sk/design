@@ -12,52 +12,55 @@ const sizes = [
   ['2', '0.125rem'], //  2px
 ] as const;
 
+export function css(
+  breakpointName: string,
+  [propertyName1, propertyName2]: [string, string],
+  left: string,
+  right: string
+): EnhancedCSSProperties {
+  const m = dictionary.get(propertyName1);
+  const mB = dictionary.get(`${propertyName1}B`);
+  const mL = dictionary.get(`${propertyName1}L`);
+  const mR = dictionary.get(`${propertyName1}R`);
+  const mT = dictionary.get(`${propertyName1}T`);
+  const mX = dictionary.get(`${propertyName1}X`);
+  const mY = dictionary.get(`${propertyName1}Y`);
+
+  return {
+    [`.${breakpointName}${m}${dictionary.get(left)}`]: {
+      [`${propertyName2}Style`]: 'solid',
+      [`${propertyName2}Width`]: right,
+    },
+    // "b", "y"
+    [`.${breakpointName}${mB}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
+      [`${propertyName2}BottomStyle`]: 'solid',
+      [`${propertyName2}BottomWidth`]: right,
+    },
+    // "l", "x"
+    [`.${breakpointName}${mL}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
+      [`${propertyName2}LeftStyle`]: 'solid',
+      [`${propertyName2}LeftWidth`]: right,
+    },
+    // "r", "x"
+    [`.${breakpointName}${mR}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
+      [`${propertyName2}RightStyle`]: 'solid',
+      [`${propertyName2}RightWidth`]: right,
+    },
+    // "t", "y"
+    [`.${breakpointName}${mT}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
+      [`${propertyName2}TopStyle`]: 'solid',
+      [`${propertyName2}TopWidth`]: right,
+    },
+  };
+}
+
 function border(): EnhancedCSSProperties {
   return forBreakpoints(([breakpointName]) => {
-    function css(left: string, right: '0' | 'auto' | `${string}rem`): EnhancedCSSProperties {
-      const m = dictionary.get('border');
-      const mB = dictionary.get('borderB');
-      const mL = dictionary.get('borderL');
-      const mR = dictionary.get('borderR');
-      const mT = dictionary.get('borderT');
-      const mX = dictionary.get('borderX');
-      const mY = dictionary.get('borderY');
-
-      const property = 'border';
-
-      return {
-        [`.${breakpointName}${m}${dictionary.get(left)}`]: {
-          [`${property}Style`]: 'solid',
-          [`${property}Width`]: right,
-        },
-        // "b", "y"
-        [`.${breakpointName}${mB}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
-          [`${property}BottomStyle`]: 'solid',
-          [`${property}BottomWidth`]: right,
-        },
-        // "l", "x"
-        [`.${breakpointName}${mL}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
-          [`${property}LeftStyle`]: 'solid',
-          [`${property}LeftWidth`]: right,
-        },
-        // "r", "x"
-        [`.${breakpointName}${mR}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
-          [`${property}RightStyle`]: 'solid',
-          [`${property}RightWidth`]: right,
-        },
-        // "t", "y"
-        [`.${breakpointName}${mT}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
-          [`${property}TopStyle`]: 'solid',
-          [`${property}TopWidth`]: right,
-        },
-      };
-    }
-
     return {
       ...sizes.reduce(
         (_, [left, right]) => ({
           ..._,
-          ...css(left, right),
+          ...css(breakpointName, ['border', 'border'], left, right),
         }),
         {}
       ),
