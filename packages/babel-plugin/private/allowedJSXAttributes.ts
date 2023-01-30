@@ -12,6 +12,7 @@ const allowedJSXAttributes = {
   borderB: t.Border,
   borderL: t.Border,
   borderR: t.Border,
+  borderRadius: t.BorderRadius,
   borderT: t.Border,
   borderX: t.Border,
   borderY: t.Border,

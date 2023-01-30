@@ -12,44 +12,39 @@ const sizes = [
   ['2', '0.125rem'], //  2px
 ] as const;
 
-export function css(
-  breakpointName: string,
-  [propertyName1, propertyName2]: [string, string],
-  left: string,
-  right: string
-): EnhancedCSSProperties {
-  const m = dictionary.get(propertyName1);
-  const mB = dictionary.get(`${propertyName1}B`);
-  const mL = dictionary.get(`${propertyName1}L`);
-  const mR = dictionary.get(`${propertyName1}R`);
-  const mT = dictionary.get(`${propertyName1}T`);
-  const mX = dictionary.get(`${propertyName1}X`);
-  const mY = dictionary.get(`${propertyName1}Y`);
+function css(breakpointName: string, left: string, right: string): EnhancedCSSProperties {
+  const m = dictionary.get('border');
+  const mB = dictionary.get(`borderB`);
+  const mL = dictionary.get(`borderL`);
+  const mR = dictionary.get(`borderR`);
+  const mT = dictionary.get(`borderT`);
+  const mX = dictionary.get(`borderX`);
+  const mY = dictionary.get(`borderY`);
 
   return {
     [`.${breakpointName}${m}${dictionary.get(left)}`]: {
-      [`${propertyName2}Style`]: 'solid',
-      [`${propertyName2}Width`]: right,
+      borderStyle: 'solid',
+      borderWidth: right,
     },
     // "b", "y"
     [`.${breakpointName}${mB}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
-      [`${propertyName2}BottomStyle`]: 'solid',
-      [`${propertyName2}BottomWidth`]: right,
+      borderBottomStyle: 'solid',
+      borderBottomWidth: right,
     },
     // "l", "x"
     [`.${breakpointName}${mL}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
-      [`${propertyName2}LeftStyle`]: 'solid',
-      [`${propertyName2}LeftWidth`]: right,
+      borderLeftStyle: 'solid',
+      borderLeftWidth: right,
     },
     // "r", "x"
     [`.${breakpointName}${mR}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
-      [`${propertyName2}RightStyle`]: 'solid',
-      [`${propertyName2}RightWidth`]: right,
+      borderRightStyle: 'solid',
+      borderRightWidth: right,
     },
     // "t", "y"
     [`.${breakpointName}${mT}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
-      [`${propertyName2}TopStyle`]: 'solid',
-      [`${propertyName2}TopWidth`]: right,
+      borderTopStyle: 'solid',
+      borderTopWidth: right,
     },
   };
 }
@@ -60,7 +55,7 @@ function border(): EnhancedCSSProperties {
       ...sizes.reduce(
         (_, [left, right]) => ({
           ..._,
-          ...css(breakpointName, ['border', 'border'], left, right),
+          ...css(breakpointName, left, right),
         }),
         {}
       ),
