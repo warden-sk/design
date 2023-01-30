@@ -15,6 +15,7 @@ import toString from './toString';
 import width from './components/width';
 import opacity from './components/opacity';
 import dictionary from '@warden-sk/babel-plugin/private/dictionary';
+import border from './components/border';
 
 function toHelper(propertyName: string, type: readonly string[]): EnhancedCSSProperties {
   const $ = dictionary.get(propertyName);
@@ -84,6 +85,7 @@ const css: EnhancedCSSProperties[] = [
   alignContent,
   alignItems,
   alignSelf,
+  border(),
   container(),
   cursor,
   display,
