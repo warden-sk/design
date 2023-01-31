@@ -13,36 +13,36 @@ const sizes = [
 ] as const;
 
 function css(breakpointName: string, left: string, right: string): EnhancedCSSProperties {
-  const m = dictionary.get('border');
-  const mB = dictionary.get(`borderB`);
-  const mL = dictionary.get(`borderL`);
-  const mR = dictionary.get(`borderR`);
-  const mT = dictionary.get(`borderT`);
-  const mX = dictionary.get(`borderX`);
-  const mY = dictionary.get(`borderY`);
+  const $ = dictionary.get('border');
+  const b = dictionary.get(`borderBottom`);
+  const l = dictionary.get(`borderLeft`);
+  const r = dictionary.get(`borderRight`);
+  const t = dictionary.get(`borderTop`);
+  const x = dictionary.get(`borderX`);
+  const y = dictionary.get(`borderY`);
 
   return {
-    [`.${breakpointName}${m}${dictionary.get(left)}`]: {
+    [`.${breakpointName}${$}${dictionary.get(left)}`]: {
       borderStyle: 'solid',
       borderWidth: right,
     },
     // "b", "y"
-    [`.${breakpointName}${mB}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
+    [`.${breakpointName}${b}${dictionary.get(left)},.${breakpointName}${y}${dictionary.get(left)}`]: {
       borderBottomStyle: 'solid',
       borderBottomWidth: right,
     },
     // "l", "x"
-    [`.${breakpointName}${mL}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
+    [`.${breakpointName}${l}${dictionary.get(left)},.${breakpointName}${x}${dictionary.get(left)}`]: {
       borderLeftStyle: 'solid',
       borderLeftWidth: right,
     },
     // "r", "x"
-    [`.${breakpointName}${mR}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
+    [`.${breakpointName}${r}${dictionary.get(left)},.${breakpointName}${x}${dictionary.get(left)}`]: {
       borderRightStyle: 'solid',
       borderRightWidth: right,
     },
     // "t", "y"
-    [`.${breakpointName}${mT}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
+    [`.${breakpointName}${t}${dictionary.get(left)},.${breakpointName}${y}${dictionary.get(left)}`]: {
       borderTopStyle: 'solid',
       borderTopWidth: right,
     },
