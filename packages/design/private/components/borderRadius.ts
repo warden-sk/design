@@ -9,6 +9,8 @@ import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 const sizes = [
   ['0', '0'], //        0
   ['1', '0.125rem'], // 2px
+  ['2', '0.25rem'], //  4px
+  ['50', '50%'], //     50%
 ] as const;
 
 function borderRadius(): EnhancedCSSProperties {
