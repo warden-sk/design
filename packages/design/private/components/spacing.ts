@@ -20,44 +20,45 @@ const sizes = [
   ['8', '2rem'], //    32px
 ] as const;
 
+function css(
+  breakpointName: string,
+  left: string,
+  property: 'margin' | 'padding',
+  right: '0' | 'auto' | `${string}rem`
+): EnhancedCSSProperties {
+  const $ = dictionary.get(property[0]);
+  const b = dictionary.get(`${property[0]}B`);
+  const l = dictionary.get(`${property[0]}L`);
+  const r = dictionary.get(`${property[0]}R`);
+  const t = dictionary.get(`${property[0]}T`);
+  const x = dictionary.get(`${property[0]}X`);
+  const y = dictionary.get(`${property[0]}Y`);
+
+  return {
+    [`.${breakpointName}${$}${dictionary.get(left)}`]: {
+      [property]: right,
+    },
+    // "b", "y"
+    [`.${breakpointName}${b}${dictionary.get(left)},.${breakpointName}${y}${dictionary.get(left)}`]: {
+      [`${property}Bottom`]: right,
+    },
+    // "l", "x"
+    [`.${breakpointName}${l}${dictionary.get(left)},.${breakpointName}${x}${dictionary.get(left)}`]: {
+      [`${property}Left`]: right,
+    },
+    // "r", "x"
+    [`.${breakpointName}${r}${dictionary.get(left)},.${breakpointName}${x}${dictionary.get(left)}`]: {
+      [`${property}Right`]: right,
+    },
+    // "t", "y"
+    [`.${breakpointName}${t}${dictionary.get(left)},.${breakpointName}${y}${dictionary.get(left)}`]: {
+      [`${property}Top`]: right,
+    },
+  };
+}
+
 function spacing(columns: number): EnhancedCSSProperties {
   return forBreakpoints(([breakpointName]) => {
-    function css(
-      left: string,
-      property: 'margin' | 'padding',
-      right: '0' | 'auto' | `${string}rem`
-    ): EnhancedCSSProperties {
-      const m = dictionary.get(property[0]);
-      const mB = dictionary.get(`${property[0]}B`);
-      const mL = dictionary.get(`${property[0]}L`);
-      const mR = dictionary.get(`${property[0]}R`);
-      const mT = dictionary.get(`${property[0]}T`);
-      const mX = dictionary.get(`${property[0]}X`);
-      const mY = dictionary.get(`${property[0]}Y`);
-
-      return {
-        [`.${breakpointName}${m}${dictionary.get(left)}`]: {
-          [property]: right,
-        },
-        // "b", "y"
-        [`.${breakpointName}${mB}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
-          [`${property}Bottom`]: right,
-        },
-        // "l", "x"
-        [`.${breakpointName}${mL}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
-          [`${property}Left`]: right,
-        },
-        // "r", "x"
-        [`.${breakpointName}${mR}${dictionary.get(left)},.${breakpointName}${mX}${dictionary.get(left)}`]: {
-          [`${property}Right`]: right,
-        },
-        // "t", "y"
-        [`.${breakpointName}${mT}${dictionary.get(left)},.${breakpointName}${mY}${dictionary.get(left)}`]: {
-          [`${property}Top`]: right,
-        },
-      };
-    }
-
     return {
       ...['1', '2', '3', '4'].reduce(
         (_, left) => ({
@@ -104,7 +105,7 @@ function spacing(columns: number): EnhancedCSSProperties {
             ? _
             : {
                 ..._,
-                ...css(`!${left}`, 'margin', `-${right}`),
+                ...css(breakpointName, `!${left}`, 'margin', `-${right}`),
               },
         {}
       ),
@@ -112,12 +113,12 @@ function spacing(columns: number): EnhancedCSSProperties {
       ...sizes.reduce(
         (_, [left, right]) => ({
           ..._,
-          ...css(left, 'margin', right),
+          ...css(breakpointName, left, 'margin', right),
         }),
         {}
       ),
       // .m-auto
-      ...css('auto', 'margin', 'auto'),
+      ...css(breakpointName, 'auto', 'margin', 'auto'),
       // .m-l-1/12
       ...createArrayOf(columns).reduce(
         (css, i) => ({
@@ -132,7 +133,7 @@ function spacing(columns: number): EnhancedCSSProperties {
       ...sizes.reduce(
         (_, [left, right]) => ({
           ..._,
-          ...css(left, 'padding', right),
+          ...css(breakpointName, left, 'padding', right),
         }),
         {}
       ),
