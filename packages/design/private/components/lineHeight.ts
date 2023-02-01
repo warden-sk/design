@@ -15,13 +15,13 @@ const lineHeights = [
 ] as const;
 
 function lineHeight(): EnhancedCSSProperties {
-  const $ = dictionary.get('lineHeight');
+  const $ = dictionary.getKey('lineHeight');
 
   return forBreakpoints(([breakpointName]) =>
     lineHeights.reduce(
       (css, [left, right]) => ({
         ...css,
-        [`.${breakpointName}${$}${dictionary.get(left)}`]: {
+        [`.${breakpointName}${$}${dictionary.getKey(left)}`]: {
           lineHeight: right,
         },
       }),

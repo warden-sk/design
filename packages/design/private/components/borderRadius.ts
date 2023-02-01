@@ -14,33 +14,33 @@ const sizes = [
 ] as const;
 
 function borderRadius(): EnhancedCSSProperties {
-  const $ = dictionary.get('borderRadius');
-  const b = dictionary.get('borderBottomRadius');
-  const l = dictionary.get('borderLeftRadius');
-  const r = dictionary.get('borderRightRadius');
-  const t = dictionary.get('borderTopRadius');
+  const $ = dictionary.getKey('borderRadius');
+  const b = dictionary.getKey('borderBottomRadius');
+  const l = dictionary.getKey('borderLeftRadius');
+  const r = dictionary.getKey('borderRightRadius');
+  const t = dictionary.getKey('borderTopRadius');
 
   return forBreakpoints(([breakpointName]) => {
     return {
       ...sizes.reduce(
         (_, [left, right]) => ({
           ..._,
-          [`.${breakpointName}${$}${dictionary.get(left)}`]: {
+          [`.${breakpointName}${$}${dictionary.getKey(left)}`]: {
             borderRadius: right,
           },
-          [`.${breakpointName}${b}${dictionary.get(left)}`]: {
+          [`.${breakpointName}${b}${dictionary.getKey(left)}`]: {
             borderBottomLeftRadius: right,
             borderBottomRightRadius: right,
           },
-          [`.${breakpointName}${l}${dictionary.get(left)}`]: {
+          [`.${breakpointName}${l}${dictionary.getKey(left)}`]: {
             borderBottomLeftRadius: right,
             borderTopLeftRadius: right,
           },
-          [`.${breakpointName}${r}${dictionary.get(left)}`]: {
+          [`.${breakpointName}${r}${dictionary.getKey(left)}`]: {
             borderBottomRightRadius: right,
             borderTopRightRadius: right,
           },
-          [`.${breakpointName}${t}${dictionary.get(left)}`]: {
+          [`.${breakpointName}${t}${dictionary.getKey(left)}`]: {
             borderTopLeftRadius: right,
             borderTopRightRadius: right,
           },

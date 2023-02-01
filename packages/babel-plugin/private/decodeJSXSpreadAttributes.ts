@@ -16,7 +16,7 @@ function decodeJSXSpreadAttributes(attributes: { [key: string]: any }): EncodedC
     }
 
     if (key in allowedJSXAttributes) {
-      return [...$, decodeResponsiveClassName(dictionary.get(key), attribute)];
+      return [...$, decodeResponsiveClassName(dictionary.getKey(key), attribute)];
     }
 
     return $;

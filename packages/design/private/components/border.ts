@@ -13,36 +13,36 @@ const sizes = [
 ] as const;
 
 function css(breakpointName: string, left: string, right: string): EnhancedCSSProperties {
-  const $ = dictionary.get('border');
-  const b = dictionary.get(`borderBottom`);
-  const l = dictionary.get(`borderLeft`);
-  const r = dictionary.get(`borderRight`);
-  const t = dictionary.get(`borderTop`);
-  const x = dictionary.get(`borderX`);
-  const y = dictionary.get(`borderY`);
+  const $ = dictionary.getKey('border');
+  const b = dictionary.getKey(`borderBottom`);
+  const l = dictionary.getKey(`borderLeft`);
+  const r = dictionary.getKey(`borderRight`);
+  const t = dictionary.getKey(`borderTop`);
+  const x = dictionary.getKey(`borderX`);
+  const y = dictionary.getKey(`borderY`);
 
   return {
-    [`.${breakpointName}${$}${dictionary.get(left)}`]: {
+    [`.${breakpointName}${$}${dictionary.getKey(left)}`]: {
       borderStyle: 'solid',
       borderWidth: right,
     },
     // "b", "y"
-    [`.${breakpointName}${b}${dictionary.get(left)},.${breakpointName}${y}${dictionary.get(left)}`]: {
+    [`.${breakpointName}${b}${dictionary.getKey(left)},.${breakpointName}${y}${dictionary.getKey(left)}`]: {
       borderBottomStyle: 'solid',
       borderBottomWidth: right,
     },
     // "l", "x"
-    [`.${breakpointName}${l}${dictionary.get(left)},.${breakpointName}${x}${dictionary.get(left)}`]: {
+    [`.${breakpointName}${l}${dictionary.getKey(left)},.${breakpointName}${x}${dictionary.getKey(left)}`]: {
       borderLeftStyle: 'solid',
       borderLeftWidth: right,
     },
     // "r", "x"
-    [`.${breakpointName}${r}${dictionary.get(left)},.${breakpointName}${x}${dictionary.get(left)}`]: {
+    [`.${breakpointName}${r}${dictionary.getKey(left)},.${breakpointName}${x}${dictionary.getKey(left)}`]: {
       borderRightStyle: 'solid',
       borderRightWidth: right,
     },
     // "t", "y"
-    [`.${breakpointName}${t}${dictionary.get(left)},.${breakpointName}${y}${dictionary.get(left)}`]: {
+    [`.${breakpointName}${t}${dictionary.getKey(left)},.${breakpointName}${y}${dictionary.getKey(left)}`]: {
       borderTopStyle: 'solid',
       borderTopWidth: right,
     },

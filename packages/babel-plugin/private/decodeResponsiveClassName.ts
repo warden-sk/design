@@ -25,18 +25,18 @@ function decodeResponsiveClassName(
 
   // T
   if (typeof encodedResponsiveClassName === 'string') {
-    decodedResponsiveClassNames.push(`${className}${dictionary.get(encodedResponsiveClassName)}`);
+    decodedResponsiveClassNames.push(`${className}${dictionary.getKey(encodedResponsiveClassName)}`);
   }
 
   // [T]
   else if (Array.isArray(encodedResponsiveClassName)) {
-    decodedResponsiveClassNames.push(`${className}${dictionary.get(encodedResponsiveClassName[0])}`);
+    decodedResponsiveClassNames.push(`${className}${dictionary.getKey(encodedResponsiveClassName[0])}`);
 
     // [T, { [breakpointName: string]: T }]
     if (encodedResponsiveClassName[1]) {
       for (const breakpointName in encodedResponsiveClassName[1]) {
         decodedResponsiveClassNames.push(
-          `${breakpointName}${className}${dictionary.get(encodedResponsiveClassName[1][breakpointName])}`
+          `${breakpointName}${className}${dictionary.getKey(encodedResponsiveClassName[1][breakpointName])}`
         );
       }
     }
@@ -46,7 +46,7 @@ function decodeResponsiveClassName(
   else if (encodedResponsiveClassName !== null && typeof encodedResponsiveClassName === 'object') {
     for (const breakpointName in encodedResponsiveClassName) {
       decodedResponsiveClassNames.push(
-        `${breakpointName}${className}${dictionary.get(encodedResponsiveClassName[breakpointName])}`
+        `${breakpointName}${className}${dictionary.getKey(encodedResponsiveClassName[breakpointName])}`
       );
     }
   }

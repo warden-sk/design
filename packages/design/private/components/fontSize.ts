@@ -22,13 +22,13 @@ const fontSizes = [
 ] as const;
 
 function fontSize(): EnhancedCSSProperties {
-  const $ = dictionary.get('fontSize');
+  const $ = dictionary.getKey('fontSize');
 
   return forBreakpoints(([breakpointName]) =>
     fontSizes.reduce(
       (css, [left, right]) => ({
         ...css,
-        [`.${breakpointName}${$}${dictionary.get(left)}`]: {
+        [`.${breakpointName}${$}${dictionary.getKey(left)}`]: {
           fontSize: right,
         },
       }),

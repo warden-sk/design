@@ -7,31 +7,31 @@ import forBreakpoints from '../forBreakpoints';
 import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
 function height(): EnhancedCSSProperties {
-  const $ = dictionary.get('height');
+  const $ = dictionary.getKey('height');
 
   return forBreakpoints(([breakpointName]) => ({
     // .height-0
-    [`.${breakpointName}${$}${dictionary.get('0')}`]: {
+    [`.${breakpointName}${$}${dictionary.getKey('0')}`]: {
       height: '0',
     },
     // .height-25
-    [`.${breakpointName}${$}${dictionary.get('25')}`]: {
+    [`.${breakpointName}${$}${dictionary.getKey('25')}`]: {
       height: '25%',
     },
     // .height-50
-    [`.${breakpointName}${$}${dictionary.get('50')}`]: {
+    [`.${breakpointName}${$}${dictionary.getKey('50')}`]: {
       height: '50%',
     },
     // .height-75
-    [`.${breakpointName}${$}${dictionary.get('75')}`]: {
+    [`.${breakpointName}${$}${dictionary.getKey('75')}`]: {
       height: '75%',
     },
     // .height-100
-    [`.${breakpointName}${$}${dictionary.get('100')}`]: {
+    [`.${breakpointName}${$}${dictionary.getKey('100')}`]: {
       height: '100%',
     },
     // .height-auto
-    [`.${breakpointName}${$}${dictionary.get('auto')}`]: {
+    [`.${breakpointName}${$}${dictionary.getKey('auto')}`]: {
       height: 'auto',
     },
   }));

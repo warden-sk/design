@@ -19,13 +19,13 @@ import border from './components/border';
 import borderRadius from './components/borderRadius';
 
 function toHelper(propertyName: string, type: readonly string[]): EnhancedCSSProperties {
-  const $ = dictionary.get(propertyName);
+  const $ = dictionary.getKey(propertyName);
 
   return forBreakpoints(([breakpointName]) =>
     type.reduce(
       (_, property) => ({
         ..._,
-        [`.${breakpointName}${$}${dictionary.get(property)}`]: {
+        [`.${breakpointName}${$}${dictionary.getKey(property)}`]: {
           [propertyName]: property,
         },
       }),
