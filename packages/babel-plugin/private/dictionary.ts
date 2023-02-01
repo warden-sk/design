@@ -2,7 +2,7 @@
  * Copyright 2023 Marek Kobida
  */
 
-import Dictionary from '../../../../koala.sk/packages/Dictionary';
+import Dictionary from '../../../../koala.sk/packages/dictionary';
 import allowedJSXAttributes from './allowedJSXAttributes';
 
 const dictionary = new Dictionary([
