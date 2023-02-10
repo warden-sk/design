@@ -7,130 +7,24 @@ import allowedJSXAttributes from './private/allowedJSXAttributes';
 import fs from 'fs';
 import css from '@warden-sk/design/private';
 import dictionary from './private/dictionary';
+import allowedHTMLElements from './private/allowedHTMLElements';
 
 function pathFromRoot(relativePath: `/${string}`): string {
   return process.cwd() + relativePath;
 }
 
-const elements = [
-  'a',
-  'abbr',
-  'address',
-  'area',
-  'article',
-  'aside',
-  'audio',
-  'b',
-  'base',
-  'bdi',
-  'bdo',
-  'blockquote',
-  'body',
-  'br',
-  'button',
-  'canvas',
-  'caption',
-  'cite',
-  'code',
-  'col',
-  'colgroup',
-  'data',
-  'datalist',
-  'dd',
-  'del',
-  'details',
-  'dfn',
-  'div',
-  'dl',
-  'dt',
-  'em',
-  'embed',
-  'fieldset',
-  'figcaption',
-  'figure',
-  'footer',
-  'form',
-  'h1',
-  'h2',
-  'h3',
-  'h4',
-  'h5',
-  'h6',
-  'head',
-  'header',
-  'hr',
-  'html',
-  'i',
-  'iframe',
-  'img',
-  'input',
-  'ins',
-  'kbd',
-  'label',
-  'legend',
-  'li',
-  'link',
-  'main',
-  'map',
-  'mark',
-  'menu',
-  'meta',
-  'meter',
-  'nav',
-  'noscript',
-  'object',
-  'ol',
-  'optgroup',
-  'option',
-  'output',
-  'p',
-  'param',
-  'picture',
-  'pre',
-  'progress',
-  'q',
-  'rp',
-  'rt',
-  'ruby',
-  's',
-  'samp',
-  'script',
-  'section',
-  'select',
-  'slot',
-  'small',
-  'source',
-  'span',
-  'strong',
-  'style',
-  'sub',
-  'summary',
-  'sup',
-  'svg',
-  'table',
-  'tbody',
-  'td',
-  'template',
-  'textarea',
-  'tfoot',
-  'th',
-  'thead',
-  'time',
-  'title',
-  'tr',
-  'track',
-  'u',
-  'ul',
-  'var',
-  'video',
-  'wbr',
-];
+interface S {
+  decodeClassName: string;
+  decodeJSXSpreadAttributes: string;
+  decodeResponsiveClassName: string;
+  filterJSXSpreadAttributes: string;
+}
 
-export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } => {
+export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor<S> } => {
   return {
     visitor: {
-      JSXOpeningElement(path) {
-        if (types.isJSXIdentifier(path.node.name) && elements.indexOf(path.node.name.name) !== -1) {
+      JSXOpeningElement(path, state) {
+        if (types.isJSXIdentifier(path.node.name) && allowedHTMLElements.indexOf(path.node.name.name) !== -1) {
           const attributes: ($.types.JSXAttribute | $.types.JSXSpreadAttribute)[] = [];
           const className: $.types.Expression[] = [];
 
@@ -156,7 +50,7 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
                   if (types.isJSXExpressionContainer(attribute.value)) {
                     if (types.isExpression(attribute.value.expression)) {
                       return className.push(
-                        types.callExpression(types.identifier('decodeResponsiveClassName2'), [
+                        types.callExpression(types.identifier(state.decodeResponsiveClassName), [
                           types.stringLiteral(dictionary.getKey(attribute.name.name)),
                           attribute.value.expression,
                         ])
@@ -166,7 +60,7 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
                   /* (2.2) */
                   if (types.isStringLiteral(attribute.value)) {
                     return className.push(
-                      types.callExpression(types.identifier('decodeResponsiveClassName2'), [
+                      types.callExpression(types.identifier(state.decodeResponsiveClassName), [
                         types.stringLiteral(dictionary.getKey(attribute.name.name)),
                         attribute.value,
                       ])
@@ -179,12 +73,12 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
             if (types.isJSXSpreadAttribute(attribute)) {
               attributes.push(
                 types.jsxSpreadAttribute(
-                  types.callExpression(types.identifier('filterJSXSpreadAttributes2'), [attribute.argument])
+                  types.callExpression(types.identifier(state.filterJSXSpreadAttributes), [attribute.argument])
                 )
               );
 
               return className.push(
-                types.callExpression(types.identifier('decodeJSXSpreadAttributes2'), [attribute.argument])
+                types.callExpression(types.identifier(state.decodeJSXSpreadAttributes), [attribute.argument])
               );
             }
 
@@ -196,7 +90,7 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
               types.jsxAttribute(
                 types.jsxIdentifier('className'),
                 types.jsxExpressionContainer(
-                  types.callExpression(types.identifier('decodeClassName2'), [types.arrayExpression(className)])
+                  types.callExpression(types.identifier(state.decodeClassName), [types.arrayExpression(className)])
                 )
               )
             );
@@ -205,25 +99,30 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor } =>
           path.node.attributes = attributes;
         }
       },
-      Program(path) {
+      Program(path, state) {
         fs.writeFileSync(pathFromRoot('/private/design.css'), css());
+
+        state.decodeClassName = path.scope.generateUid('decodeClassName');
+        state.decodeJSXSpreadAttributes = path.scope.generateUid('decodeJSXSpreadAttributes');
+        state.decodeResponsiveClassName = path.scope.generateUid('decodeResponsiveClassName');
+        state.filterJSXSpreadAttributes = path.scope.generateUid('filterJSXSpreadAttributes');
 
         path.unshiftContainer('body', [
           types.importDeclaration(
-            [types.importDefaultSpecifier(types.identifier('decodeJSXSpreadAttributes2'))],
+            [types.importDefaultSpecifier(types.identifier(state.decodeJSXSpreadAttributes))],
             types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeJSXSpreadAttributes'))
           ),
           types.importDeclaration(
-            [types.importDefaultSpecifier(types.identifier('filterJSXSpreadAttributes2'))],
+            [types.importDefaultSpecifier(types.identifier(state.filterJSXSpreadAttributes))],
             types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/filterJSXSpreadAttributes'))
           ),
           //------------------------------------------------------------------------------------------------------------
           types.importDeclaration(
-            [types.importDefaultSpecifier(types.identifier('decodeClassName2'))],
+            [types.importDefaultSpecifier(types.identifier(state.decodeClassName))],
             types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeClassName'))
           ),
           types.importDeclaration(
-            [types.importDefaultSpecifier(types.identifier('decodeResponsiveClassName2'))],
+            [types.importDefaultSpecifier(types.identifier(state.decodeResponsiveClassName))],
             types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeResponsiveClassName'))
           ),
         ]);

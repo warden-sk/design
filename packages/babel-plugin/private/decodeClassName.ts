@@ -6,12 +6,14 @@ export type DecodedClassName = string | undefined;
 
 export type EncodedClassName =
   | EncodedClassName[]
+  | Falsy
   | boolean
   | number
   | string
-  | { [decodedClassName: string]: boolean | null | undefined }
-  | null
-  | undefined;
+  | { [decodedClassName: string]: Falsy | boolean };
+
+// https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+type Falsy = '' | 0 | false | null | undefined;
 
 function decodeClassName(...encodedClassNames: EncodedClassName[]): DecodedClassName {
   const decodedClassNames: DecodedClassName[] = [];
@@ -34,7 +36,7 @@ function decodeClassName(...encodedClassNames: EncodedClassName[]): DecodedClass
       decodedClassNames.push(encodedClassName);
     }
 
-    // { [decodedClassName: string]: boolean | null | undefined }
+    // { [decodedClassName: string]: Falsy | boolean }
     else if (encodedClassName !== null && typeof encodedClassName === 'object') {
       for (const decodedClassName in encodedClassName) {
         if (encodedClassName[decodedClassName]) {
