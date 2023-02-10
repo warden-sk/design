@@ -62,7 +62,7 @@ const root: EnhancedCSSProperties = {
     textDecoration: 'none',
   },
   'a:hover': {
-    textDecoration: 'underline',
+    // textDecoration: 'underline',
   },
   body: {
     fontFamily: "-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif",
