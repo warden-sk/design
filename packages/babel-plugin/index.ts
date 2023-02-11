@@ -4,8 +4,6 @@
 
 import type $ from '@babel/core';
 import allowedJSXAttributes from './private/allowedJSXAttributes';
-import fs from 'fs';
-import css from '@warden-sk/design/private';
 import dictionary from './private/dictionary';
 import allowedHTMLElements from './private/allowedHTMLElements';
 
@@ -100,8 +98,6 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor<S> }
         }
       },
       Program(path, state) {
-        fs.writeFileSync(pathFromRoot('/private/design.css'), css());
-
         state.decodeClassName = path.scope.generateUid('decodeClassName');
         state.decodeJSXSpreadAttributes = path.scope.generateUid('decodeJSXSpreadAttributes');
         state.decodeResponsiveClassName = path.scope.generateUid('decodeResponsiveClassName');
