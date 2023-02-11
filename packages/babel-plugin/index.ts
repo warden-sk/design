@@ -104,6 +104,8 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor<S> }
         state.filterJSXSpreadAttributes = path.scope.generateUid('filterJSXSpreadAttributes');
 
         path.unshiftContainer('body', [
+          types.importDeclaration([], types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/design/index.css'))),
+          //------------------------------------------------------------------------------------------------------------
           types.importDeclaration(
             [types.importDefaultSpecifier(types.identifier(state.decodeJSXSpreadAttributes))],
             types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeJSXSpreadAttributes'))
