@@ -7,10 +7,6 @@ import allowedJSXAttributes from './private/allowedJSXAttributes';
 import dictionary from './private/dictionary';
 import allowedHTMLElements from './private/allowedHTMLElements';
 
-function pathFromRoot(relativePath: `/${string}`): string {
-  return process.cwd() + relativePath;
-}
-
 interface S {
   decodeClassName: string;
   decodeJSXSpreadAttributes: string;
@@ -104,24 +100,24 @@ export default ({ types }: { types: typeof $.types }): { visitor: $.Visitor<S> }
         state.filterJSXSpreadAttributes = path.scope.generateUid('filterJSXSpreadAttributes');
 
         path.unshiftContainer('body', [
-          types.importDeclaration([], types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/design/index.css'))),
+          types.importDeclaration([], types.stringLiteral('@warden-sk/design/index.css')),
           //------------------------------------------------------------------------------------------------------------
           types.importDeclaration(
             [types.importDefaultSpecifier(types.identifier(state.decodeJSXSpreadAttributes))],
-            types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeJSXSpreadAttributes'))
+            types.stringLiteral('@warden-sk/babel-plugin/private/decodeJSXSpreadAttributes')
           ),
           types.importDeclaration(
             [types.importDefaultSpecifier(types.identifier(state.filterJSXSpreadAttributes))],
-            types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/filterJSXSpreadAttributes'))
+            types.stringLiteral('@warden-sk/babel-plugin/private/filterJSXSpreadAttributes')
           ),
           //------------------------------------------------------------------------------------------------------------
           types.importDeclaration(
             [types.importDefaultSpecifier(types.identifier(state.decodeClassName))],
-            types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeClassName'))
+            types.stringLiteral('@warden-sk/babel-plugin/private/decodeClassName')
           ),
           types.importDeclaration(
             [types.importDefaultSpecifier(types.identifier(state.decodeResponsiveClassName))],
-            types.stringLiteral(pathFromRoot('/node_modules/@warden-sk/babel-plugin/private/decodeResponsiveClassName'))
+            types.stringLiteral('@warden-sk/babel-plugin/private/decodeResponsiveClassName')
           ),
         ]);
       },
