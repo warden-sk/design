@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@types/node": "^18.13.0",
+    "@warden-sk/babel-plugin": "file:../babel-plugin",
     "csstype": "^3.1.1"
   },
   "name": "@warden-sk/design",
