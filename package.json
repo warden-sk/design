@@ -6,8 +6,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/warden-sk/design.git"
-  },
-  "workspaces": [
-    "./packages/*"
-  ]
+  }
 }
