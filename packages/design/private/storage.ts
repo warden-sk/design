@@ -27,8 +27,8 @@ export const AlignContent = ['baseline', ...ContentDistribution, ...ContentPosit
 export const AlignItems = ['baseline', 'stretch', ...SelfPosition] as const;
 // https://drafts.csswg.org/css-align/#propdef-align-self
 export const AlignSelf = ['baseline', 'stretch', ...SelfPosition] as const;
-export const Border = ['1', '2'] as const;
-export const BorderRadius = ['1', '2', '50'] as const;
+export const Border = ['0', '1', '2'] as const;
+export const BorderRadius = ['0', '1', '2', '50'] as const;
 export const Cursor = ['pointer'] as const;
 // https://drafts.csswg.org/css-display-3/#propdef-display
 export const Display = [
