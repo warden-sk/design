@@ -1,6 +1,9 @@
 {
+  "dependencies": {
+    "@warden-sk/compiler": "file:../compiler"
+  },
   "devDependencies": {
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.2"
   },
   "private": true,
   "repository": {
