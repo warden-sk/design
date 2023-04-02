@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@warden-sk/babel-plugin": "file:../babel-plugin",
-    "csstype": "^3.1.1"
+    "csstype": "^3.1.2"
   },
   "name": "@warden-sk/design",
   "repository": {
