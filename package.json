@@ -3,7 +3,7 @@
     "@warden-sk/compiler": "file:../compiler"
   },
   "devDependencies": {
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.4"
   },
   "private": true,
   "repository": {
