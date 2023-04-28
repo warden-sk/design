@@ -2,21 +2,21 @@
  * Copyright 2023 Marek Kobida
  */
 
-import * as t from './storage';
-import type { EnhancedCSSProperties } from './forBreakpoints';
-import forBreakpoints from './forBreakpoints';
+import dictionary from '@warden-sk/babel-plugin/private/dictionary';
+import border from './components/border';
+import borderRadius from './components/borderRadius';
 import container from './components/container';
 import flexBasis from './components/flexBasis';
 import fontSize from './components/fontSize';
 import height from './components/height';
 import lineHeight from './components/lineHeight';
-import spacing from './components/spacing';
-import toString from './toString';
-import width from './components/width';
 import opacity from './components/opacity';
-import dictionary from '@warden-sk/babel-plugin/private/dictionary';
-import border from './components/border';
-import borderRadius from './components/borderRadius';
+import spacing from './components/spacing';
+import width from './components/width';
+import type { EnhancedCSSProperties } from './forBreakpoints';
+import forBreakpoints from './forBreakpoints';
+import * as t from './storage';
+import toString from './toString';
 
 function toHelper(propertyName: string, type: readonly string[]): EnhancedCSSProperties {
   const $ = dictionary.getKey(propertyName);
