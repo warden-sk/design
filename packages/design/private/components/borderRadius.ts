@@ -2,14 +2,15 @@
  * Copyright 2023 Marek Kobida
  */
 
+import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 import type { EnhancedCSSProperties } from '../forBreakpoints';
 import forBreakpoints from '../forBreakpoints';
-import dictionary from '@warden-sk/babel-plugin/private/dictionary';
 
 const sizes = [
   ['0', '0'], //        0
   ['1', '0.125rem'], // 2px
   ['2', '0.25rem'], //  4px
+  ['3', '0.5rem'], //   8px
   ['50', '50%'], //     50%
 ] as const;
 
