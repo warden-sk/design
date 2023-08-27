@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@types/babel__core": "^7.20.0",
+    "@types/babel__core": "^7.20.1",
     "@warden-sk/design": "file:../design"
   },
   "name": "@warden-sk/babel-plugin",
